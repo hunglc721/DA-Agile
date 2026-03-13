@@ -1,0 +1,50 @@
+[28-Nov-2025 02:58:00 UTC] PHP Warning:  require_once(C:\laragon\www\base thi/routes/web.php): Failed to open stream: No such file or directory in C:\laragon\www\base thi\index.php on line 67
+[28-Nov-2025 02:58:00 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\laragon\www\base thi/routes/web.php' (include_path='.;C:/laragon/etc/php/pear') in C:\laragon\www\base thi\index.php:67
+Stack trace:
+#0 {main}
+  thrown in C:\laragon\www\base thi\index.php on line 67
+[28-Nov-2025 03:11:08 UTC] PHP Warning:  require_once(C:\laragon\www\base thi/routes/web.php): Failed to open stream: No such file or directory in C:\laragon\www\base thi\index.php on line 67
+[28-Nov-2025 03:11:08 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\laragon\www\base thi/routes/web.php' (include_path='.;C:/laragon/etc/php/pear') in C:\laragon\www\base thi\index.php:67
+Stack trace:
+#0 {main}
+  thrown in C:\laragon\www\base thi\index.php on line 67
+[28-Nov-2025 03:11:09 UTC] PHP Warning:  require_once(C:\laragon\www\base thi/routes/web.php): Failed to open stream: No such file or directory in C:\laragon\www\base thi\index.php on line 67
+[28-Nov-2025 03:11:09 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\laragon\www\base thi/routes/web.php' (include_path='.;C:/laragon/etc/php/pear') in C:\laragon\www\base thi\index.php:67
+Stack trace:
+#0 {main}
+  thrown in C:\laragon\www\base thi\index.php on line 67
+[28-Nov-2025 03:11:09 UTC] PHP Warning:  require_once(C:\laragon\www\base thi/routes/web.php): Failed to open stream: No such file or directory in C:\laragon\www\base thi\index.php on line 67
+[28-Nov-2025 03:11:09 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\laragon\www\base thi/routes/web.php' (include_path='.;C:/laragon/etc/php/pear') in C:\laragon\www\base thi\index.php:67
+Stack trace:
+#0 {main}
+  thrown in C:\laragon\www\base thi\index.php on line 67
+[28-Nov-2025 03:11:09 UTC] PHP Warning:  require_once(C:\laragon\www\base thi/routes/web.php): Failed to open stream: No such file or directory in C:\laragon\www\base thi\index.php on line 67
+[28-Nov-2025 03:11:09 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\laragon\www\base thi/routes/web.php' (include_path='.;C:/laragon/etc/php/pear') in C:\laragon\www\base thi\index.php:67
+Stack trace:
+#0 {main}
+  thrown in C:\laragon\www\base thi\index.php on line 67
+[28-Nov-2025 03:11:10 UTC] PHP Warning:  require_once(C:\laragon\www\base thi/routes/web.php): Failed to open stream: No such file or directory in C:\laragon\www\base thi\index.php on line 67
+[28-Nov-2025 03:11:10 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\laragon\www\base thi/routes/web.php' (include_path='.;C:/laragon/etc/php/pear') in C:\laragon\www\base thi\index.php:67
+Stack trace:
+#0 {main}
+  thrown in C:\laragon\www\base thi\index.php on line 67
+[28-Nov-2025 03:11:10 UTC] PHP Warning:  require_once(C:\laragon\www\base thi/routes/web.php): Failed to open stream: No such file or directory in C:\laragon\www\base thi\index.php on line 67
+[28-Nov-2025 03:11:10 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\laragon\www\base thi/routes/web.php' (include_path='.;C:/laragon/etc/php/pear') in C:\laragon\www\base thi\index.php:67
+Stack trace:
+#0 {main}
+  thrown in C:\laragon\www\base thi\index.php on line 67
+[28-Nov-2025 03:11:11 UTC] PHP Warning:  require_once(C:\laragon\www\base thi/routes/web.php): Failed to open stream: No such file or directory in C:\laragon\www\base thi\index.php on line 67
+[28-Nov-2025 03:11:11 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\laragon\www\base thi/routes/web.php' (include_path='.;C:/laragon/etc/php/pear') in C:\laragon\www\base thi\index.php:67
+Stack trace:
+#0 {main}
+  thrown in C:\laragon\www\base thi\index.php on line 67
+[28-Nov-2025 03:15:22 UTC] PHP Warning:  require_once(C:\laragon\www\base thi/routes/web.php): Failed to open stream: No such file or directory in C:\laragon\www\base thi\index.php on line 67
+[28-Nov-2025 03:15:22 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\laragon\www\base thi/routes/web.php' (include_path='.;C:/laragon/etc/php/pear') in C:\laragon\www\base thi\index.php:67
+Stack trace:
+#0 {main}
+  thrown in C:\laragon\www\base thi\index.php on line 67
+[28-Nov-2025 03:15:22 UTC] PHP Warning:  require_once(C:\laragon\www\base thi/routes/web.php): Failed to open stream: No such file or directory in C:\laragon\www\base thi\index.php on line 67
+[28-Nov-2025 03:15:22 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\laragon\www\base thi/routes/web.php' (include_path='.;C:/laragon/etc/php/pear') in C:\laragon\www\base thi\index.php:67
+Stack trace:
+#0 {main}
+  thrown in C:\laragon\www\base thi\index.php on line 67

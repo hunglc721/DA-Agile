@@ -1,0 +1,347 @@
+[15-Dec-2025 12:19:15 UTC] guide_tour_detail called with tourId: 1
+[15-Dec-2025 12:19:15 UTC] Current guide_id: 1
+[15-Dec-2025 12:19:15 UTC] Assignment check result: {"id":1}
+[15-Dec-2025 12:19:15 UTC] Customers query error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'b.customer_id' in 'on clause'
+[15-Dec-2025 12:19:15 UTC] tour_detail success - Tour: Tour Hạ Long 3N2D, Images: 2, Itinerary: 3, Customers: 0
+[16-Dec-2025 16:24:03 UTC] DEBUG: TourController index() called
+[16-Dec-2025 16:24:03 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[16-Dec-2025 16:24:03 UTC] DEBUG: Found 3 tours
+[16-Dec-2025 16:24:03 UTC] DEBUG: Found 3 categories
+[16-Dec-2025 16:24:03 UTC] DEBUG: Found 3 tourTypes
+[16-Dec-2025 16:24:05 UTC] DEBUG: TourController index() called
+[16-Dec-2025 16:24:05 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => domestic
+    [status] => 
+    [search] => 
+)
+
+[16-Dec-2025 16:24:05 UTC] DEBUG: Found 3 tours
+[16-Dec-2025 16:24:05 UTC] DEBUG: Found 3 categories
+[16-Dec-2025 16:24:05 UTC] DEBUG: Found 3 tourTypes
+[16-Dec-2025 16:24:05 UTC] DEBUG: TourController index() called
+[16-Dec-2025 16:24:05 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => international
+    [status] => 
+    [search] => 
+)
+
+[16-Dec-2025 16:24:05 UTC] DEBUG: Found 0 tours
+[16-Dec-2025 16:24:05 UTC] DEBUG: Found 3 categories
+[16-Dec-2025 16:24:05 UTC] DEBUG: Found 3 tourTypes
+[16-Dec-2025 16:24:06 UTC] DEBUG: TourController index() called
+[16-Dec-2025 16:24:06 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => custom
+    [status] => 
+    [search] => 
+)
+
+[16-Dec-2025 16:24:06 UTC] DEBUG: Found 0 tours
+[16-Dec-2025 16:24:06 UTC] DEBUG: Found 3 categories
+[16-Dec-2025 16:24:06 UTC] DEBUG: Found 3 tourTypes
+[16-Dec-2025 16:24:07 UTC] DEBUG: TourController index() called
+[16-Dec-2025 16:24:07 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[16-Dec-2025 16:24:07 UTC] DEBUG: Found 3 tours
+[16-Dec-2025 16:24:07 UTC] DEBUG: Found 3 categories
+[16-Dec-2025 16:24:07 UTC] DEBUG: Found 3 tourTypes
+[16-Dec-2025 16:36:51 UTC] DEBUG: TourController index() called
+[16-Dec-2025 16:36:51 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[16-Dec-2025 16:36:51 UTC] DEBUG: Found 12 tours
+[16-Dec-2025 16:36:51 UTC] DEBUG: Found 5 categories
+[16-Dec-2025 16:36:51 UTC] DEBUG: Found 3 tourTypes
+[16-Dec-2025 16:36:51 UTC] DEBUG: TourController index() called
+[16-Dec-2025 16:36:51 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[16-Dec-2025 16:36:51 UTC] DEBUG: Found 12 tours
+[16-Dec-2025 16:36:51 UTC] DEBUG: Found 5 categories
+[16-Dec-2025 16:36:51 UTC] DEBUG: Found 3 tourTypes
+[16-Dec-2025 16:36:53 UTC] DEBUG: TourController index() called
+[16-Dec-2025 16:36:53 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 4
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[16-Dec-2025 16:36:53 UTC] DEBUG: Found 1 tours
+[16-Dec-2025 16:36:53 UTC] DEBUG: Found 5 categories
+[16-Dec-2025 16:36:53 UTC] DEBUG: Found 3 tourTypes
+[16-Dec-2025 16:36:54 UTC] DEBUG: TourController index() called
+[16-Dec-2025 16:36:54 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 5
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[16-Dec-2025 16:36:54 UTC] DEBUG: Found 0 tours
+[16-Dec-2025 16:36:54 UTC] DEBUG: Found 5 categories
+[16-Dec-2025 16:36:54 UTC] DEBUG: Found 3 tourTypes
+[16-Dec-2025 16:36:54 UTC] DEBUG: TourController index() called
+[16-Dec-2025 16:36:54 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 2
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[16-Dec-2025 16:36:54 UTC] DEBUG: Found 3 tours
+[16-Dec-2025 16:36:54 UTC] DEBUG: Found 5 categories
+[16-Dec-2025 16:36:54 UTC] DEBUG: Found 3 tourTypes
+[16-Dec-2025 16:36:55 UTC] DEBUG: TourController index() called
+[16-Dec-2025 16:36:55 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 4
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[16-Dec-2025 16:36:55 UTC] DEBUG: Found 1 tours
+[16-Dec-2025 16:36:55 UTC] DEBUG: Found 5 categories
+[16-Dec-2025 16:36:55 UTC] DEBUG: Found 3 tourTypes
+[16-Dec-2025 16:36:56 UTC] DEBUG: TourController index() called
+[16-Dec-2025 16:36:56 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 5
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[16-Dec-2025 16:36:56 UTC] DEBUG: Found 0 tours
+[16-Dec-2025 16:36:56 UTC] DEBUG: Found 5 categories
+[16-Dec-2025 16:36:56 UTC] DEBUG: Found 3 tourTypes
+[16-Dec-2025 16:36:57 UTC] DEBUG: TourController index() called
+[16-Dec-2025 16:36:57 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 4
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[16-Dec-2025 16:36:57 UTC] DEBUG: Found 1 tours
+[16-Dec-2025 16:36:57 UTC] DEBUG: Found 5 categories
+[16-Dec-2025 16:36:57 UTC] DEBUG: Found 3 tourTypes
+[16-Dec-2025 16:36:59 UTC] DEBUG: TourController index() called
+[16-Dec-2025 16:36:59 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[16-Dec-2025 16:36:59 UTC] DEBUG: Found 12 tours
+[16-Dec-2025 16:36:59 UTC] DEBUG: Found 5 categories
+[16-Dec-2025 16:36:59 UTC] DEBUG: Found 3 tourTypes
+[16-Dec-2025 16:37:01 UTC] DEBUG: TourController index() called
+[16-Dec-2025 16:37:01 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => international
+    [status] => 
+    [search] => 
+)
+
+[16-Dec-2025 16:37:01 UTC] DEBUG: Found 9 tours
+[16-Dec-2025 16:37:01 UTC] DEBUG: Found 5 categories
+[16-Dec-2025 16:37:01 UTC] DEBUG: Found 3 tourTypes
+[16-Dec-2025 16:37:01 UTC] DEBUG: TourController index() called
+[16-Dec-2025 16:37:01 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => custom
+    [status] => 
+    [search] => 
+)
+
+[16-Dec-2025 16:37:01 UTC] DEBUG: Found 0 tours
+[16-Dec-2025 16:37:01 UTC] DEBUG: Found 5 categories
+[16-Dec-2025 16:37:01 UTC] DEBUG: Found 3 tourTypes
+[16-Dec-2025 16:37:02 UTC] DEBUG: TourController index() called
+[16-Dec-2025 16:37:02 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => international
+    [status] => 
+    [search] => 
+)
+
+[16-Dec-2025 16:37:02 UTC] DEBUG: Found 9 tours
+[16-Dec-2025 16:37:02 UTC] DEBUG: Found 5 categories
+[16-Dec-2025 16:37:02 UTC] DEBUG: Found 3 tourTypes
+[16-Dec-2025 16:37:04 UTC] DEBUG: TourController index() called
+[16-Dec-2025 16:37:04 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => domestic
+    [status] => 
+    [search] => 
+)
+
+[16-Dec-2025 16:37:04 UTC] DEBUG: Found 3 tours
+[16-Dec-2025 16:37:04 UTC] DEBUG: Found 5 categories
+[16-Dec-2025 16:37:04 UTC] DEBUG: Found 3 tourTypes
+[16-Dec-2025 16:37:07 UTC] DEBUG: TourController index() called
+[16-Dec-2025 16:37:07 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => custom
+    [status] => 
+    [search] => 
+)
+
+[16-Dec-2025 16:37:07 UTC] DEBUG: Found 0 tours
+[16-Dec-2025 16:37:07 UTC] DEBUG: Found 5 categories
+[16-Dec-2025 16:37:07 UTC] DEBUG: Found 3 tourTypes
+[16-Dec-2025 16:37:07 UTC] DEBUG: TourController index() called
+[16-Dec-2025 16:37:07 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => domestic
+    [status] => 
+    [search] => 
+)
+
+[16-Dec-2025 16:37:07 UTC] DEBUG: Found 3 tours
+[16-Dec-2025 16:37:07 UTC] DEBUG: Found 5 categories
+[16-Dec-2025 16:37:07 UTC] DEBUG: Found 3 tourTypes
+[16-Dec-2025 16:41:26 UTC] Error fetching messages: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'u.name' in 'field list'
+[16-Dec-2025 16:41:52 UTC] Error fetching messages: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'u.name' in 'field list'
+[16-Dec-2025 16:55:47 UTC] guide_tour_detail called with tourId: 1
+[16-Dec-2025 16:55:47 UTC] Current guide_id: 1
+[16-Dec-2025 16:55:47 UTC] Assignment check result: {"id":1}
+[16-Dec-2025 16:55:47 UTC] Customers query error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'b.customer_id' in 'on clause'
+[16-Dec-2025 16:55:47 UTC] tour_detail success - Tour: Tour Hạ Long 3N2D, Images: 0, Itinerary: 3, Customers: 0
+[16-Dec-2025 17:04:43 UTC] guide_tour_detail called with tourId: 1
+[16-Dec-2025 17:04:43 UTC] Current guide_id: 1
+[16-Dec-2025 17:04:43 UTC] Assignment check result: {"id":1}
+[16-Dec-2025 17:04:43 UTC] Customers query error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'b.customer_id' in 'on clause'
+[16-Dec-2025 17:04:43 UTC] tour_detail success - Tour: Tour Hạ Long 3N2D, Images: 0, Itinerary: 3, Customers: 0
+[16-Dec-2025 17:14:00 UTC] PHP Fatal error:  Uncaught Error: Class "Database" not found in C:\laragon\www\base thi\controllers\AdminController.php:172
+Stack trace:
+#0 C:\laragon\www\base thi\routes\index.php(90): AdminController->incidentReports()
+#1 C:\laragon\www\base thi\index.php(47): require_once('C:\\laragon\\www\\...')
+#2 {main}
+  thrown in C:\laragon\www\base thi\controllers\AdminController.php on line 172
+[16-Dec-2025 17:15:09 UTC] Error in incidentReports: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'td.status' in 'field list'
+[16-Dec-2025 17:15:11 UTC] Error in incidentReports: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'td.status' in 'field list'
+[16-Dec-2025 17:15:11 UTC] Error in incidentReports: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'td.status' in 'field list'
+[16-Dec-2025 17:15:14 UTC] Error in incidentReports: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'td.status' in 'field list'
+[16-Dec-2025 17:15:15 UTC] Error in incidentReports: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'td.status' in 'field list'
+[16-Dec-2025 17:15:16 UTC] Error in incidentReports: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'td.status' in 'field list'
+[16-Dec-2025 17:15:16 UTC] Error in incidentReports: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'td.status' in 'field list'
+[16-Dec-2025 17:17:42 UTC] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\laragon\www\base thi\index.php on line 16) in C:\laragon\www\base thi\controllers\TourDiaryController.php on line 161
+[16-Dec-2025 17:17:42 UTC] Error in incidents: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'td.status' in 'field list' | #0 C:\laragon\www\base thi\models\BaseModel.php(30): PDOStatement->execute(Array)
+#1 C:\laragon\www\base thi\controllers\TourDiaryController.php(213): BaseModel->query('SELECT \r\n      ...', Array)
+#2 C:\laragon\www\base thi\routes\index.php(177): TourDiaryController->incidents()
+#3 C:\laragon\www\base thi\index.php(47): require_once('C:\\laragon\\www\\...')
+#4 {main}
+[16-Dec-2025 17:17:43 UTC] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\laragon\www\base thi\index.php on line 16) in C:\laragon\www\base thi\controllers\TourDiaryController.php on line 161
+[16-Dec-2025 17:17:43 UTC] Error in incidents: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'td.status' in 'field list' | #0 C:\laragon\www\base thi\models\BaseModel.php(30): PDOStatement->execute(Array)
+#1 C:\laragon\www\base thi\controllers\TourDiaryController.php(213): BaseModel->query('SELECT \r\n      ...', Array)
+#2 C:\laragon\www\base thi\routes\index.php(177): TourDiaryController->incidents()
+#3 C:\laragon\www\base thi\index.php(47): require_once('C:\\laragon\\www\\...')
+#4 {main}
+[16-Dec-2025 17:17:51 UTC] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\laragon\www\base thi\index.php on line 16) in C:\laragon\www\base thi\controllers\TourDiaryController.php on line 161
+[16-Dec-2025 17:17:51 UTC] Error in incidents: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'td.status' in 'field list' | #0 C:\laragon\www\base thi\models\BaseModel.php(30): PDOStatement->execute(Array)
+#1 C:\laragon\www\base thi\controllers\TourDiaryController.php(213): BaseModel->query('SELECT \r\n      ...', Array)
+#2 C:\laragon\www\base thi\routes\index.php(177): TourDiaryController->incidents()
+#3 C:\laragon\www\base thi\index.php(47): require_once('C:\\laragon\\www\\...')
+#4 {main}
+[16-Dec-2025 17:18:00 UTC] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\laragon\www\base thi\index.php on line 16) in C:\laragon\www\base thi\controllers\TourDiaryController.php on line 161
+[16-Dec-2025 17:18:00 UTC] Error in incidents: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'td.status' in 'field list' | #0 C:\laragon\www\base thi\models\BaseModel.php(30): PDOStatement->execute(Array)
+#1 C:\laragon\www\base thi\controllers\TourDiaryController.php(213): BaseModel->query('SELECT \r\n      ...', Array)
+#2 C:\laragon\www\base thi\routes\index.php(177): TourDiaryController->incidents()
+#3 C:\laragon\www\base thi\index.php(47): require_once('C:\\laragon\\www\\...')
+#4 {main}
+[16-Dec-2025 17:19:45 UTC] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\laragon\www\base thi\index.php on line 16) in C:\laragon\www\base thi\controllers\TourDiaryController.php on line 161
+[16-Dec-2025 17:19:45 UTC] Error in incidents: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'td.status' in 'field list' | #0 C:\laragon\www\base thi\models\BaseModel.php(30): PDOStatement->execute(Array)
+#1 C:\laragon\www\base thi\controllers\TourDiaryController.php(213): BaseModel->query('SELECT \r\n      ...', Array)
+#2 C:\laragon\www\base thi\routes\index.php(177): TourDiaryController->incidents()
+#3 C:\laragon\www\base thi\index.php(47): require_once('C:\\laragon\\www\\...')
+#4 {main}
+[16-Dec-2025 17:19:48 UTC] DEBUG: TourController index() called
+[16-Dec-2025 17:19:48 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[16-Dec-2025 17:19:48 UTC] DEBUG: Found 12 tours
+[16-Dec-2025 17:19:48 UTC] DEBUG: Found 5 categories
+[16-Dec-2025 17:19:48 UTC] DEBUG: Found 3 tourTypes
+[16-Dec-2025 17:21:05 UTC] PHP Warning:  Undefined array key "role" in C:\laragon\www\base thi\models\User.php on line 80
+[16-Dec-2025 23:53:29 UTC] guide_tour_detail called with tourId: 3
+[16-Dec-2025 23:53:29 UTC] Current guide_id: 1
+[16-Dec-2025 23:53:29 UTC] Assignment check result: {"id":4}
+[16-Dec-2025 23:53:29 UTC] Customers query error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'b.customer_id' in 'on clause'
+[16-Dec-2025 23:53:29 UTC] tour_detail success - Tour: Tour Phú Quốc 4N3D, Images: 0, Itinerary: 0, Customers: 0
+[16-Dec-2025 23:53:40 UTC] guide_tour_detail called with tourId: 1
+[16-Dec-2025 23:53:40 UTC] Current guide_id: 1
+[16-Dec-2025 23:53:40 UTC] Assignment check result: {"id":1}
+[16-Dec-2025 23:53:40 UTC] Customers query error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'b.customer_id' in 'on clause'
+[16-Dec-2025 23:53:40 UTC] tour_detail success - Tour: Tour Hạ Long 3N2D, Images: 0, Itinerary: 3, Customers: 0
+[16-Dec-2025 23:57:07 UTC] guide_tour_detail called with tourId: 1
+[16-Dec-2025 23:57:07 UTC] Current guide_id: 1
+[16-Dec-2025 23:57:07 UTC] Assignment check result: {"id":1}
+[16-Dec-2025 23:57:07 UTC] Customers query error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'b.customer_id' in 'on clause'
+[16-Dec-2025 23:57:07 UTC] tour_detail success - Tour: Tour Hạ Long 3N2D, Images: 0, Itinerary: 3, Customers: 0
+[17-Dec-2025 00:00:00 UTC] DEBUG: CategoryController index() - Found 5 categories
+[13-Mar-2026 00:47:17 UTC] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\laragon\www\DA1-10-main\index.php on line 16) in C:\laragon\www\DA1-10-main\controllers\TourDiaryController.php on line 161
+[13-Mar-2026 00:47:17 UTC] Error in incidents: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'td.status' in 'field list' | #0 C:\laragon\www\DA1-10-main\models\BaseModel.php(30): PDOStatement->execute(Array)
+#1 C:\laragon\www\DA1-10-main\controllers\TourDiaryController.php(213): BaseModel->query('SELECT \n       ...', Array)
+#2 C:\laragon\www\DA1-10-main\routes\index.php(177): TourDiaryController->incidents()
+#3 C:\laragon\www\DA1-10-main\index.php(47): require_once('C:\\laragon\\www\\...')
+#4 {main}
+[13-Mar-2026 00:47:23 UTC] DEBUG: TourController index() called
+[13-Mar-2026 00:47:23 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Mar-2026 00:47:23 UTC] DEBUG: Found 12 tours
+[13-Mar-2026 00:47:23 UTC] DEBUG: Found 5 categories
+[13-Mar-2026 00:47:23 UTC] DEBUG: Found 3 tourTypes
