@@ -24,7 +24,7 @@ class AdminController extends BaseController
         $tours = $this->tour->findAll();
         $users = $this->user->findAll();
         $bookings = $this->booking->findAll();
-        
+
         $stats = [
             'total_tours' => count($tours),
             'total_users' => count($users),
@@ -47,7 +47,7 @@ class AdminController extends BaseController
         $revenueRaw = $this->booking->getMonthlyRevenue(date('Y'));
         $revenueData = array_fill(1, 12, 0);
         $totalRevenue = 0;
-        
+
         if (!empty($revenueRaw)) {
             foreach ($revenueRaw as $item) {
                 $month = (int)$item['month'];
@@ -62,13 +62,22 @@ class AdminController extends BaseController
         // 3. Biểu đồ Trạng Thái
         $statusRaw = $this->booking->getStatusStatistics();
         $statusData = ['labels' => [], 'data' => []];
-        
+
         if (!empty($statusRaw)) {
             foreach ($statusRaw as $item) {
                 $statusData['labels'][] = ucfirst($item['status']);
                 $statusData['data'][] = (int)$item['count'];
             }
         }
+
+        // 4. Lấy booking gần nhất với thông tin chi tiết
+        $recentBookings = $this->getRecentBookingsWithDetails(5);
+
+        // 5. Lấy danh sách tour
+        $tourList = array_slice($tours, 0, 5);
+
+        // 6. Lấy danh sách tour đã kết nối (departures)
+        $connectedTours = $this->getConnectedToursWithDates();
 
         view('main', [
             'title' => 'Bảng Điều Khiển',
@@ -77,8 +86,68 @@ class AdminController extends BaseController
             'stats' => $stats,
             'revenueData' => array_values($revenueData),
             'statusData' => $statusData,
-            'bookings' => array_slice($bookings, 0, 5) // Lấy 5 booking gần nhất
+            'bookings' => $recentBookings,
+            'tourList' => $tourList,
+            'connectedTours' => $connectedTours
         ]);
+    }
+
+    /**
+     * Lấy booking gần nhất với thông tin chi tiết
+     */
+    private function getRecentBookingsWithDetails($limit = 5) {
+        try {
+            $db = new BaseModel();
+            $sql = "SELECT
+                        b.id,
+                        b.status,
+                        b.total_price,
+                        b.number_of_people,
+                        b.created_at,
+                        u.full_name as customer_name,
+                        u.phone as customer_phone,
+                        t.id as tour_id,
+                        t.name as tour_name
+                    FROM bookings b
+                    JOIN users u ON b.user_id = u.id
+                    JOIN tours t ON b.tour_id = t.id
+                    ORDER BY b.created_at DESC
+                    LIMIT ?";
+
+            return $db->fetchAll($sql, [$limit]);
+        } catch (Exception $e) {
+            error_log("Error fetching recent bookings: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    /**
+     * Lấy danh sách tour đã kết nối với ngày khởi hành
+     */
+    private function getConnectedToursWithDates($limit = 5) {
+        try {
+            $db = new BaseModel();
+            $sql = "SELECT
+                        td.DepartureID as id,
+                        td.departure_date,
+                        t.id as tour_id,
+                        t.name as tour_name,
+                        COUNT(DISTINCT b.id) as booking_count,
+                        td.capacity,
+                        td.status
+                    FROM tour_departures td
+                    JOIN tours t ON td.tour_id = t.id
+                    LEFT JOIN bookings b ON b.departure_id = td.DepartureID AND b.status != 'cancelled'
+                    WHERE td.departure_date >= CURDATE()
+                    GROUP BY td.DepartureID, td.departure_date, t.id, t.name, td.capacity, td.status
+                    ORDER BY td.departure_date ASC
+                    LIMIT ?";
+
+            return $db->fetchAll($sql, [$limit]);
+        } catch (Exception $e) {
+            error_log("Error fetching connected tours: " . $e->getMessage());
+            return [];
+        }
     }
 
     public function communication() {

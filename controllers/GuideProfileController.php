@@ -257,6 +257,67 @@ class GuideProfileController
     }
 
     /**
+     * Xem danh sách chi tiết khách hàng của tour (view full-page)
+     */
+    public function tour_customers_detail()
+    {
+        try {
+            $tourId = $_GET['id'] ?? null;
+            if (!$tourId) {
+                $_SESSION['error'] = 'Tour không tồn tại';
+                redirect('guide_assigned_tours');
+                return;
+            }
+
+            $guideId = $_SESSION['guide_id'];
+
+            // Lấy thông tin tour
+            $sql_tour = "SELECT t.* FROM tours t
+                        JOIN tour_assignments ta ON t.id = ta.tour_id
+                        WHERE t.id = ? AND ta.guide_id = ?";
+            $tour = $this->tourModel->fetchOne($sql_tour, [(int)$tourId, $guideId]);
+
+            if (!$tour) {
+                $_SESSION['error'] = 'Tour không tồn tại hoặc bạn không được phân công';
+                redirect('guide_assigned_tours');
+                return;
+            }
+
+            // Lấy danh sách khách hàng chi tiết
+            $sql_customers = "SELECT
+                                u.id,
+                                u.full_name,
+                                u.phone,
+                                u.email,
+                                u.address,
+                                b.id as booking_id,
+                                b.number_of_people,
+                                b.special_requests,
+                                b.status as booking_status,
+                                b.total_price,
+                                b.created_at as booking_date,
+                                b.checkin_status,
+                                b.checkin_time
+                              FROM bookings b
+                              JOIN users u ON b.user_id = u.id
+                              WHERE b.tour_id = ? AND b.status IN ('confirmed', 'pending')
+                              ORDER BY u.full_name ASC";
+            $customers = $this->userModel->fetchAll($sql_customers, [(int)$tourId]);
+
+            view('main', [
+                'title' => 'Danh Sách Khách Hàng Tour',
+                'page' => 'guide_profile',
+                'content_view' => 'guides/profile/tour_customers',
+                'tour' => $tour,
+                'customers' => $customers ?? []
+            ]);
+        } catch (Exception $e) {
+            $_SESSION['error'] = 'Lỗi: ' . $e->getMessage();
+            redirect('guide_assigned_tours');
+        }
+    }
+
+    /**
      * Xem danh sách khách hàng của tour
      */
     public function tourCustomers()
@@ -284,11 +345,24 @@ class GuideProfileController
                 throw new Exception('Tour không tồn tại hoặc bạn không được phân công cho tour này.');
             }
 
-            // Lấy danh sách khách hàng đã đặt tour này
-            $sql_customers = "SELECT u.full_name, u.phone, u.email, b.number_of_people, b.special_requests
+            // Lấy danh sách khách hàng với thông tin chi tiết hơn
+            $sql_customers = "SELECT
+                                u.id,
+                                u.full_name,
+                                u.phone,
+                                u.email,
+                                u.address,
+                                b.id as booking_id,
+                                b.number_of_people,
+                                b.special_requests,
+                                b.status as booking_status,
+                                b.total_price,
+                                b.created_at as booking_date,
+                                b.checkin_status,
+                                b.checkin_time
                               FROM bookings b
                               JOIN users u ON b.user_id = u.id
-                              WHERE b.tour_id = ? AND b.status = 'confirmed'
+                              WHERE b.tour_id = ? AND b.status IN ('confirmed', 'pending')
                               ORDER BY u.full_name ASC";
             $customers = $this->userModel->fetchAll($sql_customers, [(int)$tourId]);
 

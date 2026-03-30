@@ -125,6 +125,7 @@ match ($action) {
     'guide_assigned_tours'         => (new GuideProfileController())->assignedTours(),
     'guide_tour_detail'            => (new GuideProfileController())->tour_detail(),
     'guide_tour_customers'         => (new GuideProfileController())->tourCustomers(),
+    'guide_tour_customers_detail'  => (new GuideProfileController())->tour_customers_detail(),
     'guide_confirm_tour'           => (new GuideProfileController())->confirmTour(),
     'guide_confirm_tour_store'     => (new GuideProfileController())->confirmTourStore(),
     'guide_itinerary'              => (new GuideProfileController())->itinerary(),
