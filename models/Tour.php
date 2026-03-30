@@ -53,7 +53,7 @@ class Tour extends BaseModel
                 FROM {$this->table} t 
                 LEFT JOIN tour_categories tc ON t.category_id = tc.id
                 WHERE t.id = ?";
-        
+
         return $this->fetchOne($sql, [$id]);
     }
 
@@ -63,7 +63,7 @@ class Tour extends BaseModel
     public function findWithDetails($id)
     {
         $tour = $this->find($id);
-        
+
         if (!$tour) {
             return null;
         }
@@ -241,88 +241,101 @@ class Tour extends BaseModel
     }
     // Thêm vào trong class Tour
 
-/**
- * Lấy lịch trình chi tiết của tour
- */
-public function getItinerary($id) {
-    $sql = "SELECT * FROM tour_itineraries WHERE tour_id = ? ORDER BY day_number ASC";
-    return $this->fetchAll($sql, [$id]);
-}
-
-/**
- * Lấy danh sách chi phí của tour
- */
- public function getCosts($id) {
-    $hasCosts = $this->fetchAll("SHOW TABLES LIKE 'tour_costs'");
-    $table = !empty($hasCosts) ? 'tour_costs' : 'booking_services';
-    $sql = "SELECT * FROM {$table} WHERE tour_id = ?";
-    $rows = $this->fetchAll($sql, [$id]);
-    foreach ($rows as &$r) {
-        // Chuẩn hóa tên dịch vụ
-        $r['name'] = $r['name']
-            ?? ($r['service_name'] ?? ($r['cost_name'] ?? ($r['ServiceName'] ?? ($r['CostName'] ?? ($r['Name'] ?? ($r['title'] ?? ($r['service_title'] ?? ($r['item_name'] ?? ''))))))));
-        // Chuẩn hóa nhà cung cấp
-        $r['vendor'] = $r['vendor']
-            ?? ($r['provider'] ?? ($r['supplier'] ?? ($r['Vendor'] ?? ($r['Provider'] ?? ($r['Supplier'] ?? ($r['vendor_name'] ?? ($r['partner'] ?? ($r['company'] ?? ''))))))));
-        // Chuẩn hóa ghi chú
-        $r['notes'] = $r['notes']
-            ?? ($r['description'] ?? ($r['remark'] ?? ($r['Notes'] ?? ($r['Description'] ?? ($r['Remark'] ?? ($r['detail'] ?? ''))))));
-        // Rút trích DV và NCC từ ghi chú nếu cột tương ứng không tồn tại
-        if (empty($r['name']) && !empty($r['notes'])) {
-            if (preg_match('/DV\s*:\s*([^|]+)/u', $r['notes'], $m)) { $r['name'] = trim($m[1]); }
-        }
-        if (empty($r['vendor']) && !empty($r['notes'])) {
-            if (preg_match('/NCC\s*:\s*([^|]+)/u', $r['notes'], $m)) { $r['vendor'] = trim($m[1]); }
-        }
-        
-        if (!isset($r['amount'])) {
-            $r['amount'] = $r['cost'] ?? ($r['price'] ?? 0);
-        }
-        // Chuẩn hóa id để thao tác
-        $idCandidates = ['id','bs_id','cost_id','service_id','ID','BS_ID','CostID','ServiceID'];
-        foreach ($idCandidates as $cid) { if (isset($r[$cid])) { $r['id'] = $r[$cid]; break; } }
+    /**
+     * Lấy lịch trình chi tiết của tour
+     */
+    public function getItinerary($id)
+    {
+        $sql = "SELECT * FROM tour_itineraries WHERE tour_id = ? ORDER BY day_number ASC";
+        return $this->fetchAll($sql, [$id]);
     }
-    return $rows;
-}
 
-/**
- * Tính toán Doanh thu - Chi phí - Lợi nhuận cho 1 tour
- */
-public function getFinancialStats($id) {
-    // 1. Tổng doanh thu từ các booking đã xác nhận
-    $sqlRevenue = "SELECT SUM(total_price) as revenue 
+    /**
+     * Lấy danh sách chi phí của tour
+     */
+    public function getCosts($id)
+    {
+        $hasCosts = $this->fetchAll("SHOW TABLES LIKE 'tour_costs'");
+        $table = !empty($hasCosts) ? 'tour_costs' : 'booking_services';
+        $sql = "SELECT * FROM {$table} WHERE tour_id = ?";
+        $rows = $this->fetchAll($sql, [$id]);
+        foreach ($rows as &$r) {
+            // Chuẩn hóa tên dịch vụ
+            $r['name'] = $r['name']
+                ?? ($r['service_name'] ?? ($r['cost_name'] ?? ($r['ServiceName'] ?? ($r['CostName'] ?? ($r['Name'] ?? ($r['title'] ?? ($r['service_title'] ?? ($r['item_name'] ?? ''))))))));
+            // Chuẩn hóa nhà cung cấp
+            $r['vendor'] = $r['vendor']
+                ?? ($r['provider'] ?? ($r['supplier'] ?? ($r['Vendor'] ?? ($r['Provider'] ?? ($r['Supplier'] ?? ($r['vendor_name'] ?? ($r['partner'] ?? ($r['company'] ?? ''))))))));
+            // Chuẩn hóa ghi chú
+            $r['notes'] = $r['notes']
+                ?? ($r['description'] ?? ($r['remark'] ?? ($r['Notes'] ?? ($r['Description'] ?? ($r['Remark'] ?? ($r['detail'] ?? ''))))));
+            // Rút trích DV và NCC từ ghi chú nếu cột tương ứng không tồn tại
+            if (empty($r['name']) && !empty($r['notes'])) {
+                if (preg_match('/DV\s*:\s*([^|]+)/u', $r['notes'], $m)) {
+                    $r['name'] = trim($m[1]);
+                }
+            }
+            if (empty($r['vendor']) && !empty($r['notes'])) {
+                if (preg_match('/NCC\s*:\s*([^|]+)/u', $r['notes'], $m)) {
+                    $r['vendor'] = trim($m[1]);
+                }
+            }
+
+            if (!isset($r['amount'])) {
+                $r['amount'] = $r['cost'] ?? ($r['price'] ?? 0);
+            }
+            // Chuẩn hóa id để thao tác
+            $idCandidates = ['id', 'bs_id', 'cost_id', 'service_id', 'ID', 'BS_ID', 'CostID', 'ServiceID'];
+            foreach ($idCandidates as $cid) {
+                if (isset($r[$cid])) {
+                    $r['id'] = $r[$cid];
+                    break;
+                }
+            }
+        }
+        return $rows;
+    }
+
+    /**
+     * Tính toán Doanh thu - Chi phí - Lợi nhuận cho 1 tour
+     */
+    public function getFinancialStats($id)
+    {
+        // 1. Tổng doanh thu từ các booking đã xác nhận
+        $sqlRevenue = "SELECT SUM(total_price) as revenue 
                    FROM bookings 
                    WHERE tour_id = ? AND status IN ('confirmed', 'completed')";
-    $revenue = $this->fetchOne($sqlRevenue, [$id])['revenue'] ?? 0;
+        $revenue = $this->fetchOne($sqlRevenue, [$id])['revenue'] ?? 0;
 
-    // 2. Tổng chi phí vận hành tour
-    $sqlCost = "SELECT SUM(amount) as total_cost FROM tour_costs WHERE tour_id = ?";
-    $cost = $this->fetchOne($sqlCost, [$id])['total_cost'] ?? 0;
+        // 2. Tổng chi phí vận hành tour
+        $sqlCost = "SELECT SUM(amount) as total_cost FROM tour_costs WHERE tour_id = ?";
+        $cost = $this->fetchOne($sqlCost, [$id])['total_cost'] ?? 0;
 
-    // 3. Lợi nhuận
-    $profit = $revenue - $cost;
+        // 3. Lợi nhuận
+        $profit = $revenue - $cost;
 
-    return [
-        'tour_id' => $id,
-        'revenue' => (float)$revenue,
-        'cost'    => (float)$cost,
-        'profit'  => (float)$profit
-    ];
-}
+        return [
+            'tour_id' => $id,
+            'revenue' => (float)$revenue,
+            'cost'    => (float)$cost,
+            'profit'  => (float)$profit
+        ];
+    }
 
-/**
- * Tìm tour theo loại (Trong nước/Quốc tế)
- */
+    /**
+     * Tìm tour theo loại (Trong nước/Quốc tế)
+     */
 
 
     /**
      * Tính toán lợi nhuận (Doanh thu - Chi phí)
      */
-   
+
     /**
      * Tìm tour theo loại (Trong nước/Quốc tế)
      */
-    public function findByType($type) {
+    public function findByType($type)
+    {
         $sql = "SELECT t.*, tc.name as category_name 
                 FROM {$this->table} t 
                 LEFT JOIN tour_categories tc ON t.category_id = tc.id
@@ -341,22 +354,22 @@ public function getFinancialStats($id) {
                 LEFT JOIN tour_categories tc ON t.category_id = tc.id
                 WHERE t.tour_type = ? AND t.status = 'active'
                 ORDER BY t.created_at DESC";
-        
+
         $tours = $this->fetchAll($sql, [$type]);
-        
+
         // Thêm thông tin bổ sung cho mỗi tour
         foreach ($tours as &$tour) {
             // Lấy số booking
             $sqlBooking = "SELECT COUNT(*) as booking_count FROM bookings WHERE tour_id = ? AND status != 'cancelled'";
             $bookingResult = $this->fetchOne($sqlBooking, [$tour['id']]);
             $tour['booking_count'] = $bookingResult['booking_count'] ?? 0;
-            
+
             // Lấy ảnh chính
             $sqlImage = "SELECT image_url FROM tour_images WHERE tour_id = ? AND is_main = 1 LIMIT 1";
             $imageResult = $this->fetchOne($sqlImage, [$tour['id']]);
             $tour['main_image'] = $imageResult['image_url'] ?? null;
         }
-        
+
         return $tours;
     }
 
@@ -383,4 +396,3 @@ public function getFinancialStats($id) {
         return $result['total'] ?? 0;
     }
 }
-?>
