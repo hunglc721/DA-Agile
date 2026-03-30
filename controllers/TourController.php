@@ -18,58 +18,44 @@ class TourController
     public function index()
     {
         try {
-            error_log("DEBUG: TourController index() called");
-            
             $filters = [
                 'category_id' => $_GET['category_id'] ?? null,
-                'tour_type' => $_GET['tour_type'] ?? null,
-                'status' => $_GET['status'] ?? null,
-                'search' => $_GET['search'] ?? null,
+                'tour_type'   => $_GET['tour_type']   ?? null,
+                'status'      => $_GET['status']       ?? null,
+                'search'      => $_GET['search']       ?? null,
+                // ✅ Thêm mới
+                'price_min'   => $_GET['price_min']    ?? '',
+                'price_max'   => $_GET['price_max']    ?? '',
+                'sort'        => $_GET['sort']          ?? '',
             ];
 
-            error_log("DEBUG: Filters = " . print_r($filters, true));
-
-            $tours = $this->tourModel->findAll($filters);
-            
-            error_log("DEBUG: Found " . count($tours) . " tours");
-            
-            // Lấy tất cả danh mục để hiển thị bộ lọc
+            $tours      = $this->tourModel->findAll($filters);
             $categories = $this->categoryModel->findAll();
-            
-            error_log("DEBUG: Found " . count($categories) . " categories");
-            
-            // Lấy tất cả loại tour
-            $tourTypes = $this->tourTypeModel->findAll();
-            
-            error_log("DEBUG: Found " . count($tourTypes) . " tourTypes");
+            $tourTypes  = $this->tourTypeModel->findAll();
 
-            $data = [
-                'title' => 'Quản Lý Tour',
-                'page' => 'tours',
+            view('main', [
+                'title'        => 'Quản Lý Tour',
+                'page'         => 'tours',
                 'content_view' => 'tours/index',
-                'tours' => $tours,
-                'categories' => $categories,
-                'tourTypes' => $tourTypes,
-                'filters' => $filters
-            ];
-
-            view('main', $data);
+                'tours'        => $tours,
+                'categories'   => $categories,
+                'tourTypes'    => $tourTypes,
+                'filters'      => $filters,
+            ]);
         } catch (Exception $e) {
-            error_log("ERROR in TourController index(): " . $e->getMessage());
-            error_log("Stack trace: " . $e->getTraceAsString());
             $_SESSION['error'] = 'Lỗi: ' . $e->getMessage();
             redirect('/');
         }
     }
-
     /**
      * Hiển thị form tạo tour mới
      */
-    public function create() {
+    public function create()
+    {
         try {
             // Lấy danh mục tour
             $categories = $this->categoryModel->findAll();
-            
+
             // Lấy loại tour
             $tourTypes = $this->tourTypeModel->findAll();
 
@@ -89,7 +75,8 @@ class TourController
     /**
      * Lưu tour mới vào database
      */
-    public function store() {
+    public function store()
+    {
         try {
             $data = $_POST;
 
@@ -97,7 +84,7 @@ class TourController
             if (empty($data['tour_code']) || empty($data['name']) || empty($data['price'])) {
                 throw new Exception("Vui lòng nhập đủ Mã tour, Tên và Giá bán.");
             }
-            
+
             // Set mặc định số chỗ còn lại bằng tổng số chỗ khi tạo mới
             $data['available_slots'] = $data['max_capacity'];
 
@@ -114,7 +101,7 @@ class TourController
         } catch (Exception $e) {
             $_SESSION['error'] = 'Lỗi: ' . $e->getMessage();
             // Lưu lại dữ liệu cũ để điền lại form
-            $_SESSION['old'] = $_POST; 
+            $_SESSION['old'] = $_POST;
             redirect('index.php?action=tours_create');
         }
     }
@@ -126,14 +113,14 @@ class TourController
     {
         try {
             $id = $_GET['id'] ?? null;
-            
+
             if (!$id) {
                 throw new Exception('Tour không tồn tại');
             }
 
             // 1. Lấy thông tin tour cơ bản
             $tour = $this->tourModel->find($id);
-            
+
             if (!$tour) {
                 throw new Exception('Tour không tồn tại');
             }
@@ -189,7 +176,7 @@ class TourController
 
             // Lấy danh mục tour
             $categories = $this->categoryModel->findAll();
-            
+
             // Lấy loại tour
             $tourTypes = $this->tourTypeModel->findAll();
 
@@ -225,7 +212,7 @@ class TourController
             if (!empty($errors)) {
                 $_SESSION['errors'] = $errors;
                 $_SESSION['old'] = $_POST;
-               redirect('index.php?action=tours_edit&id=' . $id);
+                redirect('index.php?action=tours_edit&id=' . $id);
             }
 
             // Cập nhật tour
@@ -259,7 +246,7 @@ class TourController
             $bookingModel = new Booking();
             $sql = "SELECT COUNT(*) as count FROM bookings WHERE tour_id = ?";
             $result = $bookingModel->fetchOne($sql, [$id]);
-            
+
             if ($result['count'] > 0) {
                 throw new Exception('Không thể xóa tour này vì đã có khách đặt');
             }
@@ -285,7 +272,7 @@ class TourController
         }
 
         $sql = "INSERT INTO tour_images (tour_id, image_url, is_main) VALUES (?, ?, ?)";
-        
+
         foreach ($files['name'] as $key => $filename) {
             if ($files['error'][$key] === UPLOAD_ERR_OK) {
                 $ext = pathinfo($filename, PATHINFO_EXTENSION);
@@ -361,11 +348,11 @@ class TourController
             ];
 
             $tours = $this->tourModel->findAll($filters);
-            
+
             // Lấy tất cả danh mục
             $categoryModel = new TourCategory();
             $categories = $categoryModel->findAll();
-            
+
             // Lấy tên danh mục hiện tại
             $currentCategory = $categoryModel->find($categoryId);
 
@@ -386,4 +373,3 @@ class TourController
         }
     }
 }
-?>

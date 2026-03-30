@@ -9,9 +9,9 @@ class Tour extends BaseModel
     public function findAll($filters = [])
     {
         $sql = "SELECT t.*, tc.name as category_name 
-                FROM {$this->table} t 
-                LEFT JOIN tour_categories tc ON t.category_id = tc.id
-                WHERE 1=1";
+            FROM {$this->table} t 
+            LEFT JOIN tour_categories tc ON t.category_id = tc.id
+            WHERE 1=1";
 
         $params = [];
 
@@ -21,7 +21,7 @@ class Tour extends BaseModel
             $params[] = $filters['category_id'];
         }
 
-        // Filter by tour type (domestic, international, custom)
+        // Filter by tour type
         if (!empty($filters['tour_type'])) {
             $sql .= " AND t.tour_type = ?";
             $params[] = $filters['tour_type'];
@@ -33,12 +33,7 @@ class Tour extends BaseModel
             $params[] = $filters['status'];
         }
 
-        // Search by name
-        if (!empty($filters['search'])) {
-            $sql .= " AND t.name LIKE ?";
-            $params[] = "%{$filters['search']}%";
-        }
-        // Search theo tên HOẶC địa điểm (destinations / start_location)
+        // ✅ Search theo tên HOẶC địa điểm (destinations / start_location)
         if (!empty($filters['search'])) {
             $sql .= " AND (t.name LIKE ? OR t.destinations LIKE ? OR t.start_location LIKE ?)";
             $keyword = "%" . $filters['search'] . "%";
@@ -47,26 +42,27 @@ class Tour extends BaseModel
             $params[] = $keyword;
         }
 
-        //  Lọc giá tối thiểu
+        // ✅ Lọc giá tối thiểu
         if (isset($filters['price_min']) && $filters['price_min'] !== '') {
             $sql .= " AND t.price >= ?";
             $params[] = (int) $filters['price_min'];
         }
 
-        //  Lọc giá tối đa
+        // ✅ Lọc giá tối đa
         if (isset($filters['price_max']) && $filters['price_max'] !== '') {
             $sql .= " AND t.price <= ?";
             $params[] = (int) $filters['price_max'];
         }
 
-        //  Sắp xếp
+        // ✅ Sắp xếp
         $sortMap = [
             'price_asc'  => 't.price ASC',
             'price_desc' => 't.price DESC',
             'name_asc'   => 't.name ASC',
             'newest'     => 't.created_at DESC',
         ];
-        $sql .= " ORDER BY t.created_at DESC";
+        $sort = $sortMap[$filters['sort'] ?? ''] ?? 't.created_at DESC';
+        $sql .= " ORDER BY $sort";
 
         return $this->fetchAll($sql, $params);
     }
