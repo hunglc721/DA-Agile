@@ -257,7 +257,7 @@
                 <div class="tab-content">
                     <!-- Login Form -->
                     <div class="tab-pane fade show active" id="login-form" role="tabpanel">
-                        <form action="<?= url('login_submit') ?>" method="POST">
+                        <form id="loginForm" name="loginForm" action="index.php?action=login_submit" method="POST" enctype="application/x-www-form-urlencoded">
                             <!-- Email -->
                             <div class="form-group">
                                 <label for="email">
@@ -305,7 +305,7 @@
                             </div>
 
                             <!-- Nút đăng nhập -->
-                            <button type="submit" class="btn-login">
+                            <button type="submit" class="btn-login" id="loginBtn">
                                 <i class="fas fa-sign-in-alt"></i> Đăng Nhập
                             </button>
                         </form>
@@ -313,7 +313,7 @@
 
                     <!-- Register Form -->
                     <div class="tab-pane fade" id="register-form" role="tabpanel">
-                        <form action="<?= url('register_submit') ?>" method="POST">
+                        <form id="registerForm" name="registerForm" action="index.php?action=register_submit" method="POST" enctype="application/x-www-form-urlencoded">
                             <!-- Họ và tên -->
                             <div class="form-group">
                                 <label for="reg-fullname">
@@ -443,6 +443,29 @@
                 bar.className = 'bar strong';
             }
         }
+
+        // Debug form submission
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('=== Login Form Debug ===');
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+
+            if (loginForm) {
+                console.log('Login Form Action:', loginForm.action);
+                console.log('Login Form Method:', loginForm.method);
+
+                loginForm.addEventListener('submit', function(e) {
+                    console.log('Login form submitted!');
+                    console.log('Email:', document.getElementById('email').value);
+                    console.log('Password length:', document.getElementById('password').value.length);
+                });
+            }
+
+            if (registerForm) {
+                console.log('Register Form Action:', registerForm.action);
+                console.log('Register Form Method:', registerForm.method);
+            }
+        });
     </script>
 </body>
 </html>

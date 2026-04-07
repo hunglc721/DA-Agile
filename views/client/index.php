@@ -26,25 +26,93 @@
     <link rel="stylesheet" href="/assets/css/frontend/flaticon.css">
     <link rel="stylesheet" href="/assets/css/frontend/icomoon.css">
     <link rel="stylesheet" href="/assets/css/frontend/style.css">
+    <style>
+      /* Dropdown menu styling */
+      .navbar-nav .dropdown-menu {
+        background-color: #2c3e50;
+        border: none;
+        border-radius: 4px;
+        padding: 8px 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        min-width: 220px;
+      }
+
+      .navbar-nav .dropdown-menu .dropdown-item {
+        color: #fff;
+        padding: 12px 18px;
+        border-bottom: 1px solid #34495e;
+        font-size: 15px;
+        font-weight: 500;
+        transition: all 0.2s;
+      }
+
+      .navbar-nav .dropdown-menu .dropdown-item:last-child {
+        border-bottom: none;
+      }
+
+      .navbar-nav .dropdown-menu .dropdown-item:hover {
+        background-color: #ff6b35;
+        color: #fff;
+        padding-left: 24px;
+      }
+
+      .navbar-nav .dropdown-menu .dropdown-divider {
+        background-color: #34495e;
+        margin: 4px 0;
+      }
+
+      .navbar-nav .dropdown-item i {
+        margin-right: 10px;
+        width: 18px;
+        text-align: center;
+      }
+
+      .nav-link.dropdown-toggle::after {
+        display: none;
+      }
+
+      .nav-link.dropdown-toggle {
+        font-size: 15px;
+        font-weight: 500;
+      }
+    </style>
   </head>
   <body>
 
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Du Lịch Thông Minh</a>
+      <a class="navbar-brand" href="?action=/">Du Lịch Thông Minh</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
       </button>
 
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a href="index.html" class="nav-link">Trang chủ</a></li>
-          <li class="nav-item"><a href="about.html" class="nav-link">Giới thiệu</a></li>
-          <li class="nav-item"><a href="tour.html" class="nav-link">Du lịch</a></li>
-          <li class="nav-item"><a href="hotel.html" class="nav-link">Khách sạn</a></li>
-          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-          <li class="nav-item"><a href="contact.html" class="nav-link">Liên hệ</a></li>
-          <li class="nav-item cta"><a href="/index.php?action=login" class="nav-link"><span><i class="icon-sign-in"></i> Đăng nhập</span></a></li>
+          <li class="nav-item active"><a href="?action=/" class="nav-link">Trang chủ</a></li>
+          <li class="nav-item"><a href="?action=client_about" class="nav-link">Giới thiệu</a></li>
+          <li class="nav-item"><a href="?action=client_tour" class="nav-link">Du lịch</a></li>
+          <li class="nav-item"><a href="?action=client_hotel" class="nav-link">Khách sạn</a></li>
+          <li class="nav-item"><a href="?action=client_contact" class="nav-link">Liên hệ</a></li>
+
+          <?php if (isset($_SESSION['user'])): ?>
+          <!-- User đã đăng nhập - Dropdown menu -->
+          <li class="nav-item dropdown cta">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="icon-user"></i> <?= htmlspecialchars($_SESSION['user']['full_name']) ?>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+              <a class="dropdown-item" href="?action=client_dashboard">
+                <i class="icon-briefcase"></i> Bảng điều khiển
+              </a>
+              <a class="dropdown-item" href="?action=client_profile">
+                <i class="icon-user"></i> Hồ sơ cá nhân
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="?action=logout">
+                <i class="icon-sign-out"></i> Đăng xuất
+              </a>
+            </div>
+          <?php endif; ?>
         </ul>
       </div>
     </div>

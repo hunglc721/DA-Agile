@@ -62,6 +62,9 @@ match ($action) {
     'client_hotel'  => (new ClientController())->hotel(),
     'client_contact'=> (new ClientController())->contact(),
     'client_hotel_single' => (new ClientController())->hotelSingle(),
+    'client_dashboard' => (new ClientController())->dashboard(),
+    'client_profile' => (new ClientController())->profile(),
+    'client_update_profile' => (new ClientController())->updateProfile(),
     
     // --- ADMIN DASHBOARD ---
     'dashboard'     => (new AdminController())->dashboard(),

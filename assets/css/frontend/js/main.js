@@ -29,21 +29,28 @@
 	};
 
 
-	$(window).stellar({
-    responsive: true,
-    parallaxBackgrounds: true,
-    parallaxElements: true,
-    horizontalScrolling: false,
-    hideDistantElements: false,
-    scrollProperty: 'scroll'
-  });
+	// Initialize Stellar parallax only if parallax elements exist
+	if ($('[data-stellar-ratio]').length > 0) {
+		try {
+			$(window).stellar({
+				responsive: true,
+				parallaxBackgrounds: true,
+				parallaxElements: true,
+				horizontalScrolling: false,
+				hideDistantElements: false,
+				scrollProperty: 'scroll'
+			});
+		} catch(e) {
+			console.warn('Stellar parallax initialization failed:', e);
+		}
+	}
 
 
 	var fullHeight = function() {
 
-		$('.js-fullheight').css('height', $(window).height());
+		$('.js-fullheight').css('height', $(window).height() * 0.7);
 		$(window).resize(function(){
-			$('.js-fullheight').css('height', $(window).height());
+			$('.js-fullheight').css('height', $(window).height() * 0.7);
 		});
 
 	};

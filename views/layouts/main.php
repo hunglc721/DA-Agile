@@ -94,13 +94,13 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="userDropdown">
                                 <?php if (isset($_SESSION['user'])): ?>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="<?= url('client_profile') ?>">
                                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Hồ sơ cá nhân
                                     </a>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="<?= url('client_dashboard') ?>">
                                         <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Cài đặt
+                                        Bảng điều khiển
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="<?= url('logout') ?>">

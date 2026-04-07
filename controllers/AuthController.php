@@ -232,9 +232,9 @@ class AuthController
             );
         }
 
-        // Redirect trực tiếp về HTML file của client
+        // Redirect về trang chủ
         header('Location: ' . BASE_URL . 'views/client/index.html');
-        exit;
+        exit();
     }
 }
 ?>

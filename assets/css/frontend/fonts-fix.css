@@ -21,9 +21,24 @@
   src: none !important;
 }
 
-/* Disable icomoon font that's not available */
+/* Disable icomoon font that's not available - Use Unicode stars instead */
 [class^="icon-"], [class*=" icon-"] {
   font-family: Arial, sans-serif !important;
+}
+
+/* Star rating icons - Override icomoon with Unicode characters */
+.icon-star:before,
+i.icon-star:before {
+  content: "★" !important;
+  color: #ffc107;
+  font-size: 1em;
+}
+
+.icon-star-o:before,
+i.icon-star-o:before {
+  content: "☆" !important;
+  color: #adb5bd;
+  font-size: 1em;
 }
 
 /* Disable Flaticon font that's not available */

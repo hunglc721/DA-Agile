@@ -51,10 +51,10 @@
   </nav>
     <!-- END nav -->
 
-    <div class="hero-wrap js-fullheight" style="background-image: url('/assets/css/frontend/images/bg_1.jpg'); min-height: 55vh;">
+    <div class="hero-wrap js-fullheight" style="background-image: url('/assets/css/frontend/images/bg_1.jpg');">
       <div class="overlay"></div>
       <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true" style="min-height: 55vh;">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
           <div class="col-md-9 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
             <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Tìm những nơi tuyệt vời để ở, ăn, mua sắm hoặc tham quan từ những chuyên gia địa phương</p>
             <div class="block-17 my-4">
@@ -248,7 +248,7 @@
     					<div class="text p-3">
     						<div class="d-flex">
     							<div class="one">
-		    						<h3><a href="#">Hà Nội</a></h3>
+		    						<h3><a href="#">Paris, Ý</a></h3>
 		    						<p class="rate">
 		    							<i class="icon-star"></i>
 		    							<i class="icon-star"></i>
@@ -259,14 +259,14 @@
 		    						</p>
 	    						</div>
 	    						<div class="two">
-	    							<span class="price">2.500.000 ₫</span>
+	    							<span class="price">$200</span>
     							</div>
     						</div>
-    						<p>Khám phá thủ đô hàng ngàn năm với kiến trúc cổ và ẩm thực độc đáo.</p>
-    						<p class="days"><span>3 ngày 2 đêm</span></p>
+    						<p>Một chuyến du lịch tuyệt vời đến một trong những thành phố lãng mạn nhất trên thế giới.</p>
+    						<p class="days"><span>2 ngày 3 đêm</span></p>
     						<hr>
     						<p class="bottom-area d-flex">
-    							<span><i class="icon-map-o"></i> Hà Nội, Việt Nam</span>
+    							<span><i class="icon-map-o"></i> San Francisco, CA</span>
     							<span class="ml-auto"><a href="#">Khám phá</a></span>
     						</p>
     					</div>
@@ -282,7 +282,7 @@
     					<div class="text p-3">
     						<div class="d-flex">
     							<div class="one">
-		    						<h3><a href="#">TP. Hồ Chí Minh</a></h3>
+		    						<h3><a href="#">Paris, Ý</a></h3>
 		    						<p class="rate">
 		    							<i class="icon-star"></i>
 		    							<i class="icon-star"></i>
@@ -293,14 +293,14 @@
 		    						</p>
 	    						</div>
 	    						<div class="two">
-	    							<span class="price">2.500.000 ₫</span>
+	    							<span class="price">$200</span>
     							</div>
     						</div>
-    						<p>Khám phá những điểm đến tuyệt đẹp nhất của Việt Nam với những trải nghiệm không quên.</p>
+    						<p>Một chuyến du lịch tuyệt vời đến một trong những thành phố lãng mạn nhất trên thế giới.</p>
     						<p class="days"><span>2 ngày 3 đêm</span></p>
     						<hr>
     						<p class="bottom-area d-flex">
-    							<span><i class="icon-map-o"></i> TP. Hồ Chí Minh, Việt Nam</span>
+    							<span><i class="icon-map-o"></i> San Francisco, CA</span>
     							<span class="ml-auto"><a href="#">Khám phá</a></span>
     						</p>
     					</div>
@@ -316,7 +316,7 @@
     					<div class="text p-3">
     						<div class="d-flex">
     							<div class="one">
-		    						<h3><a href="#">Đà Nẵng</a></h3>
+		    						<h3><a href="#">Paris, Ý</a></h3>
 		    						<p class="rate">
 		    							<i class="icon-star"></i>
 		    							<i class="icon-star"></i>
@@ -327,14 +327,14 @@
 		    						</p>
 	    						</div>
 	    						<div class="two">
-	    							<span class="price">2.200.000 ₫</span>
+	    							<span class="price">$200</span>
     							</div>
     						</div>
-    						<p>Khám phá những điểm đến tuyệt đẹp nhất của Việt Nam với những trải nghiệm không quên.</p>
+    						<p>Một chuyến du lịch tuyệt vời đến một trong những thành phố lãng mạn nhất trên thế giới.</p>
     						<p class="days"><span>2 ngày 3 đêm</span></p>
     						<hr>
     						<p class="bottom-area d-flex">
-    							<span><i class="icon-map-o"></i> TP. Hồ Chí Minh, Việt Nam</span>
+    							<span><i class="icon-map-o"></i> San Francisco, CA</span>
     							<span class="ml-auto"><a href="#">Khám phá</a></span>
     						</p>
     					</div>
@@ -350,7 +350,7 @@
     					<div class="text p-3">
     						<div class="d-flex">
     							<div class="one">
-		    						<h3><a href="#">Nha Trang</a></h3>
+		    						<h3><a href="#">Paris, Ý</a></h3>
 		    						<p class="rate">
 		    							<i class="icon-star"></i>
 		    							<i class="icon-star"></i>
@@ -361,14 +361,14 @@
 		    						</p>
 	    						</div>
 	    						<div class="two">
-	    							<span class="price">2.300.000 ₫</span>
+	    							<span class="price">$200</span>
     							</div>
     						</div>
-    						<p>Khám phá những điểm đến tuyệt đẹp nhất của Việt Nam với những trải nghiệm không quên.</p>
+    						<p>Một chuyến du lịch tuyệt vời đến một trong những thành phố lãng mạn nhất trên thế giới.</p>
     						<p class="days"><span>2 ngày 3 đêm</span></p>
     						<hr>
     						<p class="bottom-area d-flex">
-    							<span><i class="icon-map-o"></i> TP. Hồ Chí Minh, Việt Nam</span>
+    							<span><i class="icon-map-o"></i> San Francisco, CA</span>
     							<span class="ml-auto"><a href="#">Khám phá</a></span>
     						</p>
     					</div>
@@ -384,7 +384,7 @@
     					<div class="text p-3">
     						<div class="d-flex">
     							<div class="one">
-		    						<h3><a href="#">Hội An</a></h3>
+		    						<h3><a href="#">Paris, Ý</a></h3>
 		    						<p class="rate">
 		    							<i class="icon-star"></i>
 		    							<i class="icon-star"></i>
@@ -395,14 +395,14 @@
 		    						</p>
 	    						</div>
 	    						<div class="two">
-	    							<span class="price">2.100.000 ₫</span>
+	    							<span class="price">$200</span>
     							</div>
     						</div>
-    						<p>Khám phá những điểm đến tuyệt đẹp nhất của Việt Nam với những trải nghiệm không quên.</p>
+    						<p>Một chuyến du lịch tuyệt vời đến một trong những thành phố lãng mạn nhất trên thế giới.</p>
     						<p class="days"><span>2 ngày 3 đêm</span></p>
     						<hr>
     						<p class="bottom-area d-flex">
-    							<span><i class="icon-map-o"></i> TP. Hồ Chí Minh, Việt Nam</span>
+    							<span><i class="icon-map-o"></i> San Francisco, CA</span>
     							<span class="ml-auto"><a href="#">Khám phá</a></span>
     						</p>
     					</div>
@@ -738,7 +738,7 @@
     						<p>Nhà hàng sang trọng với thực đơn phong phú và dịch vụ tuyệt vời.</p>
     						<hr>
     						<p class="bottom-area d-flex">
-    							<span><i class="icon-map-o"></i> TP. Hồ Chí Minh, Việt Nam</span>
+    							<span><i class="icon-map-o"></i> San Francisco, CA</span>
     							<span class="ml-auto"><a href="#">Khám phá</a></span>
     						</p>
     					</div>

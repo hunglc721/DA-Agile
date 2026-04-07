@@ -31,20 +31,38 @@ if (!function_exists('view')) {
                 die("Không tìm thấy file: $filePath");
             }
         } else if (strpos($viewPath, 'client/') === 0) {
-            // Client pages - render HTML tĩnh từ views/client/
-            $filePath = ROOT_PATH . 'views/' . $viewPath . '.html';
-            if (file_exists($filePath)) {
+            // Client pages (dashboard, profile, atau static HTML pages)
+            $phpFilePath = ROOT_PATH . 'views/' . $viewPath . '.php';
+            $htmlFilePath = ROOT_PATH . 'views/' . $viewPath . '.html';
+
+            if (file_exists($phpFilePath)) {
+                // PHP files - use layout-client for dashboard/profile, direct render for index
+                if ($viewPath === 'client/index') {
+                    // Homepage - render directly without layout wrapper
+                    require_once $phpFilePath;
+                } else {
+                    // Dashboard/Profile - use layout-client
+                    $contentPath = $phpFilePath;
+                    ob_start();
+                    require_once ROOT_PATH . 'views/layouts/layout-client.php';
+                    echo ob_get_clean();
+                }
+            } else if (file_exists($htmlFilePath)) {
+                // Static HTML files - inject navbar
+                $html = file_get_contents($htmlFilePath);
+                $html = preg_replace('/<nav[^>]*>.*?<\/nav>\s*<!-- END nav -->/is', '', $html);
+
                 ob_start();
-                require_once $filePath;
-                $html = ob_get_clean();
-
-                // Inject CSS fix for fonts and missing assets right after </head>
-                $fontFixCSS = '<link rel="stylesheet" href="' . BASE_URL . 'assets/css/frontend/fonts-fix.css">';
-                $html = str_replace('</head>', $fontFixCSS . "\n</head>", $html);
-
+                require_once ROOT_PATH . 'views/layouts/navbar-client.php';
                 echo $html;
+                $output = ob_get_clean();
+
+                // Inject CSS fix
+                $fontFixCSS = '<link rel="stylesheet" href="' . BASE_URL . 'assets/css/frontend/fonts-fix.css">';
+                $output = str_replace('</head>', $fontFixCSS . "\n</head>", $output);
+                echo $output;
             } else {
-                die("Không tìm thấy file: $filePath");
+                die("Không tìm thấy file: $phpFilePath hoặc $htmlFilePath");
             }
         } else {
             // Các view khác sử dụng layout main
