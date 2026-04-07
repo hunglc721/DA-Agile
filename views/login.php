@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng Nhập - Quản Lý Tour Du Lịch</title>
+    <title>Đăng Nhập / Đăng Ký - Quản Lý Tour Du Lịch</title>
     <!-- Bootstrap CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome from jsDelivr (alternative CDN) -->
@@ -34,7 +34,7 @@
         .login-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 40px 20px;
+            padding: 30px 20px;
             text-align: center;
         }
 
@@ -51,8 +51,33 @@
         }
 
         .login-body {
-            padding: 40px;
+            padding: 30px;
             background: white;
+        }
+
+        .nav-tabs {
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        .nav-link {
+            color: #667eea;
+            border: none;
+            padding: 12px 20px;
+            font-weight: 600;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: #764ba2;
+            border-bottom-color: #667eea;
+        }
+
+        .nav-link.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+            background-color: transparent;
         }
 
         .form-group {
@@ -137,24 +162,6 @@
             text-decoration: underline;
         }
 
-        .signup-link {
-            text-align: center;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            font-size: 14px;
-        }
-
-        .signup-link a {
-            color: #667eea;
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .signup-link a:hover {
-            text-decoration: underline;
-        }
-
         .input-icon {
             position: relative;
         }
@@ -170,6 +177,36 @@
 
         .input-icon input {
             padding-left: 45px;
+        }
+
+        .password-strength {
+            margin-top: 8px;
+            font-size: 12px;
+            height: 4px;
+            border-radius: 2px;
+            background-color: #e0e0e0;
+            overflow: hidden;
+        }
+
+        .password-strength .bar {
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s, background-color 0.3s;
+        }
+
+        .password-strength .bar.weak {
+            width: 33%;
+            background-color: #dc3545;
+        }
+
+        .password-strength .bar.medium {
+            width: 66%;
+            background-color: #ffc107;
+        }
+
+        .password-strength .bar.strong {
+            width: 100%;
+            background-color: #28a745;
         }
     </style>
 </head>
@@ -202,63 +239,182 @@
                     <?php unset($_SESSION['success']); ?>
                 <?php endif; ?>
 
-                <!-- Form đăng nhập -->
-                <form action="<?= url('login_submit') ?>" method="POST">
-                    <!-- Email -->
-                    <div class="form-group">
-                        <label for="email">
-                            <i class="fas fa-envelope"></i> Email
-                        </label>
-                        <div class="input-icon">
-                            <i class="fas fa-envelope"></i>
-                            <input 
-                                type="email" 
-                                id="email" 
-                                name="email" 
-                                class="form-control" 
-                                placeholder="Nhập email của bạn"
-                                required
-                                autofocus
-                            >
-                        </div>
+                <!-- Tabs Navigation -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login-form" type="button" role="tab">
+                            <i class="fas fa-sign-in-alt"></i> Đăng Nhập
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register-form" type="button" role="tab">
+                            <i class="fas fa-user-plus"></i> Đăng Ký
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content">
+                    <!-- Login Form -->
+                    <div class="tab-pane fade show active" id="login-form" role="tabpanel">
+                        <form action="<?= url('login_submit') ?>" method="POST">
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label for="email">
+                                    <i class="fas fa-envelope"></i> Email
+                                </label>
+                                <div class="input-icon">
+                                    <i class="fas fa-envelope"></i>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        class="form-control"
+                                        placeholder="Nhập email của bạn"
+                                        required
+                                        autofocus
+                                    >
+                                </div>
+                            </div>
+
+                            <!-- Mật khẩu -->
+                            <div class="form-group">
+                                <label for="password">
+                                    <i class="fas fa-lock"></i> Mật khẩu
+                                </label>
+                                <div class="input-icon">
+                                    <i class="fas fa-lock"></i>
+                                    <input
+                                        type="password"
+                                        id="password"
+                                        name="password"
+                                        class="form-control"
+                                        placeholder="Nhập mật khẩu"
+                                        required
+                                    >
+                                </div>
+                            </div>
+
+                            <!-- Nhớ mật khẩu & Quên mật khẩu -->
+                            <div class="remember-forgot">
+                                <label>
+                                    <input type="checkbox" name="remember" value="1">
+                                    Nhớ mật khẩu
+                                </label>
+                                <a href="#">Quên mật khẩu?</a>
+                            </div>
+
+                            <!-- Nút đăng nhập -->
+                            <button type="submit" class="btn-login">
+                                <i class="fas fa-sign-in-alt"></i> Đăng Nhập
+                            </button>
+                        </form>
                     </div>
 
-                    <!-- Mật khẩu -->
-                    <div class="form-group">
-                        <label for="password">
-                            <i class="fas fa-lock"></i> Mật khẩu
-                        </label>
-                        <div class="input-icon">
-                            <i class="fas fa-lock"></i>
-                            <input 
-                                type="password" 
-                                id="password" 
-                                name="password" 
-                                class="form-control" 
-                                placeholder="Nhập mật khẩu"
-                                required
-                            >
-                        </div>
+                    <!-- Register Form -->
+                    <div class="tab-pane fade" id="register-form" role="tabpanel">
+                        <form action="<?= url('register_submit') ?>" method="POST">
+                            <!-- Họ và tên -->
+                            <div class="form-group">
+                                <label for="reg-fullname">
+                                    <i class="fas fa-user"></i> Họ và tên
+                                </label>
+                                <div class="input-icon">
+                                    <i class="fas fa-user"></i>
+                                    <input
+                                        type="text"
+                                        id="reg-fullname"
+                                        name="full_name"
+                                        class="form-control"
+                                        placeholder="Nhập họ và tên"
+                                        required
+                                    >
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label for="reg-email">
+                                    <i class="fas fa-envelope"></i> Email
+                                </label>
+                                <div class="input-icon">
+                                    <i class="fas fa-envelope"></i>
+                                    <input
+                                        type="email"
+                                        id="reg-email"
+                                        name="email"
+                                        class="form-control"
+                                        placeholder="Nhập email của bạn"
+                                        required
+                                    >
+                                </div>
+                            </div>
+
+                            <!-- Số điện thoại -->
+                            <div class="form-group">
+                                <label for="reg-phone">
+                                    <i class="fas fa-phone"></i> Số điện thoại
+                                </label>
+                                <div class="input-icon">
+                                    <i class="fas fa-phone"></i>
+                                    <input
+                                        type="tel"
+                                        id="reg-phone"
+                                        name="phone"
+                                        class="form-control"
+                                        placeholder="Nhập số điện thoại"
+                                    >
+                                </div>
+                            </div>
+
+                            <!-- Mật khẩu -->
+                            <div class="form-group">
+                                <label for="reg-password">
+                                    <i class="fas fa-lock"></i> Mật khẩu
+                                </label>
+                                <div class="input-icon">
+                                    <i class="fas fa-lock"></i>
+                                    <input
+                                        type="password"
+                                        id="reg-password"
+                                        name="password"
+                                        class="form-control"
+                                        placeholder="Nhập mật khẩu (tối thiểu 6 ký tự)"
+                                        required
+                                        minlength="6"
+                                        onkeyup="checkPasswordStrength(this.value)"
+                                    >
+                                </div>
+                                <div class="password-strength">
+                                    <div class="bar" id="strength-bar"></div>
+                                </div>
+                            </div>
+
+                            <!-- Nhập lại mật khẩu -->
+                            <div class="form-group">
+                                <label for="reg-password-confirm">
+                                    <i class="fas fa-lock"></i> Xác nhận mật khẩu
+                                </label>
+                                <div class="input-icon">
+                                    <i class="fas fa-lock"></i>
+                                    <input
+                                        type="password"
+                                        id="reg-password-confirm"
+                                        name="password_confirm"
+                                        class="form-control"
+                                        placeholder="Nhập lại mật khẩu"
+                                        required
+                                        minlength="6"
+                                    >
+                                </div>
+                            </div>
+
+                            <!-- Nút đăng ký -->
+                            <button type="submit" class="btn-login">
+                                <i class="fas fa-user-plus"></i> Đăng Ký
+                            </button>
+                        </form>
                     </div>
-
-                    <!-- Nhớ mật khẩu & Quên mật khẩu -->
-                    <div class="remember-forgot">
-                        <label>
-                            <input type="checkbox" name="remember" value="1">
-                            Nhớ mật khẩu
-                        </label>
-                        <a href="#">Quên mật khẩu?</a>
-                    </div>
-
-                    <!-- Nút đăng nhập -->
-                    <button type="submit" class="btn-login">
-                        <i class="fas fa-sign-in-alt"></i> Đăng Nhập
-                    </button>
-                </form>
-
-                <!-- Liên kết đăng ký -->
-                <div class="signup-link">
-                    Chưa có tài khoản? <a href="#">Đăng ký ngay</a>
                 </div>
             </div>
         </div>
@@ -273,5 +429,20 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Bootstrap JS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function checkPasswordStrength(password) {
+            const bar = document.getElementById('strength-bar');
+            if (password.length < 6) {
+                bar.className = 'bar';
+            } else if (password.length < 8) {
+                bar.className = 'bar weak';
+            } else if (password.length < 12) {
+                bar.className = 'bar medium';
+            } else {
+                bar.className = 'bar strong';
+            }
+        }
+    </script>
 </body>
 </html>

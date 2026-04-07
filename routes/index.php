@@ -38,50 +38,30 @@ require_once ROOT_PATH . 'controllers/DepartureController.php';
 require_once ROOT_PATH . 'controllers/ServiceController.php';
 require_once ROOT_PATH . 'controllers/AuthController.php';
 require_once ROOT_PATH . 'controllers/GuideProfileController.php';
+require_once ROOT_PATH . 'controllers/ClientController.php';
 
 // 4. Lấy action từ URL (mặc định là trang chủ)
 $action = $_GET['action'] ?? '/';
 
-// Helper function: Check if user is logged in
-function isLoggedIn() {
-    return isset($_SESSION['user']) && !empty($_SESSION['user']['id']);
-}
-
-// Helper function: Check if user is admin
-function isAdmin() {
-    return isset($_SESSION['user']) && isset($_SESSION['user']['is_admin']) && $_SESSION['user']['is_admin'];
-}
-
-// Helper function: Require auth
-function requireAuth() {
-    if (!isLoggedIn()) {
-        $_SESSION['error'] = 'Vui lòng đăng nhập để tiếp tục';
-        redirect('login');
-        exit;
-    }
-}
-
-// Helper function: Require admin
-function requireAdmin() {
-    if (!isLoggedIn()) {
-        $_SESSION['error'] = 'Vui lòng đăng nhập để tiếp tục';
-        redirect('login');
-        exit;
-    }
-    if (!isAdmin()) {
-        die('<h1>403 Forbidden</h1><p>Bạn không có quyền truy cập trang này</p>');
-    }
-}
-
 // 5. Điều hướng (Routing)
 match ($action) {
-    // --- ĐĂNG NHẬP / ĐĂNG XUẤT ---
+// --- ĐĂNG NHẬP / ĐĂNG XUẤT ---
     'login'         => (new AuthController())->login(),
     'login_submit'  => (new AuthController())->handleLogin(),
+    'register'      => (new AuthController())->register(),
+    'register_submit' => (new AuthController())->handleRegister(),
     'logout'        => (new AuthController())->logout(),
     
     // --- TRANG CHỦ ---
     '/'             => (new HomeController())->index(),
+
+    // --- CLIENT PAGES (Trang khách hàng) ---
+    'client'        => (new ClientController())->index(),
+    'client_about'  => (new ClientController())->about(),
+    'client_tour'   => (new ClientController())->tour(),
+    'client_hotel'  => (new ClientController())->hotel(),
+    'client_contact'=> (new ClientController())->contact(),
+    'client_hotel_single' => (new ClientController())->hotelSingle(),
     
     // --- ADMIN DASHBOARD ---
     'dashboard'     => (new AdminController())->dashboard(),
