@@ -250,50 +250,67 @@ class TourController
      * Xóa tour
      */
     public function delete()
-{
-    try {
-        $id = $_GET['id'] ?? null;
+    {
+        try {
+            $id = $_GET['id'] ?? null;
 
-        if (empty($id)) {
-            throw new Exception('Tour không tìm thấy');
-        }
+            if (empty($id)) {
+                throw new Exception('Tour không tìm thấy');
+            }
 
-        // Kiểm tra có booking đang active không
-        $bookingModel = new Booking();
-        $sql = "SELECT COUNT(*) as count FROM bookings 
+            // Kiểm tra có booking đang active không
+            $bookingModel = new Booking();
+            $sql = "SELECT COUNT(*) as count FROM bookings 
                 WHERE tour_id = ? AND status IN ('pending', 'confirmed')";
-        $result = $bookingModel->fetchOne($sql, [$id]);
+            $result = $bookingModel->fetchOne($sql, [$id]);
 
-        if ($result['count'] > 0) {
-            throw new Exception('Không thể xóa tour này vì đang có ' . $result['count'] . ' booking chưa hoàn tất');
+            if ($result['count'] > 0) {
+                throw new Exception('Không thể xóa tour này vì đang có ' . $result['count'] . ' booking chưa hoàn tất');
+            }
+
+            $this->tourModel->softDelete($id);
+
+            $_SESSION['success'] = 'Tour đã được chuyển vào thùng rác!';
+            redirect('index.php?action=tours');
+        } catch (Exception $e) {
+            $_SESSION['error'] = 'Lỗi: ' . $e->getMessage();
+            redirect('index.php?action=tours');
         }
-
-        $this->tourModel->softDelete($id);
-
-        $_SESSION['success'] = 'Tour đã được chuyển vào thùng rác!';
-        redirect('index.php?action=tours');
-    } catch (Exception $e) {
-        $_SESSION['error'] = 'Lỗi: ' . $e->getMessage();
-        redirect('index.php?action=tours');
     }
-}
-public function trash()
-{
-    try {
-        $trashedTours = $this->tourModel->findTrashed();
+    public function trash()
+    {
+        try {
+            $trashedTours = $this->tourModel->findTrashed();
 
-        view('main', [
-            'title'        => 'Thùng Rác - Tour Đã Xóa',
-            'page'         => 'tours',
-            'content_view' => 'tours/trash',
-            'tours'        => $trashedTours
-        ]);
-    } catch (Exception $e) {
-        $_SESSION['error'] = 'Lỗi: ' . $e->getMessage();
-        redirect('index.php?action=tours');
+            view('main', [
+                'title'        => 'Thùng Rác - Tour Đã Xóa',
+                'page'         => 'tours',
+                'content_view' => 'tours/trash',
+                'tours'        => $trashedTours
+            ]);
+        } catch (Exception $e) {
+            $_SESSION['error'] = 'Lỗi: ' . $e->getMessage();
+            redirect('index.php?action=tours');
+        }
     }
-}
+    public function restore()
+    {
+        try {
+            $id = $_GET['id'] ?? null;
 
+            if (empty($id)) {
+                throw new Exception('Tour không tìm thấy');
+            }
+
+            $this->tourModel->restore($id);
+
+            $_SESSION['success'] = 'Khôi phục tour thành công!';
+            redirect('index.php?action=tours_trash');
+        } catch (Exception $e) {
+            $_SESSION['error'] = 'Lỗi: ' . $e->getMessage();
+            redirect('index.php?action=tours_trash');
+        }
+    }
     /**
      * Xử lý upload ảnh tour
      */

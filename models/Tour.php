@@ -409,4 +409,9 @@ class Tour extends BaseModel
             ORDER BY t.deleted_at DESC";
         return $this->fetchAll($sql);
     }
+    public function restore($id)
+    {
+        $sql = "UPDATE {$this->table} SET deleted_at = NULL WHERE id = ?";
+        return $this->query($sql, [$id]);
+    }
 }
