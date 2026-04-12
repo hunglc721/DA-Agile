@@ -867,3 +867,17 @@ Stack trace:
 [07-Apr-2026 13:16:16 UTC] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\laragon\www\DA1-10-main\test_navbar.php on line 3) in C:\laragon\www\DA1-10-main\index.php on line 16
 [07-Apr-2026 13:16:24 UTC] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\laragon\www\DA1-10-main\test_navbar.php on line 3) in C:\laragon\www\DA1-10-main\index.php on line 16
 >>>>>>> 3bdf8f14d08abaa876dddd279c38875f47e4d93d
+[12-Apr-2026 01:49:02 UTC] Error fetching recent bookings: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[12-Apr-2026 01:49:02 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[12-Apr-2026 01:49:07 UTC] DEBUG: TourController index() called
+[12-Apr-2026 01:49:07 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[12-Apr-2026 01:49:07 UTC] DEBUG: Found 13 tours
+[12-Apr-2026 01:49:07 UTC] DEBUG: Found 5 categories
+[12-Apr-2026 01:49:07 UTC] DEBUG: Found 3 tourTypes

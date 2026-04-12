@@ -11,6 +11,9 @@
         <a href="index.php?action=tours_create" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
             <i class="fas fa-plus fa-sm text-white-50"></i> Thêm Tour Mới
         </a>
+        <a href="index.php?action=tours_trash" class="btn btn-outline-secondary">
+    <i class="fas fa-trash"></i> Thùng rác
+</a>
     </div>
 
     <!-- Filter Section -->
