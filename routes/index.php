@@ -43,20 +43,17 @@ require_once ROOT_PATH . 'controllers/GuideProfileController.php';
 $action = $_GET['action'] ?? '/';
 
 // Helper function: Check if user is logged in
-function isLoggedIn()
-{
+function isLoggedIn() {
     return isset($_SESSION['user']) && !empty($_SESSION['user']['id']);
 }
 
 // Helper function: Check if user is admin
-function isAdmin()
-{
+function isAdmin() {
     return isset($_SESSION['user']) && isset($_SESSION['user']['is_admin']) && $_SESSION['user']['is_admin'];
 }
 
 // Helper function: Require auth
-function requireAuth()
-{
+function requireAuth() {
     if (!isLoggedIn()) {
         $_SESSION['error'] = 'Vui lòng đăng nhập để tiếp tục';
         redirect('login');
@@ -65,8 +62,7 @@ function requireAuth()
 }
 
 // Helper function: Require admin
-function requireAdmin()
-{
+function requireAdmin() {
     if (!isLoggedIn()) {
         $_SESSION['error'] = 'Vui lòng đăng nhập để tiếp tục';
         redirect('login');
@@ -83,15 +79,15 @@ match ($action) {
     'login'         => (new AuthController())->login(),
     'login_submit'  => (new AuthController())->handleLogin(),
     'logout'        => (new AuthController())->logout(),
-
+    
     // --- TRANG CHỦ ---
     '/'             => (new HomeController())->index(),
-
+    
     // --- ADMIN DASHBOARD ---
     'dashboard'     => (new AdminController())->dashboard(),
     'communication' => (new AdminController())->communication(),
     'admin_send_message' => (new AdminController())->admin_send_message(),
-
+    
     // --- QUẢN LÝ TOUR (Đã có) ---
     'tours'         => (new TourController())->index(),
     'tours_domestic'      => (new TourController())->filterByCategory(1), // Tour Trong Nước
@@ -105,10 +101,10 @@ match ($action) {
     'tours_delete'  => (new TourController())->delete(),
 
     'tour_customers'                        => (new TourCustomerController())->index(),
-
-    'tours_trash'        => (new TourController())->trash(),
-    'tours_restore'      => (new TourController())->restore(),
-    'tours_force_delete' => (new TourController())->forceDelete(),
+// Thêm vào phần QUẢN LÝ TOUR
+'tours_trash'        => (new TourController())->trash(),
+'tours_restore'      => (new TourController())->restore(),
+'tours_force_delete' => (new TourController())->forceDelete(),
     // --- QUẢN LÝ DANH MỤC (Mới thêm) ---
     'categories'        => (new CategoryController())->index(),
     'categories_create' => (new CategoryController())->create(),
@@ -167,15 +163,15 @@ match ($action) {
     'tour_types_delete' => (new TourTypeController())->delete(),
     'tour_types_toggle' => (new TourTypeController())->toggleActive(),
 
-
-    // ...
+  
+// ...
 
     // --- QUẢN LÝ BOOKING / ĐẶT TOUR (Mới thêm) ---
     'bookings'              => (new BookingController())->index(),
     'bookings_show'         => (new BookingController())->show(),
     'bookings_create'       => (new BookingController())->create(), // Tạo thủ công cho khách
     'bookings_store'        => (new BookingController())->store(),
-    'bookings_update_status' => (new BookingController())->updateStatus(), // Duyệt/Hủy đơn
+    'bookings_update_status'=> (new BookingController())->updateStatus(), // Duyệt/Hủy đơn
     'bookings_delete'       => (new BookingController())->delete(),
     // --- QUẢN LÝ NHẬT KÝ TOUR ---
     'tour_diary'        => (new TourDiaryController())->index(),
@@ -210,7 +206,7 @@ match ($action) {
     'tour_customers_add'                  => (new TourCustomerController())->add(),
     'tour_customers_update_special_requests' => (new TourCustomerController())->updateSpecialRequests(),
 
-
+    
     // --- QUẢN LÝ KHÁCH HÀNG & USER ---
     'users'         => (new UserController())->index(),
     'users_create'  => (new UserController())->create(),
@@ -219,24 +215,26 @@ match ($action) {
     'users_edit'    => (new UserController())->edit(),
     'users_update'  => (new UserController())->update(),
     'users_delete'  => (new UserController())->delete(),
-    'tour_customers' => (new TourCustomerController())->index(),
-
+    'tour_customers'=> (new TourCustomerController())->index(),
+    
     // Thêm route cho Ajax update (để checkbox hoạt động)
     'checkin_update'     => (new CheckinController())->updateStatus(),
     'checkin'            => (new CheckinController())->index(), // Thêm action này
     'checkin_attendance' => (new CheckinController())->index(),
 
 
-
+    
 
     // --- CÁC CHỨC NĂNG KHÁC ---    
     'checkin_batch'      => (new CheckinController())->batchCheckin(),
     'tour_schedule'      => (new TourScheduleController())->index(),
-
+    
     // --- BÁAO CÁO ---
     'tour_financial_report'       => (new ReportController())->tourFinancialReport(),
     'tour_financial_report_export' => (new ReportController())->exportCSV(),
-
+    
     'api_schedule_events' => (new TourScheduleController())->getEvents(),
     default         => die('<h1>Lỗi 404: Trang không tồn tại!</h1><a href="index.php">Quay lại trang chủ</a>'),
 };
+
+?>
