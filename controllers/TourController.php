@@ -252,7 +252,8 @@ class TourController
     public function delete()
     {
         try {
-            $id = $_POST['id'] ?? null;
+            $id = $_GET['id'] ?? null;  // đổi _POST thành _GET
+
             if (empty($id)) {
                 throw new Exception('Tour không tìm thấy');
             }
