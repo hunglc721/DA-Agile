@@ -414,4 +414,9 @@ class Tour extends BaseModel
         $sql = "UPDATE {$this->table} SET deleted_at = NULL WHERE id = ?";
         return $this->query($sql, [$id]);
     }
+    public function forceDelete($id)
+    {
+        $sql = "DELETE FROM {$this->table} WHERE id = ?";
+        return $this->query($sql, [$id]);
+    }
 }

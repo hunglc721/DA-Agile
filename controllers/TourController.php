@@ -311,6 +311,33 @@ class TourController
             redirect('index.php?action=tours_trash');
         }
     }
+    public function forceDelete()
+    {
+        try {
+            $id = $_GET['id'] ?? null;
+
+            if (empty($id)) {
+                throw new Exception('Tour không tìm thấy');
+            }
+
+            // Kiểm tra booking (kể cả đã hủy)
+            $bookingModel = new Booking();
+            $sql = "SELECT COUNT(*) as count FROM bookings WHERE tour_id = ?";
+            $result = $bookingModel->fetchOne($sql, [$id]);
+
+            if ($result['count'] > 0) {
+                throw new Exception('Không thể xóa vĩnh viễn vì tour đã có lịch sử booking');
+            }
+
+            $this->tourModel->forceDelete($id);
+
+            $_SESSION['success'] = 'Đã xóa tour vĩnh viễn!';
+            redirect('index.php?action=tours_trash');
+        } catch (Exception $e) {
+            $_SESSION['error'] = 'Lỗi: ' . $e->getMessage();
+            redirect('index.php?action=tours_trash');
+        }
+    }
     /**
      * Xử lý upload ảnh tour
      */
