@@ -14,11 +14,8 @@ class AdminController extends BaseController
     }
 
     public function dashboard() {
-        // Kiểm tra đăng nhập và quyền admin
-        $this->checkLogin();
-        if (!isset($_SESSION['user']['is_admin']) || !$_SESSION['user']['is_admin']) {
-            die('<h1>403 Forbidden</h1><p>Bạn không có quyền truy cập trang này</p>');
-        }
+        // Kiểm tra quyền Admin
+        requireAdmin();
 
         // 1. Thống kê cơ bản
         $tours = $this->tour->findAll();

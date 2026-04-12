@@ -155,17 +155,3 @@
     </div>
 </div>
 
-<style>
-.table-hover tbody tr:hover {
-    background-color: #f5f5f5;
-}
-
-.btn-group form {
-    margin: 0 2px;
-}
-
-.btn-sm {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
-}
-</style>

@@ -49,13 +49,3 @@
     </div>
 </div>
 
-<style>
-.border-left-primary {
-    border-left: 4px solid #007bff !important;
-}
-
-.card-header.bg-light {
-    background-color: #f8f9fa !important;
-    border-bottom: 2px solid #dee2e6;
-}
-</style>
