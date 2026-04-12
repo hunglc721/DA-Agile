@@ -742,3 +742,77 @@ Stack trace:
 [08-Apr-2026 01:09:53 UTC] DEBUG: Found 13 tours
 [08-Apr-2026 01:09:53 UTC] DEBUG: Found 5 categories
 [08-Apr-2026 01:09:53 UTC] DEBUG: Found 3 tourTypes
+[12-Apr-2026 01:29:33 UTC] Error fetching recent bookings: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[12-Apr-2026 01:29:33 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[12-Apr-2026 01:29:37 UTC] DEBUG: TourController index() called
+[12-Apr-2026 01:29:37 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[12-Apr-2026 01:29:37 UTC] DEBUG: Found 13 tours
+[12-Apr-2026 01:29:37 UTC] DEBUG: Found 5 categories
+[12-Apr-2026 01:29:37 UTC] DEBUG: Found 3 tourTypes
+[12-Apr-2026 01:29:54 UTC] DEBUG: TourController index() called
+[12-Apr-2026 01:29:54 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[12-Apr-2026 01:29:54 UTC] DEBUG: Found 13 tours
+[12-Apr-2026 01:29:54 UTC] DEBUG: Found 5 categories
+[12-Apr-2026 01:29:54 UTC] DEBUG: Found 3 tourTypes
+[12-Apr-2026 01:30:28 UTC] DEBUG: TourController index() called
+[12-Apr-2026 01:30:28 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[12-Apr-2026 01:30:28 UTC] DEBUG: Found 14 tours
+[12-Apr-2026 01:30:28 UTC] DEBUG: Found 5 categories
+[12-Apr-2026 01:30:28 UTC] DEBUG: Found 3 tourTypes
+[12-Apr-2026 01:30:39 UTC] DEBUG: TourController index() called
+[12-Apr-2026 01:30:39 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[12-Apr-2026 01:30:39 UTC] DEBUG: Found 13 tours
+[12-Apr-2026 01:30:39 UTC] DEBUG: Found 5 categories
+[12-Apr-2026 01:30:39 UTC] DEBUG: Found 3 tourTypes
+[12-Apr-2026 01:30:46 UTC] DEBUG: TourController index() called
+[12-Apr-2026 01:30:46 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[12-Apr-2026 01:30:46 UTC] DEBUG: Found 14 tours
+[12-Apr-2026 01:30:46 UTC] DEBUG: Found 5 categories
+[12-Apr-2026 01:30:46 UTC] DEBUG: Found 3 tourTypes
+[12-Apr-2026 01:30:49 UTC] DEBUG: TourController index() called
+[12-Apr-2026 01:30:49 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[12-Apr-2026 01:30:49 UTC] DEBUG: Found 13 tours
+[12-Apr-2026 01:30:49 UTC] DEBUG: Found 5 categories
+[12-Apr-2026 01:30:49 UTC] DEBUG: Found 3 tourTypes
