@@ -11,7 +11,7 @@ class Tour extends BaseModel
         $sql = "SELECT t.*, tc.name as category_name 
                 FROM {$this->table} t 
                 LEFT JOIN tour_categories tc ON t.category_id = tc.id
-                WHERE 1=1";
+                WHERE t.deleted_at IS NULL";
 
         $params = [];
 
@@ -52,7 +52,7 @@ class Tour extends BaseModel
         $sql = "SELECT t.*, tc.name as category_name 
                 FROM {$this->table} t 
                 LEFT JOIN tour_categories tc ON t.category_id = tc.id
-                WHERE t.id = ?";
+                  WHERE t.id = ? AND t.deleted_at IS NULL";
 
         return $this->fetchOne($sql, [$id]);
     }
@@ -396,17 +396,17 @@ class Tour extends BaseModel
         return $result['total'] ?? 0;
     }
     public function softDelete($id)
-{
-    $sql = "UPDATE {$this->table} SET deleted_at = NOW() WHERE id = ?";
-    return $this->query($sql, [$id]);
-}
-public function findTrashed()
-{
-    $sql = "SELECT t.*, tc.name as category_name 
+    {
+        $sql = "UPDATE {$this->table} SET deleted_at = NOW() WHERE id = ?";
+        return $this->query($sql, [$id]);
+    }
+    public function findTrashed()
+    {
+        $sql = "SELECT t.*, tc.name as category_name 
             FROM {$this->table} t 
             LEFT JOIN tour_categories tc ON t.category_id = tc.id
             WHERE t.deleted_at IS NOT NULL
             ORDER BY t.deleted_at DESC";
-    return $this->fetchAll($sql);
-}
+        return $this->fetchAll($sql);
+    }
 }
