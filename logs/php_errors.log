@@ -417,3 +417,157 @@ Stack trace:
 [07-Apr-2026 12:34:09 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
 [07-Apr-2026 13:16:16 UTC] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\laragon\www\DA1-10-main\test_navbar.php on line 3) in C:\laragon\www\DA1-10-main\index.php on line 16
 [07-Apr-2026 13:16:24 UTC] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\laragon\www\DA1-10-main\test_navbar.php on line 3) in C:\laragon\www\DA1-10-main\index.php on line 16
+[08-Apr-2026 01:39:57 UTC] PHP Parse error:  syntax error, unexpected token "public" in C:\laragon\www\DA1-10-main\controllers\ClientController.php on line 190
+[10-Apr-2026 06:11:12 UTC] Error fetching recent bookings: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[10-Apr-2026 06:11:12 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[10-Apr-2026 06:11:38 UTC] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\laragon\www\DA1-10-main\index.php on line 16) in C:\laragon\www\DA1-10-main\controllers\TourDiaryController.php on line 161
+[10-Apr-2026 06:11:38 UTC] Error in incidents: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'td.status' in 'field list' | #0 C:\laragon\www\DA1-10-main\models\BaseModel.php(30): PDOStatement->execute(Array)
+#1 C:\laragon\www\DA1-10-main\controllers\TourDiaryController.php(213): BaseModel->query('SELECT \n       ...', Array)
+#2 C:\laragon\www\DA1-10-main\routes\index.php(164): TourDiaryController->incidents()
+#3 C:\laragon\www\DA1-10-main\index.php(47): require_once('C:\\laragon\\www\\...')
+#4 {main}
+[10-Apr-2026 06:11:38 UTC] Error fetching recent bookings: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[10-Apr-2026 06:11:38 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[10-Apr-2026 06:15:51 UTC] DEBUG: TourController index() called
+[10-Apr-2026 06:15:51 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[10-Apr-2026 06:15:51 UTC] DEBUG: Found 12 tours
+[10-Apr-2026 06:15:51 UTC] DEBUG: Found 5 categories
+[10-Apr-2026 06:15:51 UTC] DEBUG: Found 3 tourTypes
+[10-Apr-2026 06:31:52 UTC] DEBUG: CategoryController index() - Found 5 categories
+[10-Apr-2026 06:32:00 UTC] DEBUG: CategoryController index() - Found 5 categories
+[10-Apr-2026 06:32:02 UTC] DEBUG: TourController index() called
+[10-Apr-2026 06:32:02 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[10-Apr-2026 06:32:02 UTC] DEBUG: Found 12 tours
+[10-Apr-2026 06:32:02 UTC] DEBUG: Found 5 categories
+[10-Apr-2026 06:32:02 UTC] DEBUG: Found 3 tourTypes
+[10-Apr-2026 06:32:04 UTC] DEBUG: TourController index() called
+[10-Apr-2026 06:32:04 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 1
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[10-Apr-2026 06:32:04 UTC] DEBUG: Found 5 tours
+[10-Apr-2026 06:32:04 UTC] DEBUG: Found 5 categories
+[10-Apr-2026 06:32:04 UTC] DEBUG: Found 3 tourTypes
+[10-Apr-2026 06:32:06 UTC] DEBUG: TourController index() called
+[10-Apr-2026 06:32:06 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 4
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[10-Apr-2026 06:32:06 UTC] DEBUG: Found 1 tours
+[10-Apr-2026 06:32:06 UTC] DEBUG: Found 5 categories
+[10-Apr-2026 06:32:06 UTC] DEBUG: Found 3 tourTypes
+[10-Apr-2026 06:32:09 UTC] DEBUG: TourController index() called
+[10-Apr-2026 06:32:09 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 5
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[10-Apr-2026 06:32:09 UTC] DEBUG: Found 0 tours
+[10-Apr-2026 06:32:09 UTC] DEBUG: Found 5 categories
+[10-Apr-2026 06:32:09 UTC] DEBUG: Found 3 tourTypes
+[10-Apr-2026 06:38:31 UTC] DEBUG: TourController index() called
+[10-Apr-2026 06:38:31 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[10-Apr-2026 06:38:31 UTC] DEBUG: Found 13 tours
+[10-Apr-2026 06:38:31 UTC] DEBUG: Found 5 categories
+[10-Apr-2026 06:38:31 UTC] DEBUG: Found 3 tourTypes
+[10-Apr-2026 06:38:43 UTC] DEBUG: TourController index() called
+[10-Apr-2026 06:38:43 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[10-Apr-2026 06:38:43 UTC] DEBUG: Found 13 tours
+[10-Apr-2026 06:38:43 UTC] DEBUG: Found 5 categories
+[10-Apr-2026 06:38:43 UTC] DEBUG: Found 3 tourTypes
+[10-Apr-2026 06:38:52 UTC] DEBUG: TourController index() called
+[10-Apr-2026 06:38:52 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[10-Apr-2026 06:38:52 UTC] DEBUG: Found 13 tours
+[10-Apr-2026 06:38:52 UTC] DEBUG: Found 5 categories
+[10-Apr-2026 06:38:52 UTC] DEBUG: Found 3 tourTypes
+[10-Apr-2026 06:39:03 UTC] DEBUG: CategoryController index() - Found 5 categories
+[13-Apr-2026 00:53:52 UTC] PHP Warning:  Undefined array key "activities" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 261
+[13-Apr-2026 00:53:52 UTC] PHP Warning:  Undefined array key "accommodation" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 268
+[13-Apr-2026 00:53:52 UTC] PHP Warning:  Undefined array key "activities" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 261
+[13-Apr-2026 00:53:52 UTC] PHP Warning:  Undefined array key "accommodation" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 268
+[13-Apr-2026 00:53:52 UTC] PHP Warning:  Undefined array key "activities" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 261
+[13-Apr-2026 00:53:52 UTC] PHP Warning:  Undefined array key "accommodation" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 268
+[13-Apr-2026 00:54:50 UTC] PHP Warning:  Undefined array key "activities" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 261
+[13-Apr-2026 00:54:50 UTC] PHP Warning:  Undefined array key "accommodation" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 268
+[13-Apr-2026 00:54:50 UTC] PHP Warning:  Undefined array key "activities" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 261
+[13-Apr-2026 00:54:50 UTC] PHP Warning:  Undefined array key "accommodation" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 268
+[13-Apr-2026 00:54:50 UTC] PHP Warning:  Undefined array key "activities" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 261
+[13-Apr-2026 00:54:50 UTC] PHP Warning:  Undefined array key "accommodation" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 268
+[13-Apr-2026 01:05:12 UTC] PHP Warning:  Undefined array key "activities" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 261
+[13-Apr-2026 01:05:12 UTC] PHP Warning:  Undefined array key "accommodation" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 268
+[13-Apr-2026 01:05:12 UTC] PHP Warning:  Undefined array key "activities" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 261
+[13-Apr-2026 01:05:12 UTC] PHP Warning:  Undefined array key "accommodation" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 268
+[13-Apr-2026 01:05:12 UTC] PHP Warning:  Undefined array key "activities" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 261
+[13-Apr-2026 01:05:12 UTC] PHP Warning:  Undefined array key "accommodation" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 268
+[13-Apr-2026 01:07:43 UTC] PHP Warning:  Undefined array key "activities" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 267
+[13-Apr-2026 01:07:43 UTC] PHP Warning:  Undefined array key "accommodation" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 274
+[13-Apr-2026 01:07:43 UTC] PHP Warning:  Undefined array key "activities" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 267
+[13-Apr-2026 01:07:43 UTC] PHP Warning:  Undefined array key "accommodation" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 274
+[13-Apr-2026 01:07:43 UTC] PHP Warning:  Undefined array key "activities" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 267
+[13-Apr-2026 01:07:43 UTC] PHP Warning:  Undefined array key "accommodation" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 274
+[13-Apr-2026 01:08:09 UTC] Error fetching recent bookings: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:08:09 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:09:24 UTC] Error fetching recent bookings: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:09:24 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:09:34 UTC] Error fetching recent bookings: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:09:34 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:12:01 UTC] PHP Warning:  Undefined array key "activities" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 267
+[13-Apr-2026 01:12:01 UTC] PHP Warning:  Undefined array key "accommodation" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 274
+[13-Apr-2026 01:12:01 UTC] PHP Warning:  Undefined array key "activities" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 267
+[13-Apr-2026 01:12:01 UTC] PHP Warning:  Undefined array key "accommodation" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 274
+[13-Apr-2026 01:12:01 UTC] PHP Warning:  Undefined array key "activities" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 267
+[13-Apr-2026 01:12:01 UTC] PHP Warning:  Undefined array key "accommodation" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 274
+[13-Apr-2026 01:12:15 UTC] PHP Warning:  Undefined array key "activities" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 267
+[13-Apr-2026 01:12:15 UTC] PHP Warning:  Undefined array key "accommodation" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 274
+[13-Apr-2026 01:12:15 UTC] PHP Warning:  Undefined array key "activities" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 267
+[13-Apr-2026 01:12:15 UTC] PHP Warning:  Undefined array key "accommodation" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 274
+[13-Apr-2026 01:12:15 UTC] PHP Warning:  Undefined array key "activities" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 267
+[13-Apr-2026 01:12:15 UTC] PHP Warning:  Undefined array key "accommodation" in C:\laragon\www\DA1-10-main\views\client\tour-single.php on line 274
+[13-Apr-2026 01:23:21 UTC] Error fetching recent bookings: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:23:21 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
