@@ -88,7 +88,10 @@ match ($action) {
     'tours_delete'  => (new TourController())->delete(),
 
     'tour_customers'                        => (new TourCustomerController())->index(),
-
+// Thêm vào phần QUẢN LÝ TOUR
+'tours_trash'        => (new TourController())->trash(),
+'tours_restore'      => (new TourController())->restore(),
+'tours_force_delete' => (new TourController())->forceDelete(),
     // --- QUẢN LÝ DANH MỤC (Mới thêm) ---
     'categories'        => (new CategoryController())->index(),
     'categories_create' => (new CategoryController())->create(),
@@ -190,6 +193,7 @@ match ($action) {
     'tour_customers_add'                  => (new TourCustomerController())->add(),
     'tour_customers_update_special_requests' => (new TourCustomerController())->updateSpecialRequests(),
 
+    
     // --- QUẢN LÝ KHÁCH HÀNG & USER ---
     'users'         => (new UserController())->index(),
     'users_create'  => (new UserController())->create(),
