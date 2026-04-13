@@ -1,12 +1,12 @@
 <?php
-define('BASE_APP_URL', '/Agile/');
+define('BASE_APP_URL', '/DA-Agile-main/');
 
 define('PATH_ROOT', __DIR__ . '/../');
 define('PATH_VIEW', PATH_ROOT . 'views/');
 
 // --- SỬA DÒNG NÀY ---
 // Thêm '/layouts' vào đường dẫn
-define('PATH_VIEW_MAIN', PATH_ROOT . 'views/layouts/main.php'); 
+define('PATH_VIEW_MAIN', PATH_ROOT . 'views/layouts/main.php');
 // --------------------
 
 define('BASE_ASSETS_UPLOADS', BASE_URL . '/assets/uploads/');
@@ -29,8 +29,8 @@ define('ROLE_ADMIN', 'admin');
 define('ROLE_GUIDE', 'guide');
 
 if (!function_exists('asset')) {
-    function asset($path) {
+    function asset($path)
+    {
         return BASE_URL . '/assets/' . ltrim($path, '/');
     }
 }
-?>

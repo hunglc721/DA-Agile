@@ -881,3 +881,348 @@ Stack trace:
 [12-Apr-2026 01:49:07 UTC] DEBUG: Found 13 tours
 [12-Apr-2026 01:49:07 UTC] DEBUG: Found 5 categories
 [12-Apr-2026 01:49:07 UTC] DEBUG: Found 3 tourTypes
+[12-Apr-2026 01:49:54 UTC] DEBUG: TourController index() called
+[12-Apr-2026 01:49:54 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[12-Apr-2026 01:49:54 UTC] DEBUG: Found 13 tours
+[12-Apr-2026 01:49:54 UTC] DEBUG: Found 5 categories
+[12-Apr-2026 01:49:54 UTC] DEBUG: Found 3 tourTypes
+[12-Apr-2026 01:50:16 UTC] DEBUG: TourController index() called
+[12-Apr-2026 01:50:16 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[12-Apr-2026 01:50:16 UTC] DEBUG: Found 14 tours
+[12-Apr-2026 01:50:16 UTC] DEBUG: Found 5 categories
+[12-Apr-2026 01:50:16 UTC] DEBUG: Found 3 tourTypes
+[12-Apr-2026 01:50:35 UTC] DEBUG: TourController index() called
+[12-Apr-2026 01:50:35 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[12-Apr-2026 01:50:35 UTC] DEBUG: Found 15 tours
+[12-Apr-2026 01:50:35 UTC] DEBUG: Found 5 categories
+[12-Apr-2026 01:50:35 UTC] DEBUG: Found 3 tourTypes
+[12-Apr-2026 01:50:45 UTC] DEBUG: TourController index() called
+[12-Apr-2026 01:50:45 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[12-Apr-2026 01:50:45 UTC] DEBUG: Found 14 tours
+[12-Apr-2026 01:50:45 UTC] DEBUG: Found 5 categories
+[12-Apr-2026 01:50:45 UTC] DEBUG: Found 3 tourTypes
+[12-Apr-2026 01:50:50 UTC] DEBUG: TourController index() called
+[12-Apr-2026 01:50:50 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[12-Apr-2026 01:50:50 UTC] DEBUG: Found 14 tours
+[12-Apr-2026 01:50:50 UTC] DEBUG: Found 5 categories
+[12-Apr-2026 01:50:50 UTC] DEBUG: Found 3 tourTypes
+[12-Apr-2026 01:50:53 UTC] DEBUG: TourController index() called
+[12-Apr-2026 01:50:53 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[12-Apr-2026 01:50:53 UTC] DEBUG: Found 13 tours
+[12-Apr-2026 01:50:53 UTC] DEBUG: Found 5 categories
+[12-Apr-2026 01:50:53 UTC] DEBUG: Found 3 tourTypes
+[12-Apr-2026 01:50:59 UTC] DEBUG: TourController index() called
+[12-Apr-2026 01:50:59 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[12-Apr-2026 01:50:59 UTC] DEBUG: Found 14 tours
+[12-Apr-2026 01:50:59 UTC] DEBUG: Found 5 categories
+[12-Apr-2026 01:50:59 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:09:50 UTC] Error fetching recent bookings: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:09:50 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:09:56 UTC] Error fetching recent bookings: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:09:56 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:10:07 UTC] Error fetching recent bookings: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:10:07 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:10:18 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:10:18 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:10:18 UTC] DEBUG: Found 14 tours
+[13-Apr-2026 01:10:18 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:10:18 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:10:21 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:10:21 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:10:21 UTC] DEBUG: Found 14 tours
+[13-Apr-2026 01:10:21 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:10:21 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:12:12 UTC] DEBUG: CategoryController index() - Found 5 categories
+[13-Apr-2026 01:12:30 UTC] DEBUG: CategoryController index() - Found 5 categories
+[13-Apr-2026 01:17:11 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:17:11 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:17:11 UTC] DEBUG: Found 14 tours
+[13-Apr-2026 01:17:11 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:17:11 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:17:36 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:17:36 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:17:36 UTC] DEBUG: Found 14 tours
+[13-Apr-2026 01:17:36 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:17:36 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:17:52 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:17:52 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:17:52 UTC] DEBUG: Found 14 tours
+[13-Apr-2026 01:17:52 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:17:52 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:18:10 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:18:10 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:18:10 UTC] DEBUG: Found 14 tours
+[13-Apr-2026 01:18:10 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:18:10 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:18:14 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:18:14 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:18:14 UTC] DEBUG: Found 13 tours
+[13-Apr-2026 01:18:14 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:18:14 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:18:22 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:18:22 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:18:22 UTC] DEBUG: Found 14 tours
+[13-Apr-2026 01:18:22 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:18:22 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:18:33 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:18:33 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:18:33 UTC] DEBUG: Found 13 tours
+[13-Apr-2026 01:18:33 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:18:33 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:18:41 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:18:41 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:18:41 UTC] DEBUG: Found 13 tours
+[13-Apr-2026 01:18:41 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:18:41 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:19:14 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:19:14 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:19:14 UTC] DEBUG: Found 13 tours
+[13-Apr-2026 01:19:14 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:19:14 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:19:42 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:19:42 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:19:42 UTC] DEBUG: Found 13 tours
+[13-Apr-2026 01:19:42 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:19:42 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:19:45 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:19:45 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:19:45 UTC] DEBUG: Found 13 tours
+[13-Apr-2026 01:19:45 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:19:45 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:20:50 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:20:50 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 1
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:20:50 UTC] DEBUG: Found 6 tours
+[13-Apr-2026 01:20:50 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:20:50 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:20:53 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:20:53 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 4
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:20:53 UTC] DEBUG: Found 1 tours
+[13-Apr-2026 01:20:53 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:20:53 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:20:55 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:20:55 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 5
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:20:55 UTC] DEBUG: Found 0 tours
+[13-Apr-2026 01:20:55 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:20:55 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:20:57 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:20:57 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 3
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:20:57 UTC] DEBUG: Found 2 tours
+[13-Apr-2026 01:20:57 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:20:57 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:20:57 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:20:57 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 2
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:20:57 UTC] DEBUG: Found 4 tours
+[13-Apr-2026 01:20:57 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:20:57 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:20:58 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:20:58 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:20:58 UTC] DEBUG: Found 13 tours
+[13-Apr-2026 01:20:58 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:20:58 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:21:56 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:21:56 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:21:56 UTC] DEBUG: Found 13 tours
+[13-Apr-2026 01:21:56 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:21:56 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:21:59 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:21:59 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:21:59 UTC] DEBUG: Found 13 tours
+[13-Apr-2026 01:21:59 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:21:59 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:30:13 UTC] DEBUG: CategoryController index() - Found 5 categories
