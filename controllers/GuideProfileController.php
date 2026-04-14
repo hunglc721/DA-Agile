@@ -56,6 +56,42 @@ class GuideProfileController
     }
 
     /**
+     * Hồ sơ cá nhân HDV
+     */
+    public function profile()
+    {
+        try {
+            $guideId = $_SESSION['guide_id'];
+            $guide = $this->guideModel->find($guideId);
+
+            if (!$guide) {
+                throw new Exception('Không tìm thấy thông tin hướng dẫn viên');
+            }
+
+            $assignedTours = $this->guideModel->getAssignedTours($guideId);
+            $completedTours = $this->guideModel->getTourCount($guideId);
+            $notifications = $this->userModel->fetchAll(
+                "SELECT * FROM notifications WHERE user_id = ? ORDER BY created_at DESC",
+                [$guide['user_id']]
+            );
+
+            view('main', [
+                'title' => 'Hồ Sơ Hướng Dẫn Viên',
+                'page' => 'guide_profile',
+                'content_view' => 'guides/profile/profile',
+                'guide' => $guide,
+                'assigned_tours_count' => count($assignedTours),
+                'completed_tours_count' => $completedTours,
+                'notifications_count' => count($notifications),
+                'assignedTours' => $assignedTours,
+            ]);
+        } catch (Exception $e) {
+            $_SESSION['error'] = 'Lỗi: ' . $e->getMessage();
+            redirect('guide_dashboard');
+        }
+    }
+
+    /**
      * Xem phản hồi khách hàng
      */
     public function customerFeedback()
