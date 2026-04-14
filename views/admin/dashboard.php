@@ -152,9 +152,9 @@
             <div class="card shadow border-0">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h6 class="m-0">
-                        <i class="fas fa-table"></i> 5 Booking gần nhất
+                        <i class="fas fa-table"></i> <?php echo count($bookings ?? []); ?> Booking gần nhất
                     </h6>
-                    <a href="#" class="btn btn-sm btn-light">Xem tất cả</a>
+                    <a href="index.php?action=bookings_index" class="btn btn-sm btn-light">Xem tất cả</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -164,91 +164,59 @@
                                     <th class="text-center">#ID</th>
                                     <th>Tên khách hàng</th>
                                     <th>Tên Tour</th>
-                                    <th class="text-center">Ngày khởi hành</th>
+                                    <th class="text-center">Số người</th>
                                     <th class="text-center">Trạng thái</th>
                                     <th class="text-center">Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Row 1 -->
-                                <tr>
-                                    <td class="text-center"><strong>#BK001</strong></td>
-                                    <td>Nguyễn Văn A</td>
-                                    <td>Tour Hà Nội - Hạ Long 3 ngày</td>
-                                    <td class="text-center">15/12/2025</td>
-                                    <td class="text-center">
-                                        <span class="badge bg-success">Paid</span>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#" class="btn btn-xs btn-outline-primary" data-bs-toggle="tooltip" title="Xem chi tiết">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                <?php
+                                if (!empty($bookings)) {
+                                    foreach ($bookings as $booking) {
+                                        $statusBg = 'secondary';
+                                        $statusText = 'Chưa xác định';
 
-                                <!-- Row 2 -->
-                                <tr>
-                                    <td class="text-center"><strong>#BK002</strong></td>
-                                    <td>Trần Thị B</td>
-                                    <td>Tour Sapa - Fansipan 4 ngày</td>
-                                    <td class="text-center">18/12/2025</td>
-                                    <td class="text-center">
-                                        <span class="badge bg-warning">Pending</span>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#" class="btn btn-xs btn-outline-primary" data-bs-toggle="tooltip" title="Xem chi tiết">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-
-                                <!-- Row 3 -->
-                                <tr>
-                                    <td class="text-center"><strong>#BK003</strong></td>
-                                    <td>Phạm Văn C</td>
-                                    <td>Tour Đà Nẵng - Hội An 2 ngày</td>
-                                    <td class="text-center">20/12/2025</td>
-                                    <td class="text-center">
-                                        <span class="badge bg-success">Paid</span>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#" class="btn btn-xs btn-outline-primary" data-bs-toggle="tooltip" title="Xem chi tiết">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-
-                                <!-- Row 4 -->
-                                <tr>
-                                    <td class="text-center"><strong>#BK004</strong></td>
-                                    <td>Lê Thị D</td>
-                                    <td>Tour Nha Trang - Đảo Hòn Mun 3 ngày</td>
-                                    <td class="text-center">22/12/2025</td>
-                                    <td class="text-center">
-                                        <span class="badge bg-danger">Cancelled</span>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#" class="btn btn-xs btn-outline-primary" data-bs-toggle="tooltip" title="Xem chi tiết">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-
-                                <!-- Row 5 -->
-                                <tr>
-                                    <td class="text-center"><strong>#BK005</strong></td>
-                                    <td>Đặng Văn E</td>
-                                    <td>Tour Huế - Phong Nha 5 ngày</td>
-                                    <td class="text-center">25/12/2025</td>
-                                    <td class="text-center">
-                                        <span class="badge bg-warning">Pending</span>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#" class="btn btn-xs btn-outline-primary" data-bs-toggle="tooltip" title="Xem chi tiết">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                        if ($booking['status'] === 'pending') {
+                                            $statusBg = 'warning';
+                                            $statusText = 'Chờ xử lý';
+                                        } elseif ($booking['status'] === 'confirmed') {
+                                            $statusBg = 'info';
+                                            $statusText = 'Xác nhận';
+                                        } elseif ($booking['status'] === 'paid') {
+                                            $statusBg = 'success';
+                                            $statusText = 'Đã thanh toán';
+                                        } elseif ($booking['status'] === 'completed') {
+                                            $statusBg = 'success';
+                                            $statusText = 'Hoàn tất';
+                                        } elseif ($booking['status'] === 'cancelled') {
+                                            $statusBg = 'danger';
+                                            $statusText = 'Đã hủy';
+                                        }
+                                        ?>
+                                        <tr>
+                                            <td class="text-center"><strong>#BK<?php echo str_pad($booking['id'], 3, '0', STR_PAD_LEFT); ?></strong></td>
+                                            <td><?php echo htmlspecialchars($booking['customer_name'] ?? 'N/A'); ?></td>
+                                            <td><?php echo htmlspecialchars($booking['tour_name'] ?? 'N/A'); ?></td>
+                                            <td class="text-center"><?php echo $booking['number_of_people'] ?? '1'; ?></td>
+                                            <td class="text-center">
+                                                <span class="badge bg-<?php echo $statusBg; ?>"><?php echo $statusText; ?></span>
+                                            </td>
+                                            <td class="text-center">
+                                                <a href="index.php?action=bookings_show&id=<?php echo $booking['id']; ?>" class="btn btn-xs btn-outline-primary" data-bs-toggle="tooltip" title="Xem chi tiết">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                    }
+                                } else {
+                                    ?>
+                                    <tr>
+                                        <td colspan="6" class="text-center text-muted py-3">Không có booking nào</td>
+                                    </tr>
+                                    <?php
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
@@ -268,79 +236,55 @@
                     <h6 class="m-0 font-weight-bold text-primary">
                         <i class="fas fa-calendar-alt"></i> Tour sắp diễn ra
                     </h6>
-                    <span class="badge bg-info">3 tuần tới</span>
+                    <span class="badge bg-info"><?php echo count($connectedTours ?? []); ?> tour</span>
                 </div>
                 <div class="card-body p-0">
                     <div class="list-group list-group-flush">
-                        <!-- Tour 1 -->
+                        <?php
+                        if (!empty($connectedTours)) {
+                            foreach ($connectedTours as $idx => $tour) {
+                                $icons = ['map-marker-alt', 'mountain', 'wave-square', 'chair', 'camera'];
+                                $colors = ['danger', 'warning', 'info', 'primary', 'success'];
+                                $icon = $icons[$idx % count($icons)];
+                                $color = $colors[$idx % count($colors)];
+                                $departureDate = new DateTime($tour['departure_date']);
+                                $formattedDate = $departureDate->format('d/m/Y');
+                        ?>
                         <div class="list-group-item px-4 py-3 border-bottom">
                             <div class="d-flex justify-content-between align-items-start">
                                 <div>
                                     <h6 class="mb-1 font-weight-bold text-gray-800">
-                                        <i class="fas fa-map-marker-alt text-danger"></i> Hà Nội - Hạ Long 3N2Đ
+                                        <i class="fas fa-<?php echo $icon; ?> text-<?php echo $color; ?>"></i>
+                                        <?php echo htmlspecialchars($tour['tour_name'] ?? 'N/A'); ?>
                                     </h6>
                                     <p class="small text-muted mb-1">
-                                        <i class="fas fa-users"></i> 24 khách | 
-                                        <i class="fas fa-bus"></i> 2 xe
+                                        <i class="fas fa-users"></i> <?php echo $tour['booking_count'] ?? '0'; ?> booking |
+                                        <i class="fas fa-bus"></i> <?php echo ($tour['booking_count'] > 0 ? ceil($tour['booking_count'] / 10) : '0'); ?> xe
                                     </p>
                                     <p class="small mb-0">
-                                        <span class="badge bg-success">Confirmed</span>
+                                        <span class="badge bg-success">Đang khởi hành</span>
                                     </p>
                                 </div>
                                 <div class="text-end">
                                     <small class="d-block text-muted mb-2">Khởi hành</small>
-                                    <strong class="d-block text-primary">15/12/2025</strong>
+                                    <strong class="d-block text-<?php echo $color; ?>"><?php echo $formattedDate; ?></strong>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Tour 2 -->
-                        <div class="list-group-item px-4 py-3 border-bottom">
-                            <div class="d-flex justify-content-between align-items-start">
-                                <div>
-                                    <h6 class="mb-1 font-weight-bold text-gray-800">
-                                        <i class="fas fa-mountain text-warning"></i> Sapa - Fansipan 4N3Đ
-                                    </h6>
-                                    <p class="small text-muted mb-1">
-                                        <i class="fas fa-users"></i> 18 khách | 
-                                        <i class="fas fa-bus"></i> 1 xe
-                                    </p>
-                                    <p class="small mb-0">
-                                        <span class="badge bg-warning">Pending</span>
-                                    </p>
-                                </div>
-                                <div class="text-end">
-                                    <small class="d-block text-muted mb-2">Khởi hành</small>
-                                    <strong class="d-block text-warning">18/12/2025</strong>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Tour 3 -->
+                        <?php
+                            }
+                        } else {
+                        ?>
                         <div class="list-group-item px-4 py-3">
-                            <div class="d-flex justify-content-between align-items-start">
-                                <div>
-                                    <h6 class="mb-1 font-weight-bold text-gray-800">
-                                        <i class="fas fa-wave-square text-info"></i> Đà Nẵng - Hội An 2N1Đ
-                                    </h6>
-                                    <p class="small text-muted mb-1">
-                                        <i class="fas fa-users"></i> 32 khách | 
-                                        <i class="fas fa-bus"></i> 2 xe
-                                    </p>
-                                    <p class="small mb-0">
-                                        <span class="badge bg-success">Confirmed</span>
-                                    </p>
-                                </div>
-                                <div class="text-end">
-                                    <small class="d-block text-muted mb-2">Khởi hành</small>
-                                    <strong class="d-block text-primary">20/12/2025</strong>
-                                </div>
-                            </div>
+                            <p class="text-muted text-center mb-0">Chưa có tour khởi hành trong tương lai</p>
                         </div>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class="card-footer bg-light text-center py-2">
-                    <a href="#" class="small text-primary font-weight-bold">
+                    <a href="index.php?action=departures_index" class="small text-primary font-weight-bold">
                         Xem tất cả lịch biểu <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
@@ -446,421 +390,120 @@
             </div>
         </div>
     </div>
-</div>
 
-<!-- Custom CSS for Dashboard -->
-<style>
-    /* ============================================
-       1. CARD STYLES - Các thẻ chỉ số
-       ============================================ */
-    
-    .card {
-        border: none;
-        border-radius: 0.5rem;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-    }
-
-    /* Border left cho metric cards */
-    .border-left-primary {
-        border-left: 4px solid #007bff !important;
-    }
-
-    .border-left-warning {
-        border-left: 4px solid #ffc107 !important;
-    }
-
-    .border-left-info {
-        border-left: 4px solid #17a2b8 !important;
-    }
-
-    .border-left-success {
-        border-left: 4px solid #28a745 !important;
-    }
-
-    /* Icon colors in metric cards */
-    .text-primary {
-        color: #007bff !important;
-    }
-
-    .text-warning {
-        color: #ffc107 !important;
-    }
-
-    .text-info {
-        color: #17a2b8 !important;
-    }
-
-    .text-success {
-        color: #28a745 !important;
-    }
-
-    /* ============================================
-       2. CHART CONTAINER STYLES
-       ============================================ */
-
-    .card {
-        transition: all 0.3s ease;
-        border: none;
-        border-radius: 0.5rem;
-    }
-
-    .card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.15) !important;
-    }
-
-    .card-header {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-bottom: none;
-        padding: 1.5rem 1.25rem;
-        border-radius: 0.5rem 0.5rem 0 0;
-    }
-
-    .card-header h6 {
-        color: white;
-        font-weight: 600;
-        margin: 0;
-    }
-
-    .card-header .dropdown-toggle {
-        color: white !important;
-        border-color: rgba(255, 255, 255, 0.5);
-    }
-
-    .card-header .dropdown-toggle:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-        border-color: white;
-    }
-
-    /* Chart container styling */
-    .chart-container {
-        position: relative;
-        height: 300px;
-        padding: 20px;
-    }
-
-    canvas {
-        max-width: 100%;
-    }
-
-    .card-body {
-        padding: 1.5rem;
-    }
-
-    /* ============================================
-       3. TABLE STYLES
-       ============================================ */
-
-    .table-hover tbody tr:hover {
-        background-color: #f8f9fa;
-        transition: background-color 0.2s ease;
-    }
-
-    .table th {
-        font-weight: 600;
-        color: #495057;
-        font-size: 0.875rem;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-
-    .table td {
-        vertical-align: middle;
-        font-size: 0.95rem;
-    }
-
-    .btn-xs {
-        padding: 0.375rem 0.5rem;
-        font-size: 0.75rem;
-    }
-
-    /* ============================================
-       4. BADGE STYLES
-       ============================================ */
-
-    .badge {
-        padding: 0.5rem 0.75rem;
-        font-weight: 500;
-        border-radius: 0.35rem;
-        font-size: 0.8rem;
-    }
-
-    .badge.bg-success {
-        background-color: #28a745 !important;
-    }
-
-    .badge.bg-warning {
-        background-color: #ffc107 !important;
-        color: #212529 !important;
-    }
-
-    .badge.bg-danger {
-        background-color: #dc3545 !important;
-    }
-
-    /* ============================================
-       5. TYPOGRAPHY
-       ============================================ */
-
-    .h3 {
-        font-weight: 700;
-        color: #2e3338;
-    }
-
-    .text-muted {
-        color: #6c757d !important;
-    }
-
-    .text-gray-800 {
-        color: #2e3338 !important;
-    }
-
-    .font-weight-bold {
-        font-weight: 700;
-    }
-
-    .text-uppercase {
-        text-transform: uppercase;
-        font-size: 0.8rem;
-        letter-spacing: 0.5px;
-    }
-
-    .text-xs {
-        font-size: 0.8rem;
-    }
-
-    /* ============================================
-       6. RESPONSIVE ADJUSTMENTS
-       ============================================ */
-
-    @media (max-width: 768px) {
-        .container-fluid {
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-
-        .col-xl-3 {
-            margin-bottom: 1rem;
-        }
-
-        .col-xl-8,
-        .col-xl-4 {
-            margin-bottom: 1rem;
-        }
-
-        .table {
-            font-size: 0.85rem;
-        }
-
-        .table th {
-            font-size: 0.75rem;
-        }
-    }
-
-    /* ============================================
-       7. SHADOW UTILITIES
-       ============================================ */
-
-    .shadow-sm {
-        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-    }
-
-    .shadow-sm:hover {
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-    }
-
-    /* ============================================
-       8. SPACING & PADDING
-       ============================================ */
-
-    .py-2 {
-        padding-top: 0.5rem !important;
-        padding-bottom: 0.5rem !important;
-    }
-
-    .px-4 {
-        padding-left: 1.5rem !important;
-        padding-right: 1.5rem !important;
-    }
-
-    .my-4 {
-        margin-top: 1.5rem !important;
-        margin-bottom: 1.5rem !important;
-    }
-
-    .mb-4 {
-        margin-bottom: 1.5rem !important;
-    }
-
-    .mb-0 {
-        margin-bottom: 0 !important;
-    }
-
-    .mt-1 {
-        margin-top: 0.25rem !important;
-    }
-
-    .mt-2 {
-        margin-top: 0.5rem !important;
-    }
-
-    .small {
-        font-size: 0.875rem;
-    }
-
-    /* ============================================
-       9. LIST GROUP STYLES - Upcoming Tours & Activity
-       ============================================ */
-
-    .list-group-item {
-        background-color: #fff;
-        border: none;
-        transition: background-color 0.2s ease;
-    }
-
-    .list-group-item:hover {
-        background-color: #f8f9fa;
-    }
-
-    .list-group-item.border-bottom {
-        border-bottom: 1px solid #dee2e6 !important;
-    }
-
-    /* ============================================
-       10. ACTIVITY FEED STYLES
-       ============================================ */
-
-    .activity-feed {
-        padding: 0;
-    }
-
-    .activity-item {
-        border-bottom: 1px solid #dee2e6;
-        transition: background-color 0.2s ease;
-    }
-
-    .activity-item:last-child {
-        border-bottom: none;
-    }
-
-    .activity-item:hover {
-        background-color: #f8f9fa;
-    }
-
-    .activity-icon {
-        min-width: 2.5rem;
-        text-align: center;
-    }
-
-    .activity-icon i {
-        font-size: 1.25rem;
-        width: 2rem;
-        height: 2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #f8f9fa;
-        border-radius: 50%;
-    }
-
-    .activity-icon i.text-success {
-        background-color: rgba(40, 167, 69, 0.1);
-        color: #28a745 !important;
-    }
-
-    .activity-icon i.text-primary {
-        background-color: rgba(0, 123, 255, 0.1);
-        color: #007bff !important;
-    }
-
-    .activity-icon i.text-warning {
-        background-color: rgba(255, 193, 7, 0.1);
-        color: #ffc107 !important;
-    }
-
-    .activity-icon i.text-danger {
-        background-color: rgba(220, 53, 69, 0.1);
-        color: #dc3545 !important;
-    }
-
-    .activity-icon i.text-info {
-        background-color: rgba(23, 162, 184, 0.1);
-        color: #17a2b8 !important;
-    }
-
-    .activity-content h6 {
-        color: #2e3338;
-        font-weight: 600;
-    }
-
-    /* ============================================
-       11. TOUR CARD STYLES - Upcoming Tours
-       ============================================ */
-
-    .list-group-item h6 {
-        color: #2e3338;
-        font-weight: 600;
-        font-size: 0.95rem;
-    }
-
-    .list-group-item .badge {
-        font-size: 0.7rem;
-        padding: 0.4rem 0.6rem;
-    }
-
-    /* ============================================
-       12. TEXT UTILITIES
-       ============================================ */
-
-    .me-3 {
-        margin-right: 1rem !important;
-    }
-
-    .d-block {
-        display: block;
-    }
-
-    .text-end {
-        text-align: right;
-    }
-
-    /* ============================================
-       13. ENHANCED RESPONSIVE
-       ============================================ */
-
-    @media (max-width: 1200px) {
-        .col-xl-6 {
-            flex: 0 0 100%;
-            max-width: 100%;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .activity-item,
-        .list-group-item {
-            padding: 0.75rem 1rem !important;
-        }
-
-        .activity-icon {
-            min-width: 2rem;
-        }
-
-        .activity-icon i {
-            font-size: 1rem;
-            width: 1.75rem;
-            height: 1.75rem;
-        }
-
-        .list-group-item h6 {
-            font-size: 0.85rem;
-        }
-    }
-</style>
+    <!-- ============================================
+         5. TOUR NAMES LIST - Danh sách tên tour
+         ============================================ -->
+    <div class="row mb-4">
+        <div class="col-xl-6 mb-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-white border-bottom">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        <i class="fas fa-list"></i> Danh sách tour
+                    </h6>
+                </div>
+                <div class="card-body p-0">
+                    <div class="list-group list-group-flush">
+                        <?php
+                        if (!empty($tourList)) {
+                            foreach ($tourList as $tour) {
+                        ?>
+                        <div class="list-group-item px-4 py-3 border-bottom">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1 font-weight-bold text-gray-800">
+                                        <i class="fas fa-route text-primary"></i>
+                                        <?php echo htmlspecialchars($tour['name'] ?? 'N/A'); ?>
+                                    </h6>
+                                    <p class="small text-muted mb-0">
+                                        <i class="fas fa-clock"></i> <?php echo $tour['duration'] ?? '0'; ?> ngày |
+                                        <i class="fas fa-map-pin"></i> <?php echo htmlspecialchars($tour['start_location'] ?? 'N/A'); ?>
+                                    </p>
+                                </div>
+                                <div class="text-end">
+                                    <strong class="text-primary d-block"><?php echo number_format($tour['price'] ?? 0, 0, ',', '.'); ?>₫</strong>
+                                    <small class="text-muted">Giá cơ bản</small>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                            }
+                        } else {
+                        ?>
+                        <div class="list-group-item px-4 py-3">
+                            <p class="text-muted text-center mb-0">Chưa có tour nào</p>
+                        </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+                <div class="card-footer bg-light text-center py-2">
+                    <a href="index.php?action=tours_index" class="small text-primary font-weight-bold">
+                        Xem tất cả tour <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Connected Tours with Dates (6 cột) -->
+        <div class="col-xl-6 mb-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-white border-bottom">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        <i class="fas fa-calendar-check"></i> Tour đã kết nối
+                    </h6>
+                </div>
+                <div class="card-body p-0">
+                    <div class="list-group list-group-flush">
+                        <?php
+                        if (!empty($connectedTours)) {
+                            foreach ($connectedTours as $tour) {
+                                $departureDate = new DateTime($tour['departure_date']);
+                                $formattedDate = $departureDate->format('d/m/Y');
+                        ?>
+                        <div class="list-group-item px-4 py-3 border-bottom">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1 font-weight-bold text-gray-800">
+                                        <i class="fas fa-bus text-info"></i>
+                                        <?php echo htmlspecialchars($tour['tour_name'] ?? 'N/A'); ?>
+                                    </h6>
+                                    <p class="small text-muted mb-1">
+                                        <i class="fas fa-calendar"></i> Khởi hành: <strong><?php echo $formattedDate; ?></strong>
+                                    </p>
+                                    <p class="small mb-0">
+                                        <i class="fas fa-ticket-alt"></i> <?php echo $tour['booking_count'] ?? '0'; ?> booking
+                                    </p>
+                                </div>
+                                <div class="text-end">
+                                    <span class="badge bg-success">Kết nối</span>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                            }
+                        } else {
+                        ?>
+                        <div class="list-group-item px-4 py-3">
+                            <p class="text-muted text-center mb-0">Chưa có tour kết nối nào</p>
+                        </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+                <div class="card-footer bg-light text-center py-2">
+                    <a href="index.php?action=departures_index" class="small text-primary font-weight-bold">
+                        Xem tất cả lịch trình <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- CSS loaded in views/layouts/main.php -->
 
 <!-- Script để khởi tạo Charts (nếu Chart.js được load) -->
 <script src="assets/vendor/chart.js/Chart.min.js"></script>

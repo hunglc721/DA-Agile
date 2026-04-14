@@ -1,0 +1,107 @@
+/* Frontend Fonts Fix - Override problematic font declarations */
+
+/* Disable web fonts that fail to load - use system fonts instead */
+@font-face {
+  font-family: 'Icons';
+  src: none !important;
+}
+
+@font-face {
+  font-family: 'Flaticon';
+  src: none !important;
+}
+
+@font-face {
+  font-family: 'Ionicons';
+  src: none !important;
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src: none !important;
+}
+
+/* Disable icomoon font that's not available - Use Unicode stars instead */
+[class^="icon-"], [class*=" icon-"] {
+  font-family: Arial, sans-serif !important;
+}
+
+/* Star rating icons styling */
+.star-icon,
+.star-icon-empty {
+  display: inline-block;
+  font-size: 1.2em;
+  font-weight: normal;
+  margin: 0 2px;
+}
+
+.star-icon {
+  color: #f85959;
+}
+
+.star-icon-empty {
+  color: #ddd;
+}
+
+/* Star rating filter - Red color for star rating forms */
+.star-rating .icon-star:before,
+.star-rating i.icon-star:before {
+  color: #f85959 !important;
+}
+
+.star-rating .icon-star-o:before,
+.star-rating i.icon-star-o:before {
+  color: #ddd !important;
+}
+
+/* Star rating layout */
+.star-rating {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.star-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.star-rating .form-check-label {
+  margin: 0;
+  display: flex;
+  gap: 5px;
+  cursor: pointer;
+}
+
+/* Disable Flaticon font that's not available */
+[class*="flaticon"] {
+  font-family: Arial, sans-serif !important;
+}
+
+/* Disable ionicons font that's not available - use Font Awesome instead if available */
+.ion, [class*="ion-"] {
+  font-family: Arial, sans-serif !important;
+}
+
+/* Disable Open Iconic */
+.oi {
+  font-family: Arial, sans-serif !important;
+}
+
+/* Create placeholder background for missing images */
+img[src*="destination-"],
+img[src*="hotel-"],
+img[src*="restaurant-"],
+img[src*="person_"],
+img[src*="image_"],
+img[src*="bg_"] {
+  background-color: #e9ecef;
+  min-height: 200px;
+  display: block;
+}
+
+/* Fix any broken background images */
+.hero-wrap {
+  background-color: #e9ecef !important;
+}

@@ -1,16 +1,19 @@
 <div class="container-fluid">
     <!-- DEBUG: Tours Data -->
-    <?php 
+    <?php
     echo "<!-- DEBUG: tours count = " . count($tours ?? []) . " -->";
     echo "<!-- DEBUG: tours = " . print_r($tours, true) . " -->";
     ?>
-    
+
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Danh Sách Tour</h1>
         <a href="index.php?action=tours_create" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
             <i class="fas fa-plus fa-sm text-white-50"></i> Thêm Tour Mới
         </a>
+        <a href="index.php?action=tours_trash" class="btn btn-outline-secondary">
+    <i class="fas fa-trash"></i> Thùng rác
+</a>
     </div>
 
     <!-- Filter Section -->
@@ -18,7 +21,7 @@
         <div class="card-body">
             <form method="GET" action="index.php?action=tours" class="form-inline">
                 <input type="hidden" name="action" value="tours">
-                
+
                 <!-- Search Box -->
                 <div class="form-group mr-3">
                     <input type="text" name="search" class="form-control" placeholder="Tìm kiếm tour..." value="<?= htmlspecialchars($filters['search'] ?? '') ?>">
@@ -85,9 +88,9 @@
                 </a>
                 <?php if (isset($tourTypes) && is_array($tourTypes)): ?>
                     <?php foreach ($tourTypes as $type): ?>
-                        <a href="index.php?action=tours&tour_type=<?= urlencode($type['code']) ?>" 
-                           class="btn btn-sm btn-outline-info <?= ($filters['tour_type'] ?? null) == $type['code'] ? 'active' : '' ?>"
-                           style="border-color: <?= $type['color'] ?>; color: <?= $type['color'] ?>;">
+                        <a href="index.php?action=tours&tour_type=<?= urlencode($type['code']) ?>"
+                            class="btn btn-sm btn-outline-info <?= ($filters['tour_type'] ?? null) == $type['code'] ? 'active' : '' ?>"
+                            style="border-color: <?= $type['color'] ?>; color: <?= $type['color'] ?>;">
                             <i class="<?= $type['icon'] ?>"></i> <?= htmlspecialchars($type['name']) ?>
                         </a>
                     <?php endforeach; ?>
@@ -101,8 +104,8 @@
                 </a>
                 <?php if (isset($categories) && is_array($categories)): ?>
                     <?php foreach ($categories as $cat): ?>
-                        <a href="index.php?action=tours&category_id=<?= $cat['id'] ?>" 
-                           class="btn btn-sm btn-outline-warning <?= ($filters['category_id'] ?? null) == $cat['id'] ? 'active' : '' ?>">
+                        <a href="index.php?action=tours&category_id=<?= $cat['id'] ?>"
+                            class="btn btn-sm btn-outline-warning <?= ($filters['category_id'] ?? null) == $cat['id'] ? 'active' : '' ?>">
                             <i class="fas fa-map"></i> <?= htmlspecialchars($cat['name']) ?>
                         </a>
                     <?php endforeach; ?>
@@ -115,7 +118,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
             <h6 class="m-0 font-weight-bold text-primary">
-                <?php 
+                <?php
                 if (!empty($filters['category_id'])):
                     $catName = '';
                     foreach ($categories as $cat) {
@@ -135,7 +138,7 @@
         <div class="card-body">
             <?php if (empty($tours)): ?>
                 <div class="alert alert-info" role="alert">
-                    <i class="fas fa-info-circle"></i> Không tìm thấy tour nào. 
+                    <i class="fas fa-info-circle"></i> Không tìm thấy tour nào.
                     <a href="index.php?action=tours_create" class="alert-link">Tạo tour mới</a>
                 </div>
             <?php else: ?>
@@ -203,14 +206,14 @@
                                         </span>
                                     </td>
                                     <td class="text-center">
-                                        <?php 
-                                        $statusClass = match($tour['status']) {
+                                        <?php
+                                        $statusClass = match ($tour['status']) {
                                             'active' => 'badge-success',
                                             'inactive' => 'badge-danger',
                                             'completed' => 'badge-secondary',
                                             default => 'badge-warning'
                                         };
-                                        $statusText = match($tour['status']) {
+                                        $statusText = match ($tour['status']) {
                                             'active' => 'Hoạt Động',
                                             'inactive' => 'Không Hoạt Động',
                                             'completed' => 'Đã Hoàn Thành',
@@ -258,7 +261,7 @@
                 <div class="card-body">
                     <div class="text-success font-weight-bold text-uppercase mb-1">Đang Hoạt Động</div>
                     <div class="h3 mb-0 text-gray-800">
-                        <?php 
+                        <?php
                         $activeCount = 0;
                         foreach ($tours as $t) {
                             if ($t['status'] == 'active') $activeCount++;
@@ -274,7 +277,7 @@
                 <div class="card-body">
                     <div class="text-info font-weight-bold text-uppercase mb-1">Chỗ Còn Trống</div>
                     <div class="h3 mb-0 text-gray-800">
-                        <?php 
+                        <?php
                         $totalSlots = 0;
                         foreach ($tours as $t) {
                             $totalSlots += $t['available_slots'] ?? 0;
@@ -290,7 +293,7 @@
                 <div class="card-body">
                     <div class="text-warning font-weight-bold text-uppercase mb-1">Tổng Doanh Thu (Dự Kiến)</div>
                     <div class="h3 mb-0 text-gray-800">
-                        <?php 
+                        <?php
                         $totalRevenue = 0;
                         foreach ($tours as $t) {
                             $totalRevenue += ($t['price'] ?? 0) * (($t['max_capacity'] ?? 0) - ($t['available_slots'] ?? 0));
@@ -312,7 +315,9 @@
     // Initialize DataTable
     $(document).ready(function() {
         $('#dataTable').DataTable({
-            "order": [[0, "desc"]],
+            "order": [
+                [0, "desc"]
+            ],
             "language": {
                 "lengthMenu": "Hiển thị _MENU_ bản ghi",
                 "search": "Tìm kiếm:",

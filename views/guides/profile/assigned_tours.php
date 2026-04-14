@@ -146,6 +146,9 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <a href="#" id="view-detail-link" class="btn btn-primary" target="_blank">
+                    <i class="fas fa-expand"></i> Xem Chi Tiết Đầy Đủ
+                </a>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
             </div>
         </div>
@@ -160,10 +163,12 @@ $(document).ready(function() {
         var modal = $('#customersModal');
         var modalContent = $('#modal-customer-list-content');
         var modalLabel = $('#customersModalLabel');
+        var viewDetailLink = $('#view-detail-link');
 
         // Hiển thị trạng thái đang tải
         modalLabel.html('<i class="fas fa-users"></i> Danh Sách Khách Hàng');
         modalContent.html('<div class="text-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>');
+        viewDetailLink.attr('href', '?action=guide_tour_customers_detail&id=' + tourId);
         modal.modal('show');
 
         // Gọi API để lấy dữ liệu
@@ -173,20 +178,50 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(data) {
                 if (data.success) {
-                    modalLabel.html('<i class="fas fa-users"></i> Danh Sách Khách Hàng: ' + data.tour.name);
+                    modalLabel.html('<i class="fas fa-users"></i> Danh Sách Khách Hàng: ' + data.tour.name + ' (' + (data.customers ? data.customers.length : 0) + ')');
                     var html = '<p class="alert alert-info">Chưa có khách hàng nào được xác nhận cho tour này.</p>';
                     if (data.customers && data.customers.length > 0) {
-                        html = '<table class="table table-sm table-bordered"><thead><tr><th>Họ Tên</th><th>Điện Thoại</th><th>Email</th><th>Số Người</th><th>Yêu Cầu</th></tr></thead><tbody>';
+                        html = '<div class="customer-list">';
                         $.each(data.customers, function(index, customer) {
-                            html += '<tr>' +
-                                '<td>' + (customer.full_name || '') + '</td>' +
-                                '<td>' + (customer.phone || 'N/A') + '</td>' +
-                                '<td>' + (customer.email || 'N/A') + '</td>' +
-                                '<td>' + (customer.number_of_people || 0) + '</td>' +
-                                '<td>' + (customer.special_requests || 'Không') + '</td>' +
-                                '</tr>';
+                            var statusBadgeClass = customer.booking_status === 'confirmed' ? 'success' : 'warning';
+                            var checkinBadgeClass = 'secondary';
+                            var checkinText = '⏳ Chưa Check-In';
+
+                            if (customer.checkin_status === 'checked_in') {
+                                checkinBadgeClass = 'success';
+                                checkinText = '✓ Đã Check-In';
+                            } else if (customer.checkin_status === 'absent') {
+                                checkinBadgeClass = 'danger';
+                                checkinText = '✗ Vắng Mặt';
+                            }
+
+                            html += '<div class="card mb-3 border-left-info">' +
+                                '<div class="card-body">' +
+                                '<div class="d-flex justify-content-between align-items-start mb-2">' +
+                                '<h6 class="mb-0"><i class="fas fa-user-circle"></i> ' + (customer.full_name || 'N/A') + '</h6>' +
+                                '<div class="badge-group">' +
+                                '<span class="badge badge-' + statusBadgeClass + ' mr-1">' + (customer.booking_status || 'N/A') + '</span>' +
+                                '<span class="badge badge-' + checkinBadgeClass + '">' + checkinText + '</span>' +
+                                '</div>' +
+                                '</div>' +
+                                '<hr class="my-2">' +
+                                '<div class="row">' +
+                                '<div class="col-md-6">' +
+                                '<small class="d-block text-muted mb-1"><i class="fas fa-phone"></i> <strong>Điện Thoại:</strong> ' + (customer.phone || 'N/A') + '</small>' +
+                                '<small class="d-block text-muted mb-1"><i class="fas fa-envelope"></i> <strong>Email:</strong> ' + (customer.email || 'N/A') + '</small>' +
+                                '<small class="d-block text-muted"><i class="fas fa-map-marker-alt"></i> <strong>Địa Chỉ:</strong> ' + (customer.address ? customer.address.substring(0, 30) + '...' : 'N/A') + '</small>' +
+                                '</div>' +
+                                '<div class="col-md-6">' +
+                                '<small class="d-block text-muted mb-1"><i class="fas fa-users"></i> <strong>Số Người:</strong> ' + (customer.number_of_people || 1) + ' người</small>' +
+                                '<small class="d-block text-muted mb-1"><i class="fas fa-credit-card"></i> <strong>Tổng Tiền:</strong> ' + (customer.total_price ? new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(customer.total_price) : 'N/A') + '</small>' +
+                                '<small class="d-block text-muted"><i class="fas fa-calendar"></i> <strong>Đặt Ngày:</strong> ' + (customer.booking_date ? new Date(customer.booking_date).toLocaleDateString('vi-VN') : 'N/A') + '</small>' +
+                                '</div>' +
+                                '</div>' +
+                                (customer.special_requests ? '<div class="mt-2 alert alert-warning alert-sm p-2 mb-0"><small><strong>Yêu Cầu Đặc Biệt:</strong> ' + customer.special_requests + '</small></div>' : '') +
+                                '</div>' +
+                                '</div>';
                         });
-                        html += '</tbody></table>';
+                        html += '</div>';
                     }
                     modalContent.html(html);
                 } else {
@@ -200,78 +235,3 @@ $(document).ready(function() {
     });
 });
 </script>
-<style>
-/* Card Styling */
-.hover-card {
-    transition: all 0.3s ease;
-    border-radius: 10px;
-}
-
-.hover-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
-}
-
-.card-header.bg-gradient {
-    border-radius: 10px 10px 0 0;
-    padding: 1.25rem;
-}
-
-/* Button Styling */
-.btn-outline-info:hover {
-    background-color: #17a2b8;
-    color: white;
-}
-
-.btn-outline-warning:hover {
-    background-color: #ffc107;
-    color: white;
-}
-
-.btn-outline-danger:hover {
-    background-color: #dc3545;
-    color: white;
-}
-
-.btn-outline-success:hover {
-    background-color: #28a745;
-    color: white;
-}
-
-.btn-outline-secondary:hover {
-    background-color: #6c757d;
-    color: white;
-}
-
-.btn-sm {
-    font-weight: 500;
-    transition: all 0.2s ease;
-}
-
-.btn-sm:hover {
-    transform: translateY(-2px);
-}
-
-/* Price Section */
-.price-section {
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-}
-
-/* Card Footer */
-.card-footer {
-    padding: 1rem;
-    border-top: 1px solid #e3e6f0;
-    border-radius: 0 0 10px 10px;
-}
-
-/* Responsive Grid */
-@media (max-width: 768px) {
-    .row > .col-md-6 {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-}
-</style>

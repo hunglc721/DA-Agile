@@ -1,0 +1,20 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /DA1-10-main/
+
+    # Allow direct access to existing files and directories
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Ignore favicon and robots.txt requests
+    RewriteRule ^(favicon\.ico|robots\.txt)$ - [L]
+
+    # Allow direct access to common image, CSS, JS extensions without routing
+    RewriteRule \.(jpg|jpeg|png|gif|webp|svg|css|js|pdf|zip|txt)$ - [L]
+
+    # Route everything (except CSS, JS, images) to index.php
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ /DA1-10-main/index.php?action=$1 [QSA,L]
+</IfModule>
