@@ -57,6 +57,62 @@ class ClientController
     }
 
     /**
+     * Xử lý submit form liên hệ
+     */
+    public function submitContact()
+    {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            redirect('client_contact');
+        }
+
+        $errors = [];
+
+        // Validate
+        $name = clean($_POST['name'] ?? '');
+        $email = clean($_POST['email'] ?? '');
+        $phone = clean($_POST['phone'] ?? '');
+        $subject = clean($_POST['subject'] ?? '');
+        $message = clean($_POST['message'] ?? '');
+
+        if (empty($name) || strlen($name) < 2) {
+            $errors['name'] = 'Vui lòng nhập họ tên hợp lệ';
+        }
+
+        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors['email'] = 'Email không hợp lệ';
+        }
+
+        if (empty($phone) || !preg_match('/^[0-9]{10,11}$/', $phone)) {
+            $errors['phone'] = 'Số điện thoại phải có 10-11 chữ số';
+        }
+
+        if (empty($subject) || strlen($subject) < 3) {
+            $errors['subject'] = 'Chủ đề phải có ít nhất 3 ký tự';
+        }
+
+        if (empty($message) || strlen($message) < 10) {
+            $errors['message'] = 'Nội dung phải có ít nhất 10 ký tự';
+        }
+
+        if (!empty($errors)) {
+            $_SESSION['errors'] = $errors;
+            redirect('client_contact');
+        }
+
+        try {
+            // Lưu liên hệ vào database (nếu có table contacts)
+            // Hoặc gửi email (nếu cần)
+            // Tạm thời chỉ hiển thị success message
+
+            $_SESSION['success'] = 'Cảm ơn bạn! Chúng tôi sẽ liên hệ lại trong 24 giờ.';
+        } catch (Exception $e) {
+            $_SESSION['errors'] = ['general' => 'Lỗi: ' . $e->getMessage()];
+        }
+
+        redirect('client_contact');
+    }
+
+    /**
      * Hiển thị trang Hotel Single
      */
     public function hotelSingle()
@@ -139,6 +195,15 @@ class ClientController
                 LIMIT 10";
         $bookings = $bookingModel->fetchAll($sql, [$user['id']]);
 
+        // Lấy các booking chờ xác nhận
+        $sqlPending = "SELECT b.*, t.name as tour_name, t.price
+                       FROM bookings b
+                       JOIN tours t ON b.tour_id = t.id
+                       WHERE b.user_id = ? AND b.status = 'pending'
+                       ORDER BY b.created_at DESC
+                       LIMIT 5";
+        $pendingBookings = $bookingModel->fetchAll($sqlPending, [$user['id']]);
+
         // Tính toán thống kê
         $sqlStats = "SELECT
                     COUNT(*) as total_bookings,
@@ -155,6 +220,7 @@ class ClientController
             'page' => 'client/dashboard',
             'user' => $user,
             'bookings' => $bookings,
+            'pendingBookings' => $pendingBookings,
             'stats' => $stats
         ]);
     }
@@ -412,6 +478,84 @@ class ClientController
             'booking' => $booking,
             'customerList' => $customerList
         ]);
+    }
+
+    /**
+     * Xác nhận đơn đặt tour (với thanh toán)
+     */
+    public function confirmBooking()
+    {
+        requireClient();
+
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            redirect('client_dashboard');
+        }
+
+        $user = getCurrentUser();
+        $bookingId = (int)($_POST['booking_id'] ?? 0);
+        $paymentMethod = clean($_POST['payment_method'] ?? 'card');
+        $bookingModel = new Booking();
+
+        // Lấy booking và kiểm tra quyền
+        $sql = "SELECT * FROM bookings WHERE id = ? AND user_id = ?";
+        $booking = $bookingModel->fetchOne($sql, [$bookingId, $user['id']]);
+
+        if (!$booking) {
+            $_SESSION['error'] = 'Không tìm thấy đơn đặt tour';
+            redirect('client_dashboard');
+        }
+
+        // Chỉ có thể xác nhận những booking ở trạng thái pending
+        if ($booking['status'] !== 'pending') {
+            $_SESSION['error'] = 'Đơn đặt tour này không thể xác nhận lúc này';
+            redirect('client_dashboard');
+        }
+
+        try {
+            // Xử lý thanh toán (tạm thời: giả lập thanh toán thành công)
+            $paymentSuccess = $this->processPayment($bookingId, $booking['total_price'], $paymentMethod);
+
+            if ($paymentSuccess) {
+                // Cập nhật status thành confirmed
+                $updateSql = "UPDATE bookings SET status = 'confirmed' WHERE id = ?";
+                $bookingModel->query($updateSql, [$bookingId]);
+
+                $_SESSION['success'] = 'Thanh toán và xác nhận đơn đặt tour thành công! Mã booking: #' . $bookingId;
+            } else {
+                $_SESSION['error'] = 'Thanh toán thất bại. Vui lòng thử lại!';
+            }
+        } catch (Exception $e) {
+            $_SESSION['error'] = 'Lỗi: ' . $e->getMessage();
+        }
+
+        redirect('client_dashboard');
+    }
+
+    /**
+     * Xử lý thanh toán
+     */
+    private function processPayment($bookingId, $amount, $paymentMethod)
+    {
+        // Tạo record thanh toán trong database (nếu có)
+        // Tạm thời: giả lập thanh toán thành công
+
+        // Validation based on payment method
+        if ($paymentMethod === 'card') {
+            // Card validation (client-side validation đã bao quát)
+            // Server-side: có thể call thêm payment gateway (Stripe, PayPal, etc.)
+            return true; // Giả lập thành công
+
+        } elseif ($paymentMethod === 'bank') {
+            // Chuyển khoản: cần xác nhận thủ công hoặc tích hợp API ngân hàng
+            // Tạm thời: giả lập chờ xác nhận
+            return true; // Giả lập thành công
+
+        } elseif ($paymentMethod === 'wallet') {
+            // Ví điện tử: có thể tích hợp Momo API, ZaloPay API
+            return true; // Giả lập thành công
+        }
+
+        return false;
     }
 }
 ?>
