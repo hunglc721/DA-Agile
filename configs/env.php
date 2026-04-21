@@ -1,5 +1,5 @@
 <?php
-define('BASE_APP_URL', '/Agile/');
+define('BASE_APP_URL', '/DA-Agile-main/');
 
 define('PATH_ROOT', __DIR__ . '/../');
 define('PATH_VIEW', PATH_ROOT . 'views/');
