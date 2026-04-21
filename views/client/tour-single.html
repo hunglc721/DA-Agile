@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <title>Du Lịch Thông Minh - Chi tiết tour</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/frontend/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/frontend/animate.css">
+
+    <link rel="stylesheet" href="/assets/css/frontend/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/css/frontend/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/css/frontend/magnific-popup.css">
+
+    <link rel="stylesheet" href="/assets/css/frontend/aos.css">
+
+    <link rel="stylesheet" href="/assets/css/frontend/ionicons.min.css">
+
+    <link rel="stylesheet" href="/assets/css/frontend/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/css/frontend/jquery.timepicker.css">
+
+
+    <link rel="stylesheet" href="/assets/css/frontend/flaticon.css">
+    <link rel="stylesheet" href="/assets/css/frontend/icomoon.css">
+    <link rel="stylesheet" href="/assets/css/frontend/style.css">
+    <link rel="stylesheet" href="/assets/css/frontend/fonts-fix.css">
+  </head>
+  <body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Du Lịch Thông Minh</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="index.html" class="nav-link">Trang chủ</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">Giới thiệu</a></li>
+          <li class="nav-item active"><a href="tour.html" class="nav-link">Du lịch</a></li>
+          <li class="nav-item"><a href="hotel.html" class="nav-link">Khách sạn</a></li>
+          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Liên hệ</a></li>
+          <li class="nav-item cta"><a href="/index.php?action=login" class="nav-link"><span><i class="icon-sign-in"></i> Đăng nhập</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    <!-- END nav -->
+
+    <div class="hero-wrap js-fullheight" style="background-image: url('/assets/css/frontend/images/bg_2.jpg');">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Trang chủ</a></span> <span class="mr-2"><a href="tour.html">Du lịch</a></span> <span>Chi tiết tour</span></p>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Chi tiết tour</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <section class="ftco-section ftco-degree-bg">
+      <div class="container">
+        <div class="row">
+        	<div class="col-lg-3 sidebar">
+        		<div class="sidebar-wrap bg-light ftco-animate">
+        			<h3 class="heading mb-4">Tìm tour</h3>
+        			<form action="#">
+        				<div class="fields">
+			              <div class="form-group">
+			                <input type="text" class="form-control" placeholder="Thành phố, Điểm đến">
+			              </div>
+			              <div class="form-group">
+			                <div class="select-wrap one-third">
+		                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+		                    <select name="" id="" class="form-control" placeholder="Chọn địa điểm">
+		                      <option value="">Chọn địa điểm</option>
+		                      <option value="">Hà Nội, Việt Nam</option>
+		                      <option value="">TP. Hồ Chí Minh, Việt Nam</option>
+		                      <option value="">Đà Nẵng, Việt Nam</option>
+		                      <option value="">Hạ Long, Việt Nam</option>
+		                      <option value="">Hội An, Việt Nam</option>
+		                    </select>
+		                  </div>
+			              </div>
+			              <div class="form-group">
+			                <input type="text" id="checkin_date" class="form-control" placeholder="Từ ngày">
+			              </div>
+			              <div class="form-group">
+			                <input type="text" id="checkin_date" class="form-control" placeholder="Đến ngày">
+			              </div>
+			              <div class="form-group">
+			              	<div class="range-slider">
+			              		<span>
+										    <input type="number" value="1000000" min="0" max="50000000"/>	-
+										    <input type="number" value="10000000" min="0" max="50000000"/>
+										  </span>
+										  <input value="1000000" min="0" max="50000000" step="500000" type="range"/>
+										  <input value="10000000" min="0" max="50000000" step="500000" type="range"/>
+										  </svg>
+										</div>
+			              </div>
+			              <div class="form-group">
+			                <input type="submit" value="Tìm kiếm" class="btn btn-primary py-3 px-5">
+			              </div>
+			            </div>
+		            </form>
+	        		</div>
+	        		<div class="sidebar-wrap bg-light ftco-animate">
+	        			<h3 class="heading mb-4">Xếp hạng sao</h3>
+	        			<form method="post" class="star-rating">
+						  <div class="star-row">
+								<input type="checkbox" class="form-check-input" id="exampleCheck1">
+								<label class="form-check-label" for="exampleCheck1">
+									<span class="star-icon">★</span>
+									<span class="star-icon">★</span>
+									<span class="star-icon">★</span>
+									<span class="star-icon">★</span>
+									<span class="star-icon">★</span>
+								</label>
+						  </div>
+						  <div class="star-row">
+								<input type="checkbox" class="form-check-input" id="exampleCheck2">
+								<label class="form-check-label" for="exampleCheck2">
+									<span class="star-icon">★</span>
+									<span class="star-icon">★</span>
+									<span class="star-icon">★</span>
+									<span class="star-icon">★</span>
+									<span class="star-icon-empty">☆</span>
+								</label>
+						  </div>
+						  <div class="star-row">
+								<input type="checkbox" class="form-check-input" id="exampleCheck3">
+								<label class="form-check-label" for="exampleCheck3">
+									<span class="star-icon">★</span>
+									<span class="star-icon">★</span>
+									<span class="star-icon">★</span>
+									<span class="star-icon-empty">☆</span>
+									<span class="star-icon-empty">☆</span>
+								</label>
+						  </div>
+						  <div class="star-row">
+								<input type="checkbox" class="form-check-input" id="exampleCheck4">
+								<label class="form-check-label" for="exampleCheck4">
+									<span class="star-icon">★</span>
+									<span class="star-icon">★</span>
+									<span class="star-icon-empty">☆</span>
+									<span class="star-icon-empty">☆</span>
+									<span class="star-icon-empty">☆</span>
+								</label>
+						  </div>
+						  <div class="star-row">
+								<input type="checkbox" class="form-check-input" id="exampleCheck5">
+								<label class="form-check-label" for="exampleCheck5">
+									<span class="star-icon">★</span>
+									<span class="star-icon-empty">☆</span>
+									<span class="star-icon-empty">☆</span>
+									<span class="star-icon-empty">☆</span>
+									<span class="star-icon-empty">☆</span>
+								</label>
+						  </div>
+						</form>
+	        		</div>
+          </div>
+          <div class="col-lg-9">
+          	<div class="row">
+          		<div class="col-md-12 ftco-animate">
+          			<div class="single-slider owl-carousel">
+          				<div class="item">
+          					<div class="hotel-img" style="background-image: url(/assets/css/frontend/images/destination-1.jpg);"></div>
+          				</div>
+          				<div class="item">
+          					<div class="hotel-img" style="background-image: url(/assets/css/frontend/images/destination-2.jpg);"></div>
+          				</div>
+          				<div class="item">
+          					<div class="hotel-img" style="background-image: url(/assets/css/frontend/images/destination-3.jpg);"></div>
+          				</div>
+          			</div>
+          		</div>
+          		<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
+          			<span>Tour nổi bật</span>
+          			<h2>Hà Nội - Hạ Long 3 ngày 2 đêm</h2>
+          			<p class="rate mb-5">
+          				<span class="loc"><a href="#"><i class="icon-map"></i> Hà Nội, Hạ Long, Việt Nam</a></span>
+          				<span class="star">
+    							<i class="icon-star"></i>
+    							<i class="icon-star"></i>
+    							<i class="icon-star"></i>
+    							<i class="icon-star"></i>
+    							<i class="icon-star-o"></i>
+    							35 Đánh giá</span>
+    						</p>
+    						<p>Khám phá vẻ đẹp tuyệt vời của Hạ Long với từng nét độc đáo của thiên nhiên. Tour này mang lại cho bạn những trải nghiệm không quên với các công trình kiến trúc lịch sử và cảnh quan thiên nhiên hùng vĩ.</p>
+    						<div class="d-md-flex mt-5 mb-5">
+    							<ul>
+		    							<li>Tham quan Lăng Bác Hồ và Quảng trường Ba Đình</li>
+		    							<li>Du thuyền nghỉ đêm trên vịnh Hạ Long</li>
+		    							<li>Thăm động Sửng Sót - kỳ quan thiên nhiên</li>
+		    							<li>Ăn hải sản tươi sống trực tiếp trên thuyền</li>
+		    						</ul>
+		    						<ul class="ml-md-5">
+		    							<li>Dạo chơi Phố Cổ Hà Nội có tuổi đời gần 1000 năm</li>
+		    							<li>Tham quan các di tích lịch sử văn hóa</li>
+		    							<li>Hướng dẫn viên chuyên nghiệp và thân thiện</li>
+		    							<li>Khách sạn 3 sao, ăn ngon, dịch vụ tốt</li>
+		    						</ul>
+    						</div>
+    						<p>Tour này hoàn hảo cho những ai muốn tìm hiểu về lịch sử Việt Nam và trải nghiệm vẻ đẹp tự nhiên của vịnh Hạ Long. Chương trình bao gồm ăn sáng, trưa, chiều và hướng dẫn viên suốt chuyến đi.</p>
+          		</div>
+          		<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
+          			<h4 class="mb-4">Chi tiết lịch trình</h4>
+          			<div class="block-16">
+		              <figure>
+		                <img src="/assets/css/frontend/images/tour-1.jpg" alt="Chi tiết tour" class="img-fluid">
+		              </figure>
+		            </div>
+          		</div>
+          		<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
+          			<h4 class="mb-4">Lịch trình chi tiết</h4>
+          			<div class="schedule-content">
+          				<h5 class="mt-4"><strong>Ngày 1: Hà Nội - Thăm quan thành phố</strong></h5>
+          				<p>
+          					<strong>Sáng:</strong> Quý khách được đón tại phòng khách sạn, tham quan Lăng Chủ tịch Hồ Chí Minh, Quảng trường Ba Đình, Khuôn viên Chủ tịch (Dinh Độc lập).<br>
+          					<strong>Chiều:</strong> Dạo bộ phố Cổ 36 phố phường, thăm Hàng Nom và các con phố có tiểu sử hơn 800 năm, mua sắm các sản phẩm điển hình của thủ đô.<br>
+          					<strong>Tối:</strong> Ăn tối tự do, nghỉ đêm tại khách sạn.
+          				</p>
+          				<h5 class="mt-4"><strong>Ngày 2: Hà Nội - Hạ Long - Du thuyền</strong></h5>
+          				<p>
+          					<strong>Sáng:</strong> Khởi hành từ sáng sớm đến Hạ Long (khoảng 2.5 giờ đi), Tham quan vùng Hạ Long trên du thuyền, thăm động Sửng Sót, hang Dâu, chiêm ngưỡng các hòn đảo nổi tiếng.<br>
+          					<strong>Trưa:</strong> Ăn trưa hải sản tươi ngon trên du thuyền.<br>
+          					<strong>Tối:</strong> Dạo phố Hạ Long, ăn tối tự do, nghỉ đêm trên du thuyền.
+          				</p>
+          				<h5 class="mt-4"><strong>Ngày 3: Hạ Long - Hà Nội</strong></h5>
+          				<p>
+          					<strong>Sáng:</strong> Thắp sáng ngắm bình minh trên vịnh Hạ Long, ăn sáng trên du thuyền, thăm các hòn đảo còn lại.<br>
+          					<strong>Trưa:</strong> Ăn trưa, trở lại thành phố Hạ Long, lên xe về Hà Nội.<br>
+          					<strong>Tối:</strong> Về đến Hà Nội lúc chiều tối, kết thúc tour.
+          				</p>
+          			</div>
+          		</div>
+          		<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
+          			<h4 class="mb-5">Đặt tour & Thanh toán</h4>
+          			<form action="/index.php?action=client_booking" method="GET">
+          				<input type="hidden" name="tour_id" value="1">
+          				<div class="fields">
+          					<div class="row">
+          						<div class="col-md-12">
+          							<p><strong>Giá tour:</strong> <span style="font-size: 24px; color: #ff6b35;">2.500.000 ₫ / người</span></p>
+          							<p><strong>Thời gian:</strong> 3 ngày 2 đêm</p>
+          							<p><strong>Khởi hành:</strong> Hàng tuần</p>
+          						</div>
+          						<div class="col-md-6">
+							              <div class="form-group">
+							                <input type="number" class="form-control" placeholder="Số người" min="1" value="1">
+							              </div>
+						              </div>
+						              <div class="col-md-6">
+							              <div class="form-group">
+							                <input type="text" id="departure_date" class="form-control" placeholder="Ngày khởi hành">
+							              </div>
+						              </div>
+						              <div class="col-md-12">
+							              <div class="form-group">
+							                <textarea class="form-control" placeholder="Yêu cầu đặc biệt (nếu có)"></textarea>
+							              </div>
+						              </div>
+						              <div class="col-md-6">
+							              <button type="submit" class="btn btn-primary py-3 px-5 w-100"><i class="icon-shopping-cart"></i> Đặt tour ngay</button>
+						              </div>
+						              <div class="col-md-6">
+							              <a href="tour.html" class="btn btn-secondary py-3 px-5 w-100"><i class="icon-arrow-left"></i> Quay lại</a>
+						              </div>
+			              </div>
+			            </div>
+          			</form>
+          		</div>
+          		<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
+          			<h4 class="mb-4">Đánh giá & Xếp hạng</h4>
+          			<div class="row">
+          				<div class="col-md-6">
+          					<form method="post" class="star-rating">
+										  <div class="form-check">
+												<input type="checkbox" class="form-check-input" id="exampleCheck1">
+												<label class="form-check-label" for="exampleCheck1">
+													<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i> 50 Đánh giá</span></p>
+												</label>
+										  </div>
+										  <div class="form-check">
+									      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+									      <label class="form-check-label" for="exampleCheck1">
+									    	   <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i> 20 Đánh giá</span></p>
+									      </label>
+										  </div>
+										  <div class="form-check">
+									      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+									      <label class="form-check-label" for="exampleCheck1">
+									      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i> 10 Đánh giá</span></p>
+									     </label>
+										  </div>
+										  <div class="form-check">
+										    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+									      <label class="form-check-label" for="exampleCheck1">
+									      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i> 5 Đánh giá</span></p>
+									      </label>
+										  </div>
+										  <div class="form-check">
+									      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+									      <label class="form-check-label" for="exampleCheck1">
+									      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i> 0 Đánh giá</span></p>
+										    </label>
+										  </div>
+										</form>
+          				</div>
+          			</div>
+          		</div>
+          		<div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">
+          			<h4 class="mb-4">Tour liên quan</h4>
+          			<div class="row">
+          				<div class="col-md-4">
+					    				<div class="destination">
+					    					<a href="/index.php?action=client_tour_single" class="img img-2" style="background-image: url(/assets/css/frontend/images/destination-4.jpg);"></a>
+					    					<div class="text p-3">
+					    						<div class="d-flex">
+					    							<div class="one">
+							    						<h3><a href="/index.php?action=client_tour_single">Đà Nẵng - Hội An 4 ngày 3 đêm</a></h3>
+							    						<p class="rate">
+							    							<i class="icon-star"></i>
+							    							<i class="icon-star"></i>
+							    							<i class="icon-star"></i>
+							    							<i class="icon-star"></i>
+							    							<i class="icon-star-o"></i>
+							    							<span>25 Đánh giá</span>
+							    						</p>
+						    						</div>
+						    						<div class="two">
+						    							<span class="price">3.500.000 ₫</span>
+					    							</div>
+					    						</div>
+					    						<p>Khám phá các danh lam thắng cảnh và di tích lịch sử tại Đà Nẵng và Hội An.</p>
+					    						<hr>
+					    						<p class="bottom-area d-flex">
+					    							<span><i class="icon-map-o"></i> Đà Nẵng, Hội An</span>
+					    							<span class="ml-auto"><a href="/index.php?action=client_tour_single">Xem chi tiết</a></span>
+					    						</p>
+					    					</div>
+					    				</div>
+					    			</div>
+					    			<div class="col-md-4">
+					    				<div class="destination">
+					    					<a href="/index.php?action=client_tour_single" class="img img-2" style="background-image: url(/assets/css/frontend/images/destination-5.jpg);"></a>
+					    					<div class="text p-3">
+					    						<div class="d-flex">
+					    							<div class="one">
+							    						<h3><a href="/index.php?action=client_tour_single">Phú Quốc 3 ngày 2 đêm</a></h3>
+							    						<p class="rate">
+							    							<i class="icon-star"></i>
+							    							<i class="icon-star"></i>
+							    							<i class="icon-star"></i>
+							    							<i class="icon-star"></i>
+							    							<i class="icon-star-o"></i>
+							    							<span>18 Đánh giá</span>
+							    						</p>
+						    						</div>
+						    						<div class="two">
+						    							<span class="price">2.200.000 ₫</span>
+					    							</div>
+					    						</div>
+					    						<p>Thỏa thích tắm biển, lặn ngắm san hô và khám phá hòn Mây tại Phú Quốc.</p>
+					    						<hr>
+					    						<p class="bottom-area d-flex">
+					    							<span><i class="icon-map-o"></i> Phú Quốc</span>
+					    							<span class="ml-auto"><a href="/index.php?action=client_tour_single">Xem chi tiết</a></span>
+					    						</p>
+					    					</div>
+					    				</div>
+					    			</div>
+					    			<div class="col-md-4">
+					    				<div class="destination">
+					    					<a href="/index.php?action=client_tour_single" class="img img-2" style="background-image: url(/assets/css/frontend/images/destination-6.jpg);"></a>
+					    					<div class="text p-3">
+					    						<div class="d-flex">
+					    							<div class="one">
+							    						<h3><a href="/index.php?action=client_tour_single">Sapa - Fansipan 2 ngày 1 đêm</a></h3>
+							    						<p class="rate">
+							    							<i class="icon-star"></i>
+							    							<i class="icon-star"></i>
+							    							<i class="icon-star"></i>
+							    							<i class="icon-star"></i>
+							    							<i class="icon-star"></i>
+							    							<span>42 Đánh giá</span>
+							    						</p>
+						    						</div>
+						    						<div class="two">
+						    							<span class="price">1.800.000 ₫</span>
+					    							</div>
+					    						</div>
+					    						<p>Chinh phục đỉnh Fansipan - nóc nhà Đông Dương và trải nghiệm văn hóa Sapa.</p>
+					    						<hr>
+					    						<p class="bottom-area d-flex">
+					    							<span><i class="icon-map-o"></i> Sapa</span>
+					    							<span class="ml-auto"><a href="/index.php?action=client_tour_single">Xem chi tiết</a></span>
+					    						</p>
+					    					</div>
+					    				</div>
+					    			</div>
+          			</div>
+          		</div>
+
+          	</div>
+          </div> <!-- .col-md-8 -->
+        </div>
+      </div>
+    </section> <!-- .section -->
+
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Du Lịch Thông Minh</h2>
+              <p>Khám phá những điểm đến tuyệt đẹp nhất của Việt Nam với những trải nghiệm không quên.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Thông tin</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">Về chúng tôi</a></li>
+                <li><a href="#" class="py-2 d-block">Dịch vụ</a></li>
+                <li><a href="#" class="py-2 d-block">Điều khoản &amp; Điều kiện</a></li>
+                <li><a href="#" class="py-2 d-block">Trở thành đối tác</a></li>
+                <li><a href="#" class="py-2 d-block">Đảm bảo giá tốt nhất</a></li>
+                <li><a href="#" class="py-2 d-block">Chính sách bảo mật</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Hỗ trợ khách hàng</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">Câu hỏi thường gặp</a></li>
+                <li><a href="#" class="py-2 d-block">Phương thức thanh toán</a></li>
+                <li><a href="#" class="py-2 d-block">Mẹo đặt tour</a></li>
+                <li><a href="#" class="py-2 d-block">Cách thức hoạt động</a></li>
+                <li><a href="#" class="py-2 d-block">Liên hệ chúng tôi</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Có câu hỏi?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">123 Đường Nguyễn Huệ, Q.1, TP.HCM</span></li>
+	                <li><a href="tel:+84283829291"><span class="icon icon-phone"></span><span class="text">+84 28 3829 2910</span></a></li>
+	                <li><a href="mailto:info@dulichthongminh.vn"><span class="icon icon-envelope"></span><span class="text">info@dulichthongminh.vn</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> Bảo lưu mọi quyền | Được tạo bởi <a href="#">Du Lịch Thông Minh</a></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="/assets/css/frontend/js/jquery.min.js"></script>
+  <script src="/assets/css/frontend/js/popper.min.js"></script>
+  <script src="/assets/css/frontend/js/bootstrap.min.js"></script>
+  <script src="/assets/css/frontend/js/jquery.easing.1.3.js"></script>
+  <script src="/assets/css/frontend/js/jquery.waypoints.min.js"></script>
+  <script src="/assets/css/frontend/js/jquery.stellar.min.js"></script>
+  <script src="/assets/css/frontend/js/owl.carousel.min.js"></script>
+  <script src="/assets/css/frontend/js/jquery.magnific-popup.min.js"></script>
+  <script src="/assets/css/frontend/js/aos.js"></script>
+  <script src="/assets/css/frontend/js/jquery.animateNumber.min.js"></script>
+  <script src="/assets/css/frontend/js/bootstrap-datepicker.js"></script>
+  <script src="/assets/css/frontend/js/jquery.timepicker.min.js"></script>
+  <script src="/assets/css/frontend/js/scrollax.min.js"></script>
+  <script src="/assets/css/frontend/js/range.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&loading=async"></script>
+  <script src="/assets/css/frontend/js/google-map.js"></script>
+  <script src="/assets/css/frontend/js/main.js"></script>
+
+  </body>
+</html>

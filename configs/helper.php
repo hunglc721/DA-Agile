@@ -36,9 +36,9 @@ if (!function_exists('view')) {
             $htmlFilePath = ROOT_PATH . 'views/' . $viewPath . '.html';
 
             if (file_exists($phpFilePath)) {
-                // PHP files - use layout-client for dashboard/profile, direct render for index
-                if ($viewPath === 'client/index') {
-                    // Homepage - render directly without layout wrapper
+                // PHP files - use layout-client for dashboard/profile, direct render for index/tour-single
+                if ($viewPath === 'client/index' || $viewPath === 'client/tour-single' || strpos($viewPath, 'tour-single') !== false) {
+                    // Homepage & Tour details - render directly without layout wrapper
                     require_once $phpFilePath;
                 } else {
                     // Dashboard/Profile - use layout-client
