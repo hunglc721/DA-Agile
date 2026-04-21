@@ -1412,3 +1412,85 @@ Stack trace:
 [21-Apr-2026 14:47:00 UTC] DEBUG: Found 12 tours
 [21-Apr-2026 14:47:00 UTC] DEBUG: Found 5 categories
 [21-Apr-2026 14:47:00 UTC] DEBUG: Found 3 tourTypes
+[21-Apr-2026 14:50:40 UTC] Error fetching recent bookings: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[21-Apr-2026 14:50:40 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[21-Apr-2026 14:53:00 UTC] Error fetching recent bookings: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[21-Apr-2026 14:53:00 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[21-Apr-2026 14:54:06 UTC] DEBUG: CategoryController index() - Found 5 categories
+[21-Apr-2026 14:54:12 UTC] DEBUG: TourController index() called
+[21-Apr-2026 14:54:12 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[21-Apr-2026 14:54:12 UTC] DEBUG: Found 12 tours
+[21-Apr-2026 14:54:12 UTC] DEBUG: Found 5 categories
+[21-Apr-2026 14:54:12 UTC] DEBUG: Found 3 tourTypes
+[21-Apr-2026 14:54:38 UTC] DEBUG: TourController index() called
+[21-Apr-2026 14:54:38 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[21-Apr-2026 14:54:38 UTC] DEBUG: Found 12 tours
+[21-Apr-2026 14:54:38 UTC] DEBUG: Found 5 categories
+[21-Apr-2026 14:54:38 UTC] DEBUG: Found 3 tourTypes
+[21-Apr-2026 14:54:39 UTC] DEBUG: TourController index() called
+[21-Apr-2026 14:54:39 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[21-Apr-2026 14:54:39 UTC] DEBUG: Found 12 tours
+[21-Apr-2026 14:54:39 UTC] DEBUG: Found 5 categories
+[21-Apr-2026 14:54:39 UTC] DEBUG: Found 3 tourTypes
+[21-Apr-2026 14:54:41 UTC] DEBUG: TourController index() called
+[21-Apr-2026 14:54:41 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[21-Apr-2026 14:54:41 UTC] DEBUG: Found 12 tours
+[21-Apr-2026 14:54:41 UTC] DEBUG: Found 5 categories
+[21-Apr-2026 14:54:41 UTC] DEBUG: Found 3 tourTypes
+[21-Apr-2026 14:57:58 UTC] DEBUG: TourController index() called
+[21-Apr-2026 14:57:58 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[21-Apr-2026 14:57:58 UTC] DEBUG: Found 12 tours
+[21-Apr-2026 14:57:58 UTC] DEBUG: Found 5 categories
+[21-Apr-2026 14:57:58 UTC] DEBUG: Found 3 tourTypes
+[21-Apr-2026 14:57:59 UTC] DEBUG: TourController index() called
+[21-Apr-2026 14:57:59 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[21-Apr-2026 14:57:59 UTC] DEBUG: Found 12 tours
+[21-Apr-2026 14:57:59 UTC] DEBUG: Found 5 categories
+[21-Apr-2026 14:57:59 UTC] DEBUG: Found 3 tourTypes
+[21-Apr-2026 14:58:57 UTC] DEBUG: CategoryController index() - Found 5 categories
+[21-Apr-2026 14:59:44 UTC] DEBUG: CategoryController index() - Found 5 categories
+[21-Apr-2026 15:03:45 UTC] DEBUG: CategoryController index() - Found 5 categories
+[21-Apr-2026 15:18:27 UTC] Error fetching recent bookings: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[21-Apr-2026 15:18:27 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15

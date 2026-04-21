@@ -1,6 +1,6 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Thêm Hướng Dẫn Viên Mới</h6>
+        <h6 class="m-0 font-weight-bold text-white">Thêm Hướng Dẫn Viên Mới</h6>
     </div>
     <div class="card-body">
         <form action="<?= url('guides_store') ?>" method="POST">
@@ -20,7 +20,7 @@
                 </select>
                 <small class="form-text text-muted">Chỉ hiển thị user chưa phải là Admin hoặc HDV.</small>
             </div>
-            
+
             <div class="form-group">
                 <label><strong>Số Năm Kinh Nghiệm</strong></label>
                 <input type="number" name="experience_years" class="form-control" min="0" value="0">

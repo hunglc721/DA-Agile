@@ -12,7 +12,7 @@
             <i class="fas fa-map-marked-alt text-primary mr-2"></i> Danh Sách Tour
         </h1>
 
-        
+
         <div class="d-flex gap-2">
             <a href="index.php?action=tours_trash" class="btn btn-outline-secondary">
                 <i class="fas fa-trash"></i> Thùng Rác
@@ -126,7 +126,7 @@
     <!-- Tours Table -->
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
-            <h6 class="m-0 font-weight-bold text-primary">
+            <h6 class="m-0 font-weight-bold text-white">
                 <?php
                 if (!empty($filters['category_id'])):
                     $catName = '';

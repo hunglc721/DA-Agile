@@ -11,7 +11,7 @@
             <div class="col-xl-8 col-lg-7">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Thông tin cơ bản</h6>
+                        <h6 class="m-0 font-weight-bold text-white">Thông tin cơ bản</h6>
                     </div>
                     <div class="card-body">
                         <div class="form-row">
@@ -32,8 +32,8 @@
                                     <option value="">-- Chọn loại tour --</option>
                                     <?php if (isset($tourTypes) && is_array($tourTypes)): ?>
                                         <?php foreach ($tourTypes as $type): ?>
-                                            <option value="<?= $type['code'] ?>" 
-                                                    <?= ($_SESSION['old']['tour_type'] ?? 'domestic') == $type['code'] ? 'selected' : '' ?>>
+                                            <option value="<?= $type['code'] ?>"
+                                                <?= ($_SESSION['old']['tour_type'] ?? 'domestic') == $type['code'] ? 'selected' : '' ?>>
                                                 <?= htmlspecialchars($type['name']) ?>
                                             </option>
                                         <?php endforeach; ?>
@@ -45,8 +45,8 @@
                                 <select name="category_id" class="form-control" required>
                                     <option value="">-- Chọn danh mục --</option>
                                     <?php foreach ($categories as $cat): ?>
-                                        <option value="<?= $cat['id'] ?>" 
-                                                <?= ($_SESSION['old']['category_id'] ?? '') == $cat['id'] ? 'selected' : '' ?>>
+                                        <option value="<?= $cat['id'] ?>"
+                                            <?= ($_SESSION['old']['category_id'] ?? '') == $cat['id'] ? 'selected' : '' ?>>
                                             <?= htmlspecialchars($cat['name']) ?>
                                         </option>
                                     <?php endforeach; ?>
@@ -81,7 +81,7 @@
             <div class="col-xl-4 col-lg-5">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Giá & Vận hành</h6>
+                        <h6 class="m-0 font-weight-bold text-white">Giá & Vận hành</h6>
                     </div>
                     <div class="card-body">
                         <div class="form-group">
@@ -118,7 +118,7 @@
 
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Chính sách & Điều khoản</h6>
+                        <h6 class="m-0 font-weight-bold text-white">Chính sách & Điều khoản</h6>
                     </div>
                     <div class="card-body">
                         <div class="form-group">
@@ -135,7 +135,7 @@
     </form>
 </div>
 
-<?php 
+<?php
 // Xóa session cũ sau khi đã hiển thị
-unset($_SESSION['old']); 
+unset($_SESSION['old']);
 ?>
