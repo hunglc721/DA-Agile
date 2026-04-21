@@ -1362,3 +1362,53 @@ Stack trace:
 [13-Apr-2026 01:45:40 UTC] DEBUG: Found 5 categories
 [13-Apr-2026 01:45:40 UTC] DEBUG: Found 3 tourTypes
 >>>>>>> 81f43866df3041b949a7ec715d8d2154086a8930
+[21-Apr-2026 14:42:40 UTC] Error fetching recent bookings: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[21-Apr-2026 14:42:40 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[21-Apr-2026 14:42:58 UTC] DEBUG: TourController index() called
+[21-Apr-2026 14:42:58 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[21-Apr-2026 14:42:58 UTC] DEBUG: Found 13 tours
+[21-Apr-2026 14:42:58 UTC] DEBUG: Found 5 categories
+[21-Apr-2026 14:42:58 UTC] DEBUG: Found 3 tourTypes
+[21-Apr-2026 14:43:32 UTC] DEBUG: TourController index() called
+[21-Apr-2026 14:43:32 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[21-Apr-2026 14:43:32 UTC] DEBUG: Found 12 tours
+[21-Apr-2026 14:43:32 UTC] DEBUG: Found 5 categories
+[21-Apr-2026 14:43:32 UTC] DEBUG: Found 3 tourTypes
+[21-Apr-2026 14:44:24 UTC] DEBUG: TourController index() called
+[21-Apr-2026 14:44:24 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[21-Apr-2026 14:44:24 UTC] DEBUG: Found 12 tours
+[21-Apr-2026 14:44:24 UTC] DEBUG: Found 5 categories
+[21-Apr-2026 14:44:24 UTC] DEBUG: Found 3 tourTypes
+[21-Apr-2026 14:47:00 UTC] DEBUG: TourController index() called
+[21-Apr-2026 14:47:00 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[21-Apr-2026 14:47:00 UTC] DEBUG: Found 12 tours
+[21-Apr-2026 14:47:00 UTC] DEBUG: Found 5 categories
+[21-Apr-2026 14:47:00 UTC] DEBUG: Found 3 tourTypes

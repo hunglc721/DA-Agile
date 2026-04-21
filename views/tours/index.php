@@ -7,13 +7,22 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Danh Sách Tour</h1>
-        <a href="index.php?action=tours_create" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-            <i class="fas fa-plus fa-sm text-white-50"></i> Thêm Tour Mới
-        </a>
-        <a href="index.php?action=tours_trash" class="btn btn-outline-secondary">
-    <i class="fas fa-trash"></i> Thùng rác
-</a>
+        <!-- Tiêu đề bên trái -->
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-map-marked-alt text-primary mr-2"></i> Danh Sách Tour
+        </h1>
+
+        
+        <div class="d-flex gap-2">
+            <a href="index.php?action=tours_trash" class="btn btn-outline-secondary">
+                <i class="fas fa-trash"></i> Thùng Rác
+            </a>
+            <a href="index.php?action=tours_create"
+                class="btn btn-success shadow-sm font-weight-bold"
+                style="background: linear-gradient(135deg, #28a745, #20c997); border: none; border-radius: 8px; padding: 8px 18px;">
+                <i class="fas fa-plus"></i> Thêm Tour Mới
+            </a>
+        </div>
     </div>
 
     <!-- Filter Section -->
