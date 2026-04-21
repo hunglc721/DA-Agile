@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Thêm Tour Mới</h1>
@@ -84,16 +85,24 @@
                         <h6 class="m-0 font-weight-bold text-white">Giá & Vận hành</h6>
                     </div>
                     <div class="card-body">
+
+                        <!-- SỬA: thêm id -->
                         <div class="form-group">
                             <label>Giá bán (VNĐ) <span class="text-danger">*</span></label>
-                            <input type="number" name="price" class="form-control font-weight-bold text-primary" required min="0" value="<?= $_SESSION['old']['price'] ?? '' ?>">
+                            <input type="text" id="price" name="price" class="form-control font-weight-bold text-primary" required value="<?= $_SESSION['old']['price'] ?? '' ?>">
                         </div>
 
                         <div class="form-group">
                             <label>Giá vốn (Cost Price) <span class="text-danger">*</span></label>
-                            <input type="number" name="cost_price" class="form-control text-danger" required min="0" value="<?= $_SESSION['old']['cost_price'] ?? '' ?>">
+                            <input type="text" id="cost_price" name="cost_price" class="form-control text-danger" required value="<?= $_SESSION['old']['cost_price'] ?? '' ?>">
                             <small class="form-text text-muted">Dùng để tính lợi nhuận (Ẩn với khách).</small>
                         </div>
+
+                        <!-- THÊM -->
+                        <p class="mt-2">
+                            Lợi nhuận: <strong id="profit">0</strong> VNĐ
+                        </p>
+                        <p id="warning" class="text-danger"></p>
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -135,7 +144,49 @@
     </form>
 </div>
 
+<script>
+    function getRawValue(input) {
+        return input.value.replace(/\D/g, "");
+    }
+
+    function formatCurrency(num) {
+        return Number(num).toLocaleString("vi-VN");
+    }
+
+    function updateAll() {
+        let priceInput = document.getElementById("price");
+        let costInput = document.getElementById("cost_price");
+
+        let price = parseInt(getRawValue(priceInput)) || 0;
+        let cost = parseInt(getRawValue(costInput)) || 0;
+
+        if (priceInput.value !== "") priceInput.value = formatCurrency(price);
+        if (costInput.value !== "") costInput.value = formatCurrency(cost);
+
+        let profit = price - cost;
+        document.getElementById("profit").innerText = formatCurrency(profit);
+
+        let warning = document.getElementById("warning");
+        if (price < cost) {
+            warning.innerText = "⚠️ Giá bán đang thấp hơn giá vốn!";
+        } else {
+            warning.innerText = "";
+        }
+    }
+
+    document.getElementById("price").addEventListener("input", updateAll);
+    document.getElementById("cost_price").addEventListener("input", updateAll);
+
+    document.querySelector("form").addEventListener("submit", function() {
+        let priceInput = document.getElementById("price");
+        let costInput = document.getElementById("cost_price");
+
+        priceInput.value = getRawValue(priceInput);
+        costInput.value = getRawValue(costInput);
+    });
+</script>
+
 <?php
-// Xóa session cũ sau khi đã hiển thị
 unset($_SESSION['old']);
 ?>
+```
