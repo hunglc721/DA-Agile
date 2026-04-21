@@ -112,6 +112,7 @@ match ($action) {
 
     // --- TRANG CÁ NHÂN HƯỚNG DẪN VIÊN (HDV DASHBOARD) ---
     'guide_dashboard'              => (new GuideProfileController())->dashboard(),
+    'guide_profile'                => (new GuideProfileController())->profile(),
     'guide_customer_feedback'      => (new GuideProfileController())->customerFeedback(),
     'guide_notifications'          => (new GuideProfileController())->notifications(),
     'guide_assigned_tours'         => (new GuideProfileController())->assignedTours(),

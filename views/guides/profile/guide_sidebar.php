@@ -12,8 +12,16 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
+    <?php $currentAction = $_GET['action'] ?? ''; ?>
+    <!-- Nav Item - Hồ Sơ Cá Nhân -->
+    <!-- <li class="nav-item <?= $currentAction === 'guide_profile' ? 'active' : '' ?>">
+        <a class="nav-link" href="?action=guide_profile">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Hồ Sơ Cá Nhân</span></a>
+    </li> -->
+
     <!-- Nav Item - Tour Được Phân Công -->
-    <li class="nav-item active">
+    <li class="nav-item <?= $currentAction === 'guide_assigned_tours' ? 'active' : '' ?>">
         <a class="nav-link" href="?action=guide_assigned_tours">
             <i class="fas fa-fw fa-briefcase"></i>
             <span>Tour Được Phân Công</span></a>

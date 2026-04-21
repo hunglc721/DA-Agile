@@ -94,7 +94,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="userDropdown">
                                 <?php if (isset($_SESSION['user'])): ?>
-                                    <a class="dropdown-item" href="<?= url('client_profile') ?>">
+                                    <a class="dropdown-item" href="<?= url('guide_profile') ?>">
                                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Hồ sơ cá nhân
                                     </a>
