@@ -1,0 +1,171 @@
+[13-Apr-2026 01:29:55 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:29:55 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:29:55 UTC] ERROR in TourController index(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 't.deleted_at' in 'where clause'
+[13-Apr-2026 01:29:55 UTC] Stack trace: #0 C:\laragon\www\DA1-10-main\models\BaseModel.php(30): PDOStatement->execute(Array)
+#1 C:\laragon\www\DA1-10-main\models\BaseModel.php(35): BaseModel->query('SELECT t.*, tc....', Array)
+#2 C:\laragon\www\DA1-10-main\models\Tour.php(44): BaseModel->fetchAll('SELECT t.*, tc....', Array)
+#3 C:\laragon\www\DA1-10-main\controllers\TourController.php(32): Tour->findAll(Array)
+#4 C:\laragon\www\DA1-10-main\routes\index.php(79): TourController->index()
+#5 C:\laragon\www\DA1-10-main\index.php(47): require_once('C:\\laragon\\www\\...')
+#6 {main}
+[13-Apr-2026 01:29:55 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 't.deleted_at' in 'where clause' in C:\laragon\www\DA1-10-main\models\BaseModel.php:30
+Stack trace:
+#0 C:\laragon\www\DA1-10-main\models\BaseModel.php(30): PDOStatement->execute(Array)
+#1 C:\laragon\www\DA1-10-main\models\BaseModel.php(35): BaseModel->query('SELECT t.*, tc....', Array)
+#2 C:\laragon\www\DA1-10-main\models\Tour.php(44): BaseModel->fetchAll('SELECT t.*, tc....', Array)
+#3 C:\laragon\www\DA1-10-main\controllers\AdminController.php(21): Tour->findAll()
+#4 C:\laragon\www\DA1-10-main\controllers\HomeController.php(11): AdminController->dashboard()
+#5 C:\laragon\www\DA1-10-main\routes\index.php(56): HomeController->index()
+#6 C:\laragon\www\DA1-10-main\index.php(47): require_once('C:\\laragon\\www\\...')
+#7 {main}
+  thrown in C:\laragon\www\DA1-10-main\models\BaseModel.php on line 30
+[13-Apr-2026 01:30:03 UTC] DEBUG: CategoryController index() - Found 5 categories
+[13-Apr-2026 01:30:05 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:30:05 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:30:05 UTC] ERROR in TourController index(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 't.deleted_at' in 'where clause'
+[13-Apr-2026 01:30:05 UTC] Stack trace: #0 C:\laragon\www\DA1-10-main\models\BaseModel.php(30): PDOStatement->execute(Array)
+#1 C:\laragon\www\DA1-10-main\models\BaseModel.php(35): BaseModel->query('SELECT t.*, tc....', Array)
+#2 C:\laragon\www\DA1-10-main\models\Tour.php(44): BaseModel->fetchAll('SELECT t.*, tc....', Array)
+#3 C:\laragon\www\DA1-10-main\controllers\TourController.php(32): Tour->findAll(Array)
+#4 C:\laragon\www\DA1-10-main\routes\index.php(79): TourController->index()
+#5 C:\laragon\www\DA1-10-main\index.php(47): require_once('C:\\laragon\\www\\...')
+#6 {main}
+[13-Apr-2026 01:30:06 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 't.deleted_at' in 'where clause' in C:\laragon\www\DA1-10-main\models\BaseModel.php:30
+Stack trace:
+#0 C:\laragon\www\DA1-10-main\models\BaseModel.php(30): PDOStatement->execute(Array)
+#1 C:\laragon\www\DA1-10-main\models\BaseModel.php(35): BaseModel->query('SELECT t.*, tc....', Array)
+#2 C:\laragon\www\DA1-10-main\models\Tour.php(44): BaseModel->fetchAll('SELECT t.*, tc....', Array)
+#3 C:\laragon\www\DA1-10-main\controllers\AdminController.php(21): Tour->findAll()
+#4 C:\laragon\www\DA1-10-main\controllers\HomeController.php(11): AdminController->dashboard()
+#5 C:\laragon\www\DA1-10-main\routes\index.php(56): HomeController->index()
+#6 C:\laragon\www\DA1-10-main\index.php(47): require_once('C:\\laragon\\www\\...')
+#7 {main}
+  thrown in C:\laragon\www\DA1-10-main\models\BaseModel.php on line 30
+[13-Apr-2026 01:32:30 UTC] Error fetching recent bookings: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:32:30 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:32:34 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:32:34 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:32:34 UTC] DEBUG: Found 13 tours
+[13-Apr-2026 01:32:34 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:32:34 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:32:45 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:32:45 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:32:45 UTC] DEBUG: Found 13 tours
+[13-Apr-2026 01:32:45 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:32:45 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:32:52 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:32:52 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:32:52 UTC] DEBUG: Found 13 tours
+[13-Apr-2026 01:32:52 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:32:52 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:32:55 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:32:55 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:32:55 UTC] DEBUG: Found 13 tours
+[13-Apr-2026 01:32:55 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:32:55 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:32:58 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:32:58 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:32:58 UTC] DEBUG: Found 13 tours
+[13-Apr-2026 01:32:58 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:32:58 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:37:28 UTC] Error fetching recent bookings: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:37:28 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:37:32 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:37:32 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:37:32 UTC] DEBUG: Found 14 tours
+[13-Apr-2026 01:37:32 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:37:32 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:37:35 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:37:35 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => domestic
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:37:35 UTC] DEBUG: Found 5 tours
+[13-Apr-2026 01:37:35 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:37:35 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:37:38 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:37:39 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 1
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:37:39 UTC] DEBUG: Found 7 tours
+[13-Apr-2026 01:37:39 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:37:39 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:45:02 UTC] Error fetching recent bookings: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:45:02 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:45:40 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:45:40 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => 
+    [status] => 
+    [search] => 
+)
+
+[13-Apr-2026 01:45:40 UTC] DEBUG: Found 14 tours
+[13-Apr-2026 01:45:40 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:45:40 UTC] DEBUG: Found 3 tourTypes
