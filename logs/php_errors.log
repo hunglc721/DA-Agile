@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [15-Dec-2025 12:19:15 UTC] guide_tour_detail called with tourId: 1
 [15-Dec-2025 12:19:15 UTC] Current guide_id: 1
 [15-Dec-2025 12:19:15 UTC] Assignment check result: {"id":1}
@@ -5,6 +6,10 @@
 [15-Dec-2025 12:19:15 UTC] tour_detail success - Tour: Tour Hạ Long 3N2D, Images: 2, Itinerary: 3, Customers: 0
 [16-Dec-2025 16:24:03 UTC] DEBUG: TourController index() called
 [16-Dec-2025 16:24:03 UTC] DEBUG: Filters = Array
+=======
+[13-Apr-2026 01:29:55 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:29:55 UTC] DEBUG: Filters = Array
+>>>>>>> 81f43866df3041b949a7ec715d8d2154086a8930
 (
     [category_id] => 
     [tour_type] => 
@@ -12,6 +17,7 @@
     [search] => 
 )
 
+<<<<<<< HEAD
 [16-Dec-2025 16:24:03 UTC] DEBUG: Found 3 tours
 [16-Dec-2025 16:24:03 UTC] DEBUG: Found 3 categories
 [16-Dec-2025 16:24:03 UTC] DEBUG: Found 3 tourTypes
@@ -300,6 +306,30 @@ Stack trace:
 #4 {main}
 [16-Dec-2025 17:19:48 UTC] DEBUG: TourController index() called
 [16-Dec-2025 17:19:48 UTC] DEBUG: Filters = Array
+=======
+[13-Apr-2026 01:29:55 UTC] ERROR in TourController index(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 't.deleted_at' in 'where clause'
+[13-Apr-2026 01:29:55 UTC] Stack trace: #0 C:\laragon\www\DA1-10-main\models\BaseModel.php(30): PDOStatement->execute(Array)
+#1 C:\laragon\www\DA1-10-main\models\BaseModel.php(35): BaseModel->query('SELECT t.*, tc....', Array)
+#2 C:\laragon\www\DA1-10-main\models\Tour.php(44): BaseModel->fetchAll('SELECT t.*, tc....', Array)
+#3 C:\laragon\www\DA1-10-main\controllers\TourController.php(32): Tour->findAll(Array)
+#4 C:\laragon\www\DA1-10-main\routes\index.php(79): TourController->index()
+#5 C:\laragon\www\DA1-10-main\index.php(47): require_once('C:\\laragon\\www\\...')
+#6 {main}
+[13-Apr-2026 01:29:55 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 't.deleted_at' in 'where clause' in C:\laragon\www\DA1-10-main\models\BaseModel.php:30
+Stack trace:
+#0 C:\laragon\www\DA1-10-main\models\BaseModel.php(30): PDOStatement->execute(Array)
+#1 C:\laragon\www\DA1-10-main\models\BaseModel.php(35): BaseModel->query('SELECT t.*, tc....', Array)
+#2 C:\laragon\www\DA1-10-main\models\Tour.php(44): BaseModel->fetchAll('SELECT t.*, tc....', Array)
+#3 C:\laragon\www\DA1-10-main\controllers\AdminController.php(21): Tour->findAll()
+#4 C:\laragon\www\DA1-10-main\controllers\HomeController.php(11): AdminController->dashboard()
+#5 C:\laragon\www\DA1-10-main\routes\index.php(56): HomeController->index()
+#6 C:\laragon\www\DA1-10-main\index.php(47): require_once('C:\\laragon\\www\\...')
+#7 {main}
+  thrown in C:\laragon\www\DA1-10-main\models\BaseModel.php on line 30
+[13-Apr-2026 01:30:03 UTC] DEBUG: CategoryController index() - Found 5 categories
+[13-Apr-2026 01:30:05 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:30:05 UTC] DEBUG: Filters = Array
+>>>>>>> 81f43866df3041b949a7ec715d8d2154086a8930
 (
     [category_id] => 
     [tour_type] => 
@@ -307,6 +337,7 @@ Stack trace:
     [search] => 
 )
 
+<<<<<<< HEAD
 [16-Dec-2025 17:19:48 UTC] DEBUG: Found 12 tours
 [16-Dec-2025 17:19:48 UTC] DEBUG: Found 5 categories
 [16-Dec-2025 17:19:48 UTC] DEBUG: Found 3 tourTypes
@@ -871,6 +902,31 @@ Stack trace:
 [12-Apr-2026 01:49:02 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
 [12-Apr-2026 01:49:07 UTC] DEBUG: TourController index() called
 [12-Apr-2026 01:49:07 UTC] DEBUG: Filters = Array
+=======
+[13-Apr-2026 01:30:05 UTC] ERROR in TourController index(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 't.deleted_at' in 'where clause'
+[13-Apr-2026 01:30:05 UTC] Stack trace: #0 C:\laragon\www\DA1-10-main\models\BaseModel.php(30): PDOStatement->execute(Array)
+#1 C:\laragon\www\DA1-10-main\models\BaseModel.php(35): BaseModel->query('SELECT t.*, tc....', Array)
+#2 C:\laragon\www\DA1-10-main\models\Tour.php(44): BaseModel->fetchAll('SELECT t.*, tc....', Array)
+#3 C:\laragon\www\DA1-10-main\controllers\TourController.php(32): Tour->findAll(Array)
+#4 C:\laragon\www\DA1-10-main\routes\index.php(79): TourController->index()
+#5 C:\laragon\www\DA1-10-main\index.php(47): require_once('C:\\laragon\\www\\...')
+#6 {main}
+[13-Apr-2026 01:30:06 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 't.deleted_at' in 'where clause' in C:\laragon\www\DA1-10-main\models\BaseModel.php:30
+Stack trace:
+#0 C:\laragon\www\DA1-10-main\models\BaseModel.php(30): PDOStatement->execute(Array)
+#1 C:\laragon\www\DA1-10-main\models\BaseModel.php(35): BaseModel->query('SELECT t.*, tc....', Array)
+#2 C:\laragon\www\DA1-10-main\models\Tour.php(44): BaseModel->fetchAll('SELECT t.*, tc....', Array)
+#3 C:\laragon\www\DA1-10-main\controllers\AdminController.php(21): Tour->findAll()
+#4 C:\laragon\www\DA1-10-main\controllers\HomeController.php(11): AdminController->dashboard()
+#5 C:\laragon\www\DA1-10-main\routes\index.php(56): HomeController->index()
+#6 C:\laragon\www\DA1-10-main\index.php(47): require_once('C:\\laragon\\www\\...')
+#7 {main}
+  thrown in C:\laragon\www\DA1-10-main\models\BaseModel.php on line 30
+[13-Apr-2026 01:32:30 UTC] Error fetching recent bookings: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:32:30 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:32:34 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:32:34 UTC] DEBUG: Filters = Array
+>>>>>>> 81f43866df3041b949a7ec715d8d2154086a8930
 (
     [category_id] => 
     [tour_type] => 
@@ -878,11 +934,19 @@ Stack trace:
     [search] => 
 )
 
+<<<<<<< HEAD
 [12-Apr-2026 01:49:07 UTC] DEBUG: Found 13 tours
 [12-Apr-2026 01:49:07 UTC] DEBUG: Found 5 categories
 [12-Apr-2026 01:49:07 UTC] DEBUG: Found 3 tourTypes
 [12-Apr-2026 01:49:54 UTC] DEBUG: TourController index() called
 [12-Apr-2026 01:49:54 UTC] DEBUG: Filters = Array
+=======
+[13-Apr-2026 01:32:34 UTC] DEBUG: Found 13 tours
+[13-Apr-2026 01:32:34 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:32:34 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:32:45 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:32:45 UTC] DEBUG: Filters = Array
+>>>>>>> 81f43866df3041b949a7ec715d8d2154086a8930
 (
     [category_id] => 
     [tour_type] => 
@@ -890,11 +954,19 @@ Stack trace:
     [search] => 
 )
 
+<<<<<<< HEAD
 [12-Apr-2026 01:49:54 UTC] DEBUG: Found 13 tours
 [12-Apr-2026 01:49:54 UTC] DEBUG: Found 5 categories
 [12-Apr-2026 01:49:54 UTC] DEBUG: Found 3 tourTypes
 [12-Apr-2026 01:50:16 UTC] DEBUG: TourController index() called
 [12-Apr-2026 01:50:16 UTC] DEBUG: Filters = Array
+=======
+[13-Apr-2026 01:32:45 UTC] DEBUG: Found 13 tours
+[13-Apr-2026 01:32:45 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:32:45 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:32:52 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:32:52 UTC] DEBUG: Filters = Array
+>>>>>>> 81f43866df3041b949a7ec715d8d2154086a8930
 (
     [category_id] => 
     [tour_type] => 
@@ -902,11 +974,19 @@ Stack trace:
     [search] => 
 )
 
+<<<<<<< HEAD
 [12-Apr-2026 01:50:16 UTC] DEBUG: Found 14 tours
 [12-Apr-2026 01:50:16 UTC] DEBUG: Found 5 categories
 [12-Apr-2026 01:50:16 UTC] DEBUG: Found 3 tourTypes
 [12-Apr-2026 01:50:35 UTC] DEBUG: TourController index() called
 [12-Apr-2026 01:50:35 UTC] DEBUG: Filters = Array
+=======
+[13-Apr-2026 01:32:52 UTC] DEBUG: Found 13 tours
+[13-Apr-2026 01:32:52 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:32:52 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:32:55 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:32:55 UTC] DEBUG: Filters = Array
+>>>>>>> 81f43866df3041b949a7ec715d8d2154086a8930
 (
     [category_id] => 
     [tour_type] => 
@@ -914,11 +994,19 @@ Stack trace:
     [search] => 
 )
 
+<<<<<<< HEAD
 [12-Apr-2026 01:50:35 UTC] DEBUG: Found 15 tours
 [12-Apr-2026 01:50:35 UTC] DEBUG: Found 5 categories
 [12-Apr-2026 01:50:35 UTC] DEBUG: Found 3 tourTypes
 [12-Apr-2026 01:50:45 UTC] DEBUG: TourController index() called
 [12-Apr-2026 01:50:45 UTC] DEBUG: Filters = Array
+=======
+[13-Apr-2026 01:32:55 UTC] DEBUG: Found 13 tours
+[13-Apr-2026 01:32:55 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:32:55 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:32:58 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:32:58 UTC] DEBUG: Filters = Array
+>>>>>>> 81f43866df3041b949a7ec715d8d2154086a8930
 (
     [category_id] => 
     [tour_type] => 
@@ -926,11 +1014,21 @@ Stack trace:
     [search] => 
 )
 
+<<<<<<< HEAD
 [12-Apr-2026 01:50:45 UTC] DEBUG: Found 14 tours
 [12-Apr-2026 01:50:45 UTC] DEBUG: Found 5 categories
 [12-Apr-2026 01:50:45 UTC] DEBUG: Found 3 tourTypes
 [12-Apr-2026 01:50:50 UTC] DEBUG: TourController index() called
 [12-Apr-2026 01:50:50 UTC] DEBUG: Filters = Array
+=======
+[13-Apr-2026 01:32:58 UTC] DEBUG: Found 13 tours
+[13-Apr-2026 01:32:58 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:32:58 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:37:28 UTC] Error fetching recent bookings: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:37:28 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:37:32 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:37:32 UTC] DEBUG: Filters = Array
+>>>>>>> 81f43866df3041b949a7ec715d8d2154086a8930
 (
     [category_id] => 
     [tour_type] => 
@@ -938,6 +1036,7 @@ Stack trace:
     [search] => 
 )
 
+<<<<<<< HEAD
 [12-Apr-2026 01:50:50 UTC] DEBUG: Found 14 tours
 [12-Apr-2026 01:50:50 UTC] DEBUG: Found 5 categories
 [12-Apr-2026 01:50:50 UTC] DEBUG: Found 3 tourTypes
@@ -946,10 +1045,21 @@ Stack trace:
 (
     [category_id] => 
     [tour_type] => 
+=======
+[13-Apr-2026 01:37:32 UTC] DEBUG: Found 14 tours
+[13-Apr-2026 01:37:32 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:37:32 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:37:35 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:37:35 UTC] DEBUG: Filters = Array
+(
+    [category_id] => 
+    [tour_type] => domestic
+>>>>>>> 81f43866df3041b949a7ec715d8d2154086a8930
     [status] => 
     [search] => 
 )
 
+<<<<<<< HEAD
 [12-Apr-2026 01:50:53 UTC] DEBUG: Found 13 tours
 [12-Apr-2026 01:50:53 UTC] DEBUG: Found 5 categories
 [12-Apr-2026 01:50:53 UTC] DEBUG: Found 3 tourTypes
@@ -1131,6 +1241,13 @@ Stack trace:
 [13-Apr-2026 01:19:45 UTC] DEBUG: Found 3 tourTypes
 [13-Apr-2026 01:20:50 UTC] DEBUG: TourController index() called
 [13-Apr-2026 01:20:50 UTC] DEBUG: Filters = Array
+=======
+[13-Apr-2026 01:37:35 UTC] DEBUG: Found 5 tours
+[13-Apr-2026 01:37:35 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:37:35 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:37:38 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:37:39 UTC] DEBUG: Filters = Array
+>>>>>>> 81f43866df3041b949a7ec715d8d2154086a8930
 (
     [category_id] => 1
     [tour_type] => 
@@ -1138,6 +1255,7 @@ Stack trace:
     [search] => 
 )
 
+<<<<<<< HEAD
 [13-Apr-2026 01:20:50 UTC] DEBUG: Found 6 tours
 [13-Apr-2026 01:20:50 UTC] DEBUG: Found 5 categories
 [13-Apr-2026 01:20:50 UTC] DEBUG: Found 3 tourTypes
@@ -1191,6 +1309,15 @@ Stack trace:
 [13-Apr-2026 01:20:57 UTC] DEBUG: Found 3 tourTypes
 [13-Apr-2026 01:20:58 UTC] DEBUG: TourController index() called
 [13-Apr-2026 01:20:58 UTC] DEBUG: Filters = Array
+=======
+[13-Apr-2026 01:37:39 UTC] DEBUG: Found 7 tours
+[13-Apr-2026 01:37:39 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:37:39 UTC] DEBUG: Found 3 tourTypes
+[13-Apr-2026 01:45:02 UTC] Error fetching recent bookings: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:45:02 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
+[13-Apr-2026 01:45:40 UTC] DEBUG: TourController index() called
+[13-Apr-2026 01:45:40 UTC] DEBUG: Filters = Array
+>>>>>>> 81f43866df3041b949a7ec715d8d2154086a8930
 (
     [category_id] => 
     [tour_type] => 
@@ -1198,6 +1325,7 @@ Stack trace:
     [search] => 
 )
 
+<<<<<<< HEAD
 [13-Apr-2026 01:20:58 UTC] DEBUG: Found 13 tours
 [13-Apr-2026 01:20:58 UTC] DEBUG: Found 5 categories
 [13-Apr-2026 01:20:58 UTC] DEBUG: Found 3 tourTypes
@@ -1229,3 +1357,8 @@ Stack trace:
 [13-Apr-2026 01:31:12 UTC] Error fetching recent bookings: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
 [13-Apr-2026 01:31:12 UTC] Error fetching connected tours: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''5'' at line 15
 [13-Apr-2026 01:31:15 UTC] DEBUG: CategoryController index() - Found 5 categories
+=======
+[13-Apr-2026 01:45:40 UTC] DEBUG: Found 14 tours
+[13-Apr-2026 01:45:40 UTC] DEBUG: Found 5 categories
+[13-Apr-2026 01:45:40 UTC] DEBUG: Found 3 tourTypes
+>>>>>>> 81f43866df3041b949a7ec715d8d2154086a8930

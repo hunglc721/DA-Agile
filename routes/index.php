@@ -61,6 +61,7 @@ match ($action) {
     'client_tour'   => (new ClientController())->tour(),
     'client_hotel'  => (new ClientController())->hotel(),
     'client_contact'=> (new ClientController())->contact(),
+    'client_contact_submit' => (new ClientController())->submitContact(),
     'client_hotel_single' => (new ClientController())->hotelSingle(),
     'client_tour_single' => (new ClientController())->tourSingle(),
     'client_dashboard' => (new ClientController())->dashboard(),
@@ -69,6 +70,7 @@ match ($action) {
     'client_booking' => (new ClientController())->bookingForm(),
     'client_booking_submit' => (new ClientController())->submitBooking(),
     'client_booking_confirmation' => (new ClientController())->bookingConfirmation(),
+    'client_confirm_booking' => (new ClientController())->confirmBooking(),
     
     // --- ADMIN DASHBOARD ---
     'dashboard'     => (new AdminController())->dashboard(),
@@ -110,6 +112,7 @@ match ($action) {
 
     // --- TRANG CÁ NHÂN HƯỚNG DẪN VIÊN (HDV DASHBOARD) ---
     'guide_dashboard'              => (new GuideProfileController())->dashboard(),
+    'guide_profile'                => (new GuideProfileController())->profile(),
     'guide_customer_feedback'      => (new GuideProfileController())->customerFeedback(),
     'guide_notifications'          => (new GuideProfileController())->notifications(),
     'guide_assigned_tours'         => (new GuideProfileController())->assignedTours(),

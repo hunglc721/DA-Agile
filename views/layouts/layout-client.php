@@ -591,6 +591,105 @@
                 width: 100%;
             }
         }
+
+        /* ===================== PENDING BOOKINGS STYLES ===================== */
+        .pending-bookings-section {
+            margin-bottom: 40px !important;
+            background: linear-gradient(135deg, #fff7e6 0%, #ffe8cc 100%) !important;
+            border: 2px solid #ff6b35 !important;
+            border-radius: 12px !important;
+            padding: 25px !important;
+        }
+
+        .pending-bookings-section .section-title {
+            color: #ff6b35 !important;
+            margin-bottom: 20px !important;
+            border-bottom: none !important;
+            padding-bottom: 0 !important;
+        }
+
+        .pending-bookings-list {
+            margin-top: 20px;
+        }
+
+        .pending-booking-card {
+            background: white !important;
+            padding: 20px !important;
+            margin-bottom: 15px !important;
+            border-radius: 8px !important;
+            border-left: 5px solid #ff6b35 !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .pending-booking-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12) !important;
+        }
+
+        .pending-booking-card > div:first-child {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .pending-booking-card p {
+            margin: 0;
+        }
+
+        .btn-confirm,
+        .btn-detail {
+            padding: 12px !important;
+            border: none !important;
+            border-radius: 6px !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            transition: all 0.3s !important;
+            font-size: 14px !important;
+            text-decoration: none !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 8px !important;
+        }
+
+        .btn-confirm {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%) !important;
+            color: white !important;
+        }
+
+        .btn-confirm:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3) !important;
+        }
+
+        .btn-detail {
+            background: #f0f0f0 !important;
+            color: #333 !important;
+        }
+
+        .btn-detail:hover {
+            background: #e0e0e0 !important;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .pending-booking-card > div:first-child {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .pending-booking-card > div:last-child {
+                flex-direction: column;
+            }
+
+            .btn-confirm,
+            .btn-detail {
+                flex: 1 !important;
+            }
+        }
+
     </style>
 </head>
 <body>
