@@ -383,19 +383,87 @@ $customerList = $customerList ?? [];
     <?php endif; ?>
 
     <!-- Payment Section -->
-    <div class="payment-section">
+    <div class="confirm-section" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-left: 4px solid #0284c7;">
         <h3><i class="fa fa-credit-card"></i> Thanh Toán</h3>
-        <div class="amount-large"><?php echo number_format($booking['total_price']); ?>đ</div>
-
-        <div style="margin: 20px 0;">
-            <strong style="opacity: 0.9;">Các Phương Thức Thanh Toán:</strong>
-            <p style="font-size: 14px; margin: 10px 0;">💳 Chuyển khoản ngân hàng • 💳 Thẻ tín dụng • 💵 Tiền mặt</p>
+        
+        <div class="info-grid">
+            <div class="info-item" style="border-left: 4px solid #10b981;">
+                <div class="label">Tổng Tiền</div>
+                <div class="value" style="font-size: 20px; color: #059669; font-weight: 700;">
+                    <?php echo number_format($booking['total_price'], 0, ',', '.'); ?> ₫
+                </div>
+            </div>
+            <div class="info-item" style="border-left: 4px solid #f59e0b;">
+                <div class="label">Cọc (30%)</div>
+                <div class="value" style="font-size: 20px; color: #d97706; font-weight: 700;">
+                    <?php echo number_format($booking['total_price'] * 0.3, 0, ',', '.'); ?> ₫
+                </div>
+            </div>
+            <div class="info-item" style="border-left: 4px solid #8b5cf6;">
+                <div class="label">Trạng Thái Thanh Toán</div>
+                <div class="value">
+                    <?php
+                    $bookingStatus = $booking['status'] ?? 'pending';
+                    $statusText = match($bookingStatus) {
+                        'pending' => '⚠️ Chờ Thanh Toán',
+                        'confirmed' => '✅ Đã Xác Nhận',
+                        'paid' => '✅ Đã Thanh Toán',
+                        'completed' => '✅ Hoàn Thành',
+                        'cancelled' => '❌ Đã Hủy',
+                        default => 'N/A'
+                    };
+                    echo $statusText;
+                    ?>
+                </div>
+            </div>
         </div>
 
-        <a href="#payment" class="btn-payment">→ Tiếp Tục Thanh Toán</a>
+        <!-- Payment Buttons -->
+        <div style="margin-top: 25px; padding-top: 20px; border-top: 2px solid #e0f2fe;">
+            <?php if (($booking['status'] ?? 'pending') === 'pending'): ?>
+                <!-- Chờ thanh toán - hiển thị nút cọc -->
+                <div style="margin-bottom: 15px;">
+                    <p style="color: #666; font-size: 14px; margin-bottom: 15px;">
+                        <strong>⚠️ Bạn cần thanh toán cọc để xác nhận đơn đặt tour</strong>
+                    </p>
+                    <a href="<?php echo url('?action=client_deposit_payment&booking_id=' . $booking['id']); ?>"
+                       class="btn" style="background: #f59e0b; color: white; width: 100%; text-align: center;">
+                        <i class="fa fa-money"></i> Thanh Toán Cọc (30%)
+                    </a>
+                </div>
 
-        <div class="payment-note">
-            ℹ️ Thanh toán là tùy chọn tại bước này. Vui lòng hoàn thành thanh toán trước ngày khởi hành
+            <?php elseif (($booking['status'] ?? 'pending') === 'confirmed'): ?>
+                <!-- Đã xác nhận - hiển thị nút thanh toán đầy đủ -->
+                <div style="margin-bottom: 15px;">
+                    <p style="color: #059669; font-size: 14px; margin-bottom: 15px;">
+                        <strong>✅ Đơn đặt tour đã được xác nhận. Hãy hoàn thành thanh toán.</strong>
+                    </p>
+                    <a href="<?php echo url('?action=client_full_payment&booking_id=' . $booking['id']); ?>"
+                       class="btn" style="background: #10b981; color: white; width: 100%; text-align: center;">
+                        <i class="fa fa-check-circle"></i> Thanh Toán Đầy Đủ
+                    </a>
+                </div>
+
+            <?php elseif (($booking['status'] ?? 'pending') === 'paid' || ($booking['status'] ?? 'pending') === 'completed'): ?>
+                <!-- Đã thanh toán -->
+                <div style="margin-bottom: 15px;">
+                    <p style="color: #10b981; font-size: 14px; margin-bottom: 15px;">
+                        <strong>✅ Thanh toán thành công! Đơn đặt tour của bạn đã được xác nhận hoàn toàn.</strong>
+                    </p>
+                    <div style="background: #ecfdf5; border: 2px solid #10b981; padding: 15px; border-radius: 8px; color: #059669;">
+                        <i class="fa fa-check-circle"></i> Bạn sẽ nhận được email xác nhận trong vòng 24 giờ
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
+
+        <div style="margin-top: 20px; padding: 15px; background: white; border-radius: 8px; font-size: 13px; color: #666;">
+            <strong>💡 Phương Thức Thanh Toán Được Hỗ Trợ:</strong>
+            <ul style="margin: 10px 0 0 20px;">
+                <li>💳 Thẻ Tín Dụng / Thẻ Ghi Nợ (Visa, Mastercard, JCB)</li>
+                <li>🏦 Chuyển Khoản Ngân Hàng</li>
+                <li>📱 Ví Điện Tử (Momo, ZaloPay)</li>
+            </ul>
         </div>
     </div>
 

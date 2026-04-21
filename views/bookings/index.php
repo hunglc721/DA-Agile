@@ -117,6 +117,25 @@
                                        class="btn btn-info btn-sm" title="Xem chi tiết">
                                         <i class="fas fa-eye"></i> Xem
                                     </a>
+                                    <?php if ($b['status'] === 'pending'): ?>
+                                        <form method="POST" action="index.php?action=bookings_update_status" class="d-inline ml-1" 
+                                              onsubmit="return confirm('Xác nhận duyệt đơn đặt tour này?')">
+                                            <input type="hidden" name="id" value="<?= $b['id'] ?>">
+                                            <input type="hidden" name="status" value="confirmed">
+                                            <button type="submit" class="btn btn-success btn-sm" title="Duyệt đơn">
+                                                <i class="fas fa-check"></i> Duyệt
+                                            </button>
+                                        </form>
+                                    <?php elseif ($b['status'] === 'confirmed'): ?>
+                                        <form method="POST" action="index.php?action=bookings_update_status" class="d-inline ml-1" 
+                                              onsubmit="return confirm('Xác nhận hủy đơn đặt tour này?')">
+                                            <input type="hidden" name="id" value="<?= $b['id'] ?>">
+                                            <input type="hidden" name="status" value="cancelled">
+                                            <button type="submit" class="btn btn-danger btn-sm" title="Hủy đơn">
+                                                <i class="fas fa-times"></i> Hủy
+                                            </button>
+                                        </form>
+                                    <?php endif; ?>
                                 </td>
                             </tr>
                             <?php endforeach; ?>

@@ -456,7 +456,7 @@ class ClientController
         $sql = "SELECT b.*, t.name as tour_name, t.price, d.departure_date
                 FROM bookings b
                 JOIN tours t ON b.tour_id = t.id
-                LEFT JOIN tour_departures d ON b.departure_id = d.id
+                LEFT JOIN tour_departures d ON b.departure_id = d.DepartureID
                 WHERE b.id = ? AND b.user_id = ?";
 
         $booking = $bookingModel->fetchOne($sql, [$bookingId, getCurrentUser()['id']]);
@@ -512,17 +512,13 @@ class ClientController
         }
 
         try {
-            // Xử lý thanh toán (tạm thời: giả lập thanh toán thành công)
-            $paymentSuccess = $this->processPayment($bookingId, $booking['total_price'], $paymentMethod);
+            // Xử lý thanh toán đầy đủ
+            $result = $bookingModel->processFullPayment($bookingId, $booking['total_price'], $paymentMethod, 'TXN_' . time() . '_' . $bookingId);
 
-            if ($paymentSuccess) {
-                // Cập nhật status thành confirmed
-                $updateSql = "UPDATE bookings SET status = 'confirmed' WHERE id = ?";
-                $bookingModel->query($updateSql, [$bookingId]);
-
+            if ($result['status']) {
                 $_SESSION['success'] = 'Thanh toán và xác nhận đơn đặt tour thành công! Mã booking: #' . $bookingId;
             } else {
-                $_SESSION['error'] = 'Thanh toán thất bại. Vui lòng thử lại!';
+                $_SESSION['error'] = $result['message'];
             }
         } catch (Exception $e) {
             $_SESSION['error'] = 'Lỗi: ' . $e->getMessage();
@@ -531,31 +527,125 @@ class ClientController
         redirect('client_dashboard');
     }
 
+
+
     /**
-     * Xử lý thanh toán
+     * Trang thanh toán cọc
      */
-    private function processPayment($bookingId, $amount, $paymentMethod)
-    {
-        // Tạo record thanh toán trong database (nếu có)
-        // Tạm thời: giả lập thanh toán thành công
+    public function depositPayment() {
+        requireClient();
+        
+        $bookingId = (int)($_GET['booking_id'] ?? 0);
+        $bookingModel = new Booking();
+        $booking = $bookingModel->find($bookingId);
 
-        // Validation based on payment method
-        if ($paymentMethod === 'card') {
-            // Card validation (client-side validation đã bao quát)
-            // Server-side: có thể call thêm payment gateway (Stripe, PayPal, etc.)
-            return true; // Giả lập thành công
-
-        } elseif ($paymentMethod === 'bank') {
-            // Chuyển khoản: cần xác nhận thủ công hoặc tích hợp API ngân hàng
-            // Tạm thời: giả lập chờ xác nhận
-            return true; // Giả lập thành công
-
-        } elseif ($paymentMethod === 'wallet') {
-            // Ví điện tử: có thể tích hợp Momo API, ZaloPay API
-            return true; // Giả lập thành công
+        if (!$booking || $booking['user_id'] != getCurrentUser()['id']) {
+            $_SESSION['error'] = 'Không tìm thấy đơn đặt tour';
+            redirect('client_dashboard');
         }
 
-        return false;
+        $depositAmount = $booking['total_price'] * 0.3; // Cọc 30%
+
+        view('client/depositPayment', [
+            'title' => 'Thanh Toán Cọc - Du Lịch Thông Minh',
+            'page' => 'client/depositPayment',
+            'booking' => $booking,
+            'depositAmount' => $depositAmount
+        ]);
+    }
+
+    /**
+     * Xử lý thanh toán cọc
+     */
+    public function processDepositPayment() {
+        requireClient();
+        
+        $bookingId = (int)($_POST['booking_id'] ?? 0);
+        $paymentMethod = $_POST['payment_method'] ?? '';
+        
+        $bookingModel = new Booking();
+        $booking = $bookingModel->find($bookingId);
+
+        if (!$booking || $booking['user_id'] != getCurrentUser()['id']) {
+            http_response_code(400);
+            echo json_encode(['status' => false, 'message' => 'Không tìm thấy đơn đặt tour']);
+            exit;
+        }
+
+        $depositAmount = $booking['total_price'] * 0.3;
+        $transactionId = 'TXN_' . time() . '_' . $bookingId;
+
+        // Giả lập xử lý thanh toán (thay thế bằng gateway thực tế)
+        $result = $bookingModel->processDeposit($bookingId, $depositAmount, $paymentMethod, $transactionId);
+
+        if ($result['status']) {
+            $_SESSION['success'] = 'Thanh toán cọc thành công. Vui lòng hoàn thành thanh toán để xác nhận đặt tour.';
+            http_response_code(200);
+            echo json_encode(['status' => true, 'redirect' => "/?action=client_booking_confirmation&id=$bookingId"]);
+        } else {
+            http_response_code(400);
+            echo json_encode(['status' => false, 'message' => $result['message']]);
+        }
+        exit;
+    }
+
+    /**
+     * Trang thanh toán đầy đủ
+     */
+    public function fullPayment() {
+        requireClient();
+        
+        $bookingId = (int)($_GET['booking_id'] ?? 0);
+        $bookingModel = new Booking();
+        $booking = $bookingModel->find($bookingId);
+
+        if (!$booking || $booking['user_id'] != getCurrentUser()['id']) {
+            $_SESSION['error'] = 'Không tìm thấy đơn đặt tour';
+            redirect('client_dashboard');
+        }
+
+        $remainingAmount = $booking['total_price'] - ($booking['paid_amount'] ?? 0);
+
+        view('client/fullPayment', [
+            'title' => 'Thanh Toán Đầy Đủ - Du Lịch Thông Minh',
+            'page' => 'client/fullPayment',
+            'booking' => $booking,
+            'remainingAmount' => $remainingAmount
+        ]);
+    }
+
+    /**
+     * Xử lý thanh toán đầy đủ
+     */
+    public function processFullPayment() {
+        requireClient();
+        
+        $bookingId = (int)($_POST['booking_id'] ?? 0);
+        $paymentMethod = $_POST['payment_method'] ?? '';
+        
+        $bookingModel = new Booking();
+        $booking = $bookingModel->find($bookingId);
+
+        if (!$booking || $booking['user_id'] != getCurrentUser()['id']) {
+            http_response_code(400);
+            echo json_encode(['status' => false, 'message' => 'Không tìm thấy đơn đặt tour']);
+            exit;
+        }
+
+        $totalAmount = $booking['total_price'];
+        $transactionId = 'TXN_' . time() . '_' . $bookingId;
+
+        // Giả lập xử lý thanh toán (thay thế bằng gateway thực tế)
+        $result = $bookingModel->processFullPayment($bookingId, $totalAmount, $paymentMethod, $transactionId);
+
+        if ($result['status']) {
+            $_SESSION['success'] = 'Thanh toán thành công. Đơn đặt tour của bạn đã được xác nhận.';
+            http_response_code(200);
+            echo json_encode(['status' => true, 'redirect' => "/?action=client_booking_confirmation&id=$bookingId"]);
+        } else {
+            http_response_code(400);
+            echo json_encode(['status' => false, 'message' => $result['message']]);
+        }
+        exit;
     }
 }
-?>

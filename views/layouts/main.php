@@ -12,7 +12,6 @@
     <link href="<?= asset('css/frontend/animate.css') ?>" rel="stylesheet">
     <link href="<?= asset('css/frontend/aos.css') ?>" rel="stylesheet">
     <link href="<?= asset('css/frontend/bootstrap-datepicker.css') ?>" rel="stylesheet">
-    <link href="<?= asset('css/frontend/bootstrap.min.css') ?>" rel="stylesheet">
     <link href="<?= asset('css/frontend/flaticon.css') ?>" rel="stylesheet">
     <link href="<?= asset('css/frontend/icomoon.css') ?>" rel="stylesheet">
     <link href="<?= asset('css/frontend/ionicons.min.css') ?>" rel="stylesheet">

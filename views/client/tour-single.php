@@ -341,15 +341,12 @@ try {
 
                     <div class="col-md-6 mb-3">
                       <label class="form-label"><strong>Ngày khởi hành</strong></label>
-                      <select name="departure_id" class="form-control">
-                        <option value="">-- Chọn ngày khởi hành --</option>
-                        <?php foreach ($departures as $dep): ?>
-                        <option value="<?php echo htmlspecialchars($dep['id']); ?>">
-                          <?php echo date('d/m/Y', strtotime($dep['departure_date'])); ?>
-                          (Còn <?php echo htmlspecialchars($dep['available_slots'] ?? 0); ?> chỗ)
-                        </option>
-                        <?php endforeach; ?>
-                      </select>
+                      <div class="input-group">
+                        <input type="text" id="departure_date_picker" class="form-control" placeholder="Chọn ngày khởi hành" readonly>
+                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                      </div>
+                      <input type="hidden" name="departure_id" id="departure_id">
+                      <small id="departure_info" class="form-text text-muted d-block mt-2"></small>
                     </div>
 
                     <div class="col-md-6 mb-3">
@@ -519,13 +516,62 @@ try {
   <script src="/assets/css/frontend/js/main.js"></script>
 
   <script>
+    // Dữ liệu lịch khởi hành
+    const departuresData = <?php echo json_encode(array_map(function($d) {
+        return [
+            'id' => $d['id'],
+            'date' => $d['departure_date'],
+            'dateFormatted' => date('d/m/Y', strtotime($d['departure_date'])),
+            'availableSlots' => $d['available_slots'] ?? 0,
+            'capacity' => $d['capacity'] ?? 0,
+            'status' => $d['status'] ?? 'scheduled'
+        ];
+    }, $departures)); ?>;
+
+    // Khởi tạo Bootstrap Datepicker
+    $('#departure_date_picker').datepicker({
+        format: 'dd/mm/yyyy',
+        startDate: new Date(),
+        daysOfWeekDisabled: [],
+        autoclose: true,
+        todayHighlight: true,
+        datesDisabled: function(date) {
+            // Vô hiệu hóa các ngày không có lịch khởi hành
+            const dateStr = date.getFullYear() + '-' + 
+                           String(date.getMonth() + 1).padStart(2, '0') + '-' + 
+                           String(date.getDate()).padStart(2, '0');
+            return !departuresData.some(d => d.date === dateStr);
+        }
+    }).on('changeDate', function(e) {
+        updateDepartureInfo(e.date);
+    });
+
+    function updateDepartureInfo(selectedDate) {
+        const dateStr = selectedDate.getFullYear() + '-' + 
+                       String(selectedDate.getMonth() + 1).padStart(2, '0') + '-' + 
+                       String(selectedDate.getDate()).padStart(2, '0');
+        
+        const departure = departuresData.find(d => d.date === dateStr);
+        
+        if (departure) {
+            document.getElementById('departure_id').value = departure.id;
+            const infoText = `Còn ${departure.availableSlots} chỗ (${departure.status === 'scheduled' ? 'Sắp tới' : departure.status})`;
+            document.getElementById('departure_info').textContent = infoText;
+            
+            // Cập nhật tổng tiền
+            calculateTotal();
+        }
+    }
+
     // Tính toán tổng tiền
-    document.querySelectorAll('input[name="number_of_people"], select[name="departure_id"]').forEach(el => {
-      el.addEventListener('change', function() {
+    function calculateTotal() {
         const price = <?php echo (int)$tour['price']; ?>;
         const qty = parseInt(document.querySelector('input[name="number_of_people"]').value) || 1;
         document.getElementById('totalPrice').value = new Intl.NumberFormat('vi-VN').format(price * qty) + ' ₫';
-      });
+    }
+
+    document.querySelector('input[name="number_of_people"]').addEventListener('change', function() {
+        calculateTotal();
     });
   </script>
   </body>

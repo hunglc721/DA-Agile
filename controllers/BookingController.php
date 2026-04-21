@@ -97,8 +97,7 @@ public function show()
             
             // 2. Xử lý hoàn slot nếu chọn trạng thái Hủy (cancelled)
             if ($status === 'cancelled' && $currentBooking['status'] !== 'cancelled') {
-                $sqlAddSlot = "UPDATE tours SET available_slots = available_slots + ? WHERE id = ?";
-                $this->tourModel->query($sqlAddSlot, [$currentBooking['number_of_people'], $currentBooking['tour_id']]);
+                $this->tourModel->restoreAvailableSlots($currentBooking['tour_id'], $currentBooking['number_of_people']);
             }
 
             // 3. Cập nhật trạng thái mới

@@ -27,6 +27,7 @@ require_once ROOT_PATH . 'controllers/CategoryController.php'; // Controller m�
 require_once ROOT_PATH . 'controllers/TourTypeController.php'; // Controller loại tour (NEW)
 require_once ROOT_PATH . 'controllers/GuideController.php';    // Controller mới
 require_once ROOT_PATH . 'controllers/BookingController.php';  // Controller mới
+require_once ROOT_PATH . 'controllers/PaymentController.php';  // Payment management
 require_once ROOT_PATH . 'controllers/CheckinController.php';  // Check-in & Attendance
 require_once ROOT_PATH . 'controllers/TourDiaryController.php';
 require_once ROOT_PATH . 'controllers/TourCustomerController.php';
@@ -71,6 +72,10 @@ match ($action) {
     'client_booking_submit' => (new ClientController())->submitBooking(),
     'client_booking_confirmation' => (new ClientController())->bookingConfirmation(),
     'client_confirm_booking' => (new ClientController())->confirmBooking(),
+    'client_deposit_payment' => (new ClientController())->depositPayment(),
+    'client_process_deposit_payment' => (new ClientController())->processDepositPayment(),
+    'client_full_payment' => (new ClientController())->fullPayment(),
+    'client_process_full_payment' => (new ClientController())->processFullPayment(),
     
     // --- ADMIN DASHBOARD ---
     'dashboard'     => (new AdminController())->dashboard(),
@@ -163,6 +168,13 @@ match ($action) {
     'bookings_store'        => (new BookingController())->store(),
     'bookings_update_status'=> (new BookingController())->updateStatus(), // Duyệt/Hủy đơn
     'bookings_delete'       => (new BookingController())->delete(),
+    
+    // --- QUẢN LÝ THANH TOÁN (Payment Management) ---
+    'admin_payments'              => (new PaymentController())->index(),
+    'admin_payments_show'         => (new PaymentController())->show(),
+    'admin_payments_confirm'      => (new PaymentController())->confirmPayment(),
+    'admin_payments_stats'        => (new PaymentController())->getPaymentStats(),
+    'admin_payments_export'       => (new PaymentController())->exportReport(),
     // --- QUẢN LÝ NHẬT KÝ TOUR ---
     'tour_diary'        => (new TourDiaryController())->index(),
     'tour_diary_store'  => (new TourDiaryController())->store(),

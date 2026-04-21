@@ -148,6 +148,12 @@ if (!function_exists('escape')) {
     }
 }
 
+if (!function_exists('requireAdmin')) {
+    function requireAdmin() {
+        Auth::requireAdmin();
+    }
+}
+
 if (!function_exists('clean')) {
     function clean($data) {
         if (is_array($data)) {

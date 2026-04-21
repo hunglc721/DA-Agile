@@ -45,7 +45,7 @@
                     <div class="text-warning text-uppercase mb-1 font-weight-bold text-xs">
                         <i class="fas fa-ticket-alt"></i> Booking chờ xử lý
                     </div>
-                    <div class="h3 mb-0 font-weight-bold text-gray-800">12</div>
+                    <div class="h3 mb-0 font-weight-bold text-gray-800"><?php echo $stats['pending_bookings'] ?? 0; ?></div>
                     <div class="small text-muted mt-2">
                         <i class="fas fa-clock"></i> Cần xử lý ngay
                     </div>

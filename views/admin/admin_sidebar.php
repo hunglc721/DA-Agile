@@ -109,6 +109,12 @@ $currentAction = $_GET['action'] ?? 'dashboard';
         </a>
     </li>
 
+    <li class="nav-item <?= ($_GET['action'] ?? '') == 'admin_payments' || ($_GET['action'] ?? '') == 'admin_payments_show' ? 'active' : '' ?>">
+        <a class="nav-link" href="index.php?action=admin_payments">
+            <i class="fas fa-fw fa-credit-card"></i> <span>Quản Lý Thanh Toán</span>
+        </a>
+    </li>
+
 <!-- 🎯 BÁO CÁO VẬN HÀNH -->
 <li class="nav-item <?= ($currentAction == 'tour_financial_report') ? 'active' : '' ?>">
     <a class="nav-link" href="index.php?action=tour_financial_report">

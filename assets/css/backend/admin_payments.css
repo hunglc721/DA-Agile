@@ -1,0 +1,36 @@
+/* Admin Payment Management Styles */
+
+.payment-stat {
+    border-left: 4px solid #007bff;
+    padding-left: 15px;
+}
+
+.badge-lg {
+    font-size: 1.1em;
+    padding: 0.5em 1em;
+}
+
+.badge-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.badge-warning {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.badge-info {
+    background-color: #17a2b8;
+    color: #fff;
+}
+
+.badge-success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.badge-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}

@@ -4,7 +4,12 @@ class Booking extends BaseModel
     protected $table = 'bookings';
 
     public function findAll() {
-        return $this->fetchAll("SELECT * FROM {$this->table}");
+        $sql = "SELECT b.*, t.name as tour_name, u.full_name as user_name, u.email, u.phone
+                FROM {$this->table} b
+                LEFT JOIN tours t ON b.tour_id = t.id
+                LEFT JOIN users u ON b.user_id = u.id
+                ORDER BY b.booking_date DESC";
+        return $this->fetchAll($sql);
     }
 
     // Thống kê doanh thu theo tháng
@@ -56,9 +61,16 @@ public function updateCheckinStatus($bookingId, $status) {
 /**
      * Tìm booking theo ID
      */
+    /**
+     * Tìm booking theo ID
+     */
     public function find($id)
     {
-        $sql = "SELECT * FROM {$this->table} WHERE id = ?";
+        $sql = "SELECT b.*, t.name as tour_name, u.full_name as user_name, u.email, u.phone
+                FROM {$this->table} b
+                LEFT JOIN tours t ON b.tour_id = t.id
+                LEFT JOIN users u ON b.user_id = u.id
+                WHERE b.id = ?";
         return $this->fetchOne($sql, [$id]);
     }
 public function createBooking($data) {
@@ -144,5 +156,141 @@ public function getCustomersByTourId($tourId) {
     // Sử dụng hàm query có sẵn trong BaseModel
     return $this->query($sql, [$id]);
 }
+
+    /**
+     * Xử lý thanh toán cọc
+     */
+    public function processDeposit($bookingId, $amount, $paymentMethod, $transactionId) {
+        $booking = $this->find($bookingId);
+        
+        if (!$booking) {
+            return ['status' => false, 'message' => 'Đơn đặt tour không tồn tại'];
+        }
+
+        $depositRequired = $booking['total_price'] * 0.3; // Cọc 30%
+        
+        if ($amount < $depositRequired) {
+            return ['status' => false, 'message' => "Cọc tối thiểu: " . number_format($depositRequired) . " ₫"];
+        }
+
+        // Cập nhật thông tin thanh toán
+        $sql = "UPDATE bookings 
+                SET payment_status = 'deposit_paid', 
+                    deposit_amount = ?,
+                    paid_amount = ?,
+                    payment_method = ?, 
+                    transaction_id = ?,
+                    payment_date = NOW()
+                WHERE id = ?";
+        
+        $this->query($sql, [$depositRequired, $amount, $paymentMethod, $transactionId, $bookingId]);
+        
+        return ['status' => true, 'message' => 'Thanh toán cọc thành công', 'deposit_amount' => $depositRequired];
+    }
+
+    /**
+     * Xử lý thanh toán đầy đủ
+     */
+    public function processFullPayment($bookingId, $amount, $paymentMethod, $transactionId) {
+        $booking = $this->find($bookingId);
+        
+        if (!$booking) {
+            return ['status' => false, 'message' => 'Đơn đặt tour không tồn tại'];
+        }
+
+        if ($amount < $booking['total_price']) {
+            return ['status' => false, 'message' => "Tổng tiền cần thanh toán: " . number_format($booking['total_price']) . " ₫"];
+        }
+
+        // Cập nhật thông tin thanh toán
+        $sql = "UPDATE bookings 
+                SET payment_status = 'paid', 
+                    paid_amount = ?,
+                    payment_method = ?, 
+                    transaction_id = ?,
+                    payment_date = NOW(),
+                    status = 'confirmed'
+                WHERE id = ?";
+        
+        $this->query($sql, [$amount, $paymentMethod, $transactionId, $bookingId]);
+        
+        return ['status' => true, 'message' => 'Thanh toán thành công', 'total_paid' => $amount];
+    }
+
+    /**
+     * Lấy thông tin thanh toán của booking
+     */
+    public function getPaymentInfo($bookingId) {
+        try {
+            $sql = "SELECT id, total_price, deposit_amount, paid_amount, payment_status,
+                           payment_method, transaction_id, payment_date
+                    FROM bookings WHERE id = ?";
+            return $this->fetchOne($sql, [$bookingId]);
+        } catch (Exception $e) {
+            // Nếu cột payment chưa tồn tại, trả về thông tin cơ bản
+            $sql = "SELECT id, total_price, status FROM bookings WHERE id = ?";
+            $booking = $this->fetchOne($sql, [$bookingId]);
+            if ($booking) {
+                return [
+                    'id' => $booking['id'],
+                    'total_price' => $booking['total_price'],
+                    'deposit_amount' => 0,
+                    'paid_amount' => 0,
+                    'payment_status' => $booking['status'] === 'confirmed' ? 'paid' : 'unpaid',
+                    'payment_method' => null,
+                    'transaction_id' => null,
+                    'payment_date' => null
+                ];
+            }
+            return null;
+        }
+    }
+
+    /**
+     * Kiểm tra booking có đủ điều kiện để hoàn thành không
+     */
+    public function canCompleteBooking($bookingId) {
+        $payment = $this->getPaymentInfo($bookingId);
+        
+        if (!$payment) {
+            return ['status' => false, 'message' => 'Không tìm thấy đơn đặt tour'];
+        }
+
+        if ($payment['payment_status'] === 'unpaid') {
+            return ['status' => false, 'message' => 'Vui lòng thanh toán cọc để xác nhận đặt tour'];
+        }
+
+        if ($payment['payment_status'] === 'deposit_paid') {
+            $remainingAmount = $payment['total_price'] - $payment['paid_amount'];
+            return ['status' => true, 'message' => 'Đã thanh toán cọc', 'remaining' => $remainingAmount];
+        }
+
+        if ($payment['payment_status'] === 'paid') {
+            return ['status' => true, 'message' => 'Thanh toán đầy đủ'];
+        }
+
+        return ['status' => true, 'message' => 'Có thể hoàn thành'];
+    }
+
+    /**
+     * Lấy booking theo payment status
+     */
+    public function getByPaymentStatus($status) {
+        $sql = "SELECT b.*, t.name as tour_name, u.full_name as user_name, u.email, u.phone
+                FROM bookings b
+                LEFT JOIN tours t ON b.tour_id = t.id
+                LEFT JOIN users u ON b.user_id = u.id
+                WHERE b.payment_status = ?
+                ORDER BY b.booking_date DESC";
+        
+        return $this->fetchAll($sql, [$status]);
+    }
+
+    /**
+     * Lấy database connection (for PaymentController)
+     */
+    public function getConnection() {
+        return $this->pdo;
+    }
 }
 ?>

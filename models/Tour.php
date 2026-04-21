@@ -231,14 +231,6 @@ class Tour extends BaseModel
         return $tour && $tour['available_slots'] >= $requiredSlots;
     }
 
-    /**
-     * Cập nhật số slot còn lại
-     */
-    public function updateAvailableSlots($id, $slots)
-    {
-        $sql = "UPDATE {$this->table} SET available_slots = available_slots - ? WHERE id = ?";
-        return $this->query($sql, [$slots, $id]);
-    }
     // Thêm vào trong class Tour
 
     /**
@@ -418,5 +410,23 @@ class Tour extends BaseModel
     {
         $sql = "DELETE FROM {$this->table} WHERE id = ?";
         return $this->query($sql, [$id]);
+    }
+
+    /**
+     * Cập nhật số chỗ trống của tour
+     */
+    public function updateAvailableSlots($tourId, $slotsToSubtract)
+    {
+        $sql = "UPDATE {$this->table} SET available_slots = available_slots - ? WHERE id = ?";
+        return $this->query($sql, [$slotsToSubtract, $tourId]);
+    }
+
+    /**
+     * Khôi phục số chỗ trống khi hủy booking
+     */
+    public function restoreAvailableSlots($tourId, $slotsToAdd)
+    {
+        $sql = "UPDATE {$this->table} SET available_slots = available_slots + ? WHERE id = ?";
+        return $this->query($sql, [$slotsToAdd, $tourId]);
     }
 }

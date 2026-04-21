@@ -42,6 +42,7 @@ require_once ROOT_PATH . 'models/Report.php';
 if (file_exists(ROOT_PATH . 'controllers/BaseController.php')) {
     require_once ROOT_PATH . 'controllers/BaseController.php';
 }
+require_once ROOT_PATH . 'controllers/PaymentController.php';
 
 // 4. Gọi routes
 require_once ROOT_PATH . 'routes/index.php';
